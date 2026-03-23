@@ -904,7 +904,7 @@ si.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowD
     <div class="dash-grid">
       <div class="dash-card">
         <div class="dash-card-title">Slides Completed</div>
-        <div class="dash-big" id="cnt-slides">0 <span>of ${TOTAL}</span></div>
+        <div class="dash-big" id="cnt-slides">0 <span>of 33</span></div>
         <div class="dash-card-title" style="margin-top:.4rem;color:var(--accent2)">Total Flashcards</div>
         <div class="dash-big" id="cnt-cards" style="font-size:clamp(1.6rem,3vw,2.4rem)">0 <span>cards</span></div>
       </div>
@@ -938,14 +938,15 @@ si.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowD
 
   // animate counters + bars when dashboard becomes active
   function animateDash(){
+    const DISPLAY_TOTAL=33;
     let s=0,c=0;
     const dur=900,step=16;
     const iv=setInterval(()=>{
-      s=Math.min(s+Math.ceil(TOTAL/dur*step*4),TOTAL);
+      s=Math.min(s+Math.ceil(DISPLAY_TOTAL/dur*step*4),DISPLAY_TOTAL);
       c=Math.min(c+Math.ceil(totalCards/dur*step*4),totalCards);
-      document.getElementById('cnt-slides').innerHTML=`${s} <span>of ${TOTAL}</span>`;
+      document.getElementById('cnt-slides').innerHTML=`${s} <span>of ${DISPLAY_TOTAL}</span>`;
       document.getElementById('cnt-cards').innerHTML=`${c} <span>cards</span>`;
-      if(s>=TOTAL&&c>=totalCards)clearInterval(iv);
+      if(s>=DISPLAY_TOTAL&&c>=totalCards)clearInterval(iv);
     },step);
     setTimeout(()=>{
       el.querySelectorAll('.bar-fill').forEach(b=>{b.style.width=b.dataset.w;});
