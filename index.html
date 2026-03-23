@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>IT Career Insights</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -73,6 +73,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 .arr{width:56px;height:56px;border-radius:50%;background:var(--nav-bg);border:1px solid var(--border2);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--accent);transition:transform .2s cubic-bezier(.4,0,.2,1),box-shadow .2s;box-shadow:0 4px 24px rgba(0,0,0,.35);}
 .nz.L:hover .arr{transform:translateX(-6px);box-shadow:0 6px 32px var(--accent-glow);}
 .nz.R:hover .arr{transform:translateX(6px);box-shadow:0 6px 32px var(--accent-glow);}
+@media(hover:none){.nz{opacity:.18;width:16%;}.nz .arr{width:44px;height:44px;font-size:1.1rem;}}
 
 /* ── SLIDE WRAPPER ── */
 #sw{position:fixed;inset:52px 0 52px 0;display:flex;align-items:stretch;justify-content:center;}
@@ -82,6 +83,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 
 /* ── MAIN CARD ── */
 .card{width:100%;max-width:1160px;margin:0 auto;background:var(--surface);border:1px solid var(--border2);border-radius:28px;padding:2.6rem 4rem 2.2rem;position:relative;overflow:hidden;box-shadow:var(--card-shadow);transition:background .4s;display:flex;flex-direction:column;}
+.card::-webkit-scrollbar{width:3px;}
+.card::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
+@media(max-width:640px){.card{overflow-y:auto;}}
 .card::before{content:'';position:absolute;top:-90px;left:50%;transform:translateX(-50%);width:80%;height:220px;background:radial-gradient(ellipse,var(--accent-glow) 0%,transparent 70%);pointer-events:none;}
 .card::after{content:'';position:absolute;top:0;right:0;width:150px;height:150px;background:linear-gradient(135deg,transparent 57%,var(--border) 57%,var(--border) 58.5%,transparent 58.5%),linear-gradient(135deg,transparent 47%,var(--border) 47%,var(--border) 48.5%,transparent 48.5%);pointer-events:none;border-radius:0 28px 0 0;}
 .watermark{position:absolute;bottom:1rem;right:2rem;font-family:'Playfair Display',serif;font-size:7rem;font-weight:900;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none;user-select:none;letter-spacing:-.02em;}
@@ -361,9 +365,101 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 #hint.gone{opacity:0;}
 
 @media(max-width:640px){
-  .card{padding:1.8rem 1.4rem;}
-  .fc-grid{grid-template-columns:1fr 1fr;}
-  .ts .card{padding:2.5rem 1.5rem;}
+  /* topbar */
+  #topbar{padding:0 1rem;height:46px;}
+  #topbar-left{font-size:.55rem;}
+  #sc{font-size:.65rem;}
+
+  /* slides wrapper */
+  #sw{inset:46px 0 48px 0;}
+  .slide{padding:.4rem 2.5%;}
+
+  /* card */
+  .card{border-radius:18px;padding:1.4rem 1.2rem 1.2rem;}
+  .card::after{display:none;}
+  .watermark{font-size:4rem;bottom:.8rem;right:1rem;}
+
+  /* tag + title */
+  .tag{font-size:.55rem;padding:.25rem .7rem;margin-bottom:.8rem;}
+  .stitle{font-size:clamp(1.3rem,5.5vw,1.8rem);margin-bottom:.6rem;}
+  .div{margin-bottom:.9rem;}
+
+  /* flashcard grid — single column on mobile */
+  .fc-grid{
+    grid-template-columns:1fr;
+    grid-auto-rows:auto;
+    gap:.6rem;
+    margin-bottom:.8rem;
+  }
+  .fc-wrap{min-height:80px;}
+  .fc-front,.fc-back{padding:1rem 1rem;}
+  .fc-front-text{font-size:clamp(1rem,4vw,1.2rem);}
+  .fc-back-text{font-size:.82rem;}
+  .fc-back-icon{width:30px;height:30px;}
+  .fc-back-icon svg{width:16px;height:16px;}
+  .fc-hint{font-size:.55rem;}
+
+  /* stat bar */
+  .stat{font-size:.62rem;padding:.5rem .8rem;}
+
+  /* title slide */
+  .ts .card{padding:2rem 1.2rem;}
+  .ts .stitle{font-size:clamp(1.8rem,7vw,2.8rem);}
+  .ts .sub{font-size:.95rem;}
+  .ts .desc{font-size:.8rem;margin-bottom:1.8rem;}
+  .cta{padding:.7rem 1.6rem;font-size:.65rem;}
+
+  /* thank you */
+  .ty-big{font-size:clamp(2.8rem,13vw,4.5rem);}
+  .ty-sub{font-size:.9rem;margin-bottom:1.4rem;}
+  .ty-div{margin-bottom:1.4rem;}
+  .ty-email{font-size:.72rem;padding:.7rem 1.2rem;}
+
+  /* dashboard */
+  .dash-slide .card{padding:1.2rem 1rem;}
+  .dash-header{flex-direction:column;align-items:flex-start;gap:.6rem;margin-bottom:1rem;}
+  .dash-headline{font-size:1.1rem;}
+  .dash-sub{font-size:.62rem;}
+  .congrats-badge{font-size:.58rem;padding:.4rem .8rem;}
+  .dash-grid{grid-template-columns:1fr;gap:.7rem;}
+  .dash-grid .dash-card[style*="grid-column"]{grid-column:auto;}
+  .dash-big{font-size:2rem;}
+  .tl-label{font-size:.6rem;}
+  .bar-label{width:70px;font-size:.55rem;}
+  .donut-wrap{flex-direction:column;gap:.8rem;}
+
+  /* bottom nav */
+  #bot{height:48px;gap:.5rem;}
+  .nb{width:34px;height:30px;font-size:.8rem;border-radius:8px;}
+  #dots{max-width:120px;overflow:hidden;gap:3px;}
+  .dot{width:5px;height:5px;}
+  .dot.active{width:14px;}
+
+  /* search box — hide label on mobile, shrink input */
+  #search-label{display:none;}
+  #search-box{left:.7rem;bottom:9px;}
+  #search-input{width:48px;font-size:.65rem;}
+  #search-input:focus{width:60px;}
+
+  /* nav zones — always slightly visible on touch */
+  .nz{opacity:.25;width:14%;}
+
+  /* hint */
+  #hint{font-size:.52rem;bottom:56px;}
+}
+
+/* tablet */
+@media(min-width:641px) and (max-width:1024px){
+  .card{padding:2rem 2.5rem;}
+  .stitle{font-size:clamp(1.6rem,3.5vw,2.4rem);}
+  .fc-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
+  .fc-front-text{font-size:clamp(1rem,2vw,1.3rem);}
+  .fc-back-text{font-size:.85rem;}
+  .ts .card{padding:3rem 2.5rem;}
+  .dash-grid{grid-template-columns:1fr 1fr;}
+  .dash-grid .dash-card[style*="grid-column"]{grid-column:1/-1;}
+  .tl-label{font-size:.62rem;}
+  #dots{max-width:160px;}
 }
 </style>
 </head>
@@ -497,7 +593,7 @@ function icon(name){const p=ICONS[name]||ICONS.lightbulb;return `<svg viewBox="0
 const data=[
   {type:'title',tag:'Welcome',title:'Industry Insights &amp; Career Guidance',sub:'for Aspiring IT Professionals',desc:'A guide through tech communities, career paths, and the real-world skills that matter most.'},
 
-  {tag:'My Story',title:'My Journey as a Leader in Tech',
+  {tag:'My Story',title:'My Journey as a Student Leader in Tech',
    cards:[
      {f:'Joined Tech Communities',b:'Being part of organizations like DEVCON exposed me to real developers and industry events outside the classroom.',icon:'users'},
      {f:'Learned Through Real Projects',b:'Working on actual projects — not just assignments — taught me how to collaborate, debug, and ship under pressure.',icon:'wrench'},
