@@ -16,6 +16,17 @@
   --nav-bg:rgba(12,12,22,.88);
   --card-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);
   --tag-bg:rgba(240,201,106,.1);--tag-border:rgba(240,201,106,.25);
+  /* SVG illustration text — readable on dark backgrounds */
+  --svg-text-strong:#f2efe8;
+  --svg-text-body:rgba(242,239,232,.88);
+  --svg-text-muted:rgba(242,239,232,.58);
+  --svg-text-caption:rgba(242,239,232,.72);
+  --svg-school-bg:rgba(255,255,255,.06);
+  --svg-school-border:rgba(240,201,106,.35);
+  --svg-industry-border:rgba(106,180,240,.35);
+  --svg-card-bg:rgba(255,255,255,.04);
+  --svg-row-bg:rgba(255,255,255,.04);
+  --svg-term-bg:rgba(10,15,30,.85);
 }
 :root[data-theme="light"]{
   --bg:#f5efe0;--surface:#fdf8ef;--surface2:#ede4ce;--surface3:#e2d6bc;
@@ -26,6 +37,17 @@
   --nav-bg:rgba(245,239,224,.96);
   --card-shadow:0 16px 60px rgba(120,80,0,.14),0 0 0 1px rgba(120,80,0,.12);
   --tag-bg:rgba(160,96,16,.13);--tag-border:rgba(160,96,16,.32);
+  /* SVG illustration text — readable on light backgrounds */
+  --svg-text-strong:#1a0e00;
+  --svg-text-body:#2e1a00;
+  --svg-text-muted:#5a3a10;
+  --svg-text-caption:#3a1a00;
+  --svg-school-bg:rgba(160,96,16,.08);
+  --svg-school-border:rgba(160,96,16,.4);
+  --svg-industry-border:rgba(20,85,160,.4);
+  --svg-card-bg:rgba(120,80,0,.07);
+  --svg-row-bg:rgba(120,80,0,.06);
+  --svg-term-bg:rgba(10,15,30,.75);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;transition:background .4s,color .4s;}
@@ -55,7 +77,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 .slide.active{opacity:1;transform:none;pointer-events:all;z-index:2;}
 .slide.out{opacity:0;transform:translateY(-32px) scale(.97);pointer-events:none;}
 .card{width:100%;max-width:1200px;background:var(--surface);border:1px solid var(--border2);border-radius:24px;position:relative;overflow:hidden;box-shadow:var(--card-shadow);transition:background .4s;display:flex;flex-direction:column;}
-/* Mobile card scroll safety */
 @media(max-width:480px){.card{border-radius:14px;}}
 .card-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:80%;height:200px;background:radial-gradient(ellipse,var(--accent-glow) 0%,transparent 70%);pointer-events:none;}
 .tag{display:inline-flex;align-items:center;padding:.3rem .9rem;border-radius:999px;background:var(--tag-bg);border:1px solid var(--tag-border);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);width:fit-content;flex-shrink:0;}
@@ -203,7 +224,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 .img-cap .desc{font-size:clamp(.95rem,1.5vw,1.08rem);color:var(--text-sub);line-height:1.7;}
 [data-theme="light"] .img-cap .desc{color:#2a1500;}
 [data-theme="light"] .tc-right{background:var(--surface3);}[data-theme="light"] .img-area{background:var(--surface3);}
-[data-theme="light"] .img-area{background:#2a2040;}
 [data-theme="light"] .tl-body{color:#3a2200;}
 [data-theme="light"] .pq-text{color:#1a0e00;}
 [data-theme="light"] .pq-attr{color:rgba(40,20,0,.6);}
@@ -301,7 +321,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 @keyframes su{from{opacity:0;transform:translateY(22px) scale(.95);}to{opacity:1;transform:none;}}
 
 /* ════ RESPONSIVE ════ */
-/* ════ MOBILE (<=480px) ════ */
 @media(max-width:480px){
   #top{height:42px;padding:0 .75rem;}
   #top-l{font-size:.5rem;letter-spacing:.1em;}
@@ -447,7 +466,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 [data-theme="light"] .motto-quote{color:#1a0e00;}
 [data-theme="light"] .motto-author{color:rgba(40,20,0,.65);}
 [data-theme="light"] .ty-sub{color:#2a1500;}
-[data-theme="light"] .stat-source{color:rgba(40,20,0,.6);}
+[data-theme="light"] .stat-source{color:rgba(40,20,0,.55);}
 [data-theme="light"] .d-big span{color:rgba(40,20,0,.6);}
 [data-theme="light"] .d-card-title{color:#a06010;}
 [data-theme="light"] .ring-sub{color:rgba(40,20,0,.6);}
@@ -461,8 +480,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 [data-theme="light"] .nb{background:var(--surface2);border-color:rgba(120,80,0,.2);color:#1a0e00;}
 [data-theme="light"] .nb:hover{border-color:var(--accent);}
 [data-theme="light"] .arr{background:var(--nav-bg);border-color:rgba(120,80,0,.2);}
-
-/* ════ LIGHT MODE OVERRIDES ════ */
 [data-theme="light"] .tag{color:var(--accent);background:var(--tag-bg);border-color:var(--tag-border);}
 [data-theme="light"] .stitle{color:var(--text);}
 [data-theme="light"] .bl-text{color:var(--text-sub);}
@@ -609,22 +626,22 @@ const IC={
   award:`<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>`,
   settings:`<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>`,
   telescope:`<circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M4.5 8.5 2 17h19.7"/><path d="m9 8.5 5 8.5"/><path d="M2.8 8.5h18.4"/>`,
-  waves:`<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>`,
   globe:`<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>`,
-  sun:`<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/>`,
   target:`<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>`,
   question:`<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>`,
   eye:`<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>`,
   layers:`<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>`,
   pen:`<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>`,
   signal:`<path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/>`,
-  download:`<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>`,
   cpu:`<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/>`,
   database:`<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>`,
-  alert:`<triangle><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></triangle><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/>`,
   check:`<path d="M20 6 9 17l-5-5"/>`,
   heart:`<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>`,
   refresh:`<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>`,
+  alert:`<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/>`,
+  download:`<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>`,
+  sun:`<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/>`,
+  waves:`<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>`,
 };
 
 const svg=(n,ex='')=>`<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" ${ex}>${IC[n]||IC.star}</svg>`;
@@ -635,74 +652,65 @@ const IC_CARD=(icon,color,title,body)=>`<div class="ic-card"><div class="ic-card
 const RING=(val,color,label)=>{const c=2*Math.PI*52,f=(val/100)*c;return`<div class="ring-wrap"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--border2)" stroke-width="13"/><circle cx="60" cy="60" r="52" fill="none" stroke="${color}" stroke-width="13" stroke-dasharray="${f} ${c-f}" stroke-dashoffset="${c/4}" stroke-linecap="round" style="transform-origin:60px 60px"/></svg><div class="ring-center"><span class="ring-val">${val}%</span><span class="ring-sub">${label}</span></div></div>`;};
 const MINI=(val,lbl)=>`<div class="mini-s"><span class="mini-s-val">${val}</span><span class="mini-s-lbl">${lbl}</span></div>`;
 
-/* SVG ILLUSTRATIONS — each unique per slide */
+/* ══════════════════════════════════════════════════════════
+   SVG ILLUSTRATIONS — all text uses var(--svg-text-*) for
+   full dark / light mode compatibility
+   ══════════════════════════════════════════════════════════ */
 
-/* Slide 2: School vs Industry — classroom vs terminal split */
+/* Slide 2: School vs Industry */
 function illus_school(){return`<svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-  <!-- LEFT: Classroom / Book side -->
-  <rect x="18" y="30" width="170" height="220" rx="14" fill="var(--surface3)" stroke="rgba(160,96,16,.35)" stroke-width="1.5"/>
-  <text x="103" y="55" text-anchor="middle" font-family="Space Mono,monospace" font-size="8" fill="#a06010" font-weight="700">SCHOOL</text>
-  <!-- Open book -->
+  <rect x="18" y="30" width="170" height="220" rx="14" fill="var(--svg-card-bg)" stroke="var(--svg-school-border)" stroke-width="1.5"/>
+  <text x="103" y="55" text-anchor="middle" font-family="Space Mono,monospace" font-size="8" fill="var(--accent)" font-weight="700">SCHOOL</text>
   <rect x="38" y="68" width="65" height="50" rx="6" fill="rgba(240,201,106,.2)" stroke="#f0c96a" stroke-width="1.5"/>
   <rect x="108" y="68" width="65" height="50" rx="6" fill="rgba(240,201,106,.2)" stroke="#f0c96a" stroke-width="1.5"/>
   <line x1="103" y1="68" x2="103" y2="118" stroke="#f0c96a" stroke-width="2"/>
   ${[[48,80],[48,90],[48,100],[48,108],[113,80],[113,90],[113,100],[113,108]].map(([x,y])=>`<rect x="${x}" y="${y}" width="45" height="4" rx="2" fill="rgba(240,201,106,.4)"/>`).join('')}
-  <!-- Grade badge -->
   <circle cx="155" cy="72" r="14" fill="#f0c96a" opacity=".9"/>
   <text x="155" y="77" text-anchor="middle" font-family="Playfair Display,serif" font-size="13" font-weight="900" fill="var(--surface)">A+</text>
-  <!-- Bullet points of school traits -->
-  ${[['Theory & algorithms',140],['Controlled projects',158],['Semester deadlines',176],['GPA as currency',194],['Textbook examples',212]].map(([t,y])=>`
+  ${[['Theory &amp; algorithms',140],['Controlled projects',158],['Semester deadlines',176],['GPA as currency',194],['Textbook examples',212]].map(([t,y])=>`
     <circle cx="34" cy="${y-3}" r="3" fill="#f0c96a" opacity=".6"/>
-    <text x="43" y="${y}" font-family="DM Sans,sans-serif" font-size="9.5" fill="#2e1400">${t}</text>
+    <text x="43" y="${y}" font-family="DM Sans,sans-serif" font-size="9.5" fill="var(--svg-text-body)">${t}</text>
   `).join('')}
-
-  <!-- RIGHT: Industry / Terminal side -->
-  <rect x="212" y="30" width="170" height="220" rx="14" fill="var(--surface2)" stroke="rgba(10,79,160,.35)" stroke-width="1.5"/>
-  <text x="297" y="55" text-anchor="middle" font-family="Space Mono,monospace" font-size="8" fill="#0a4fa0" font-weight="700">INDUSTRY</text>
-  <!-- Terminal window -->
-  <rect x="228" y="65" width="138" height="58" rx="8" fill="rgba(10,15,30,.7)" stroke="rgba(106,180,240,.4)" stroke-width="1"/>
+  <rect x="212" y="30" width="170" height="220" rx="14" fill="var(--svg-card-bg)" stroke="var(--svg-industry-border)" stroke-width="1.5"/>
+  <text x="297" y="55" text-anchor="middle" font-family="Space Mono,monospace" font-size="8" fill="var(--accent2)" font-weight="700">INDUSTRY</text>
+  <rect x="228" y="65" width="138" height="58" rx="8" fill="var(--svg-term-bg)" stroke="rgba(106,180,240,.4)" stroke-width="1"/>
   <circle cx="240" cy="76" r="4" fill="#f06a9e" opacity=".7"/>
   <circle cx="252" cy="76" r="4" fill="#f0c96a" opacity=".7"/>
   <circle cx="264" cy="76" r="4" fill="#6af0a8" opacity=".7"/>
   <text x="236" y="94" font-family="Space Mono,monospace" font-size="8" fill="#6af0a8">$ git push origin main</text>
-  <text x="236" y="106" font-family="Space Mono,monospace" font-size="8" fill="rgba(106,180,240,.7)">✓ deployed to prod</text>
-  <text x="236" y="116" font-family="Space Mono,monospace" font-size="8" fill="#f0c96a">_▌</text>
+  <text x="236" y="106" font-family="Space Mono,monospace" font-size="8" fill="rgba(106,180,240,.8)">&#10003; deployed to prod</text>
+  <text x="236" y="116" font-family="Space Mono,monospace" font-size="8" fill="#f0c96a">_&#9611;</text>
   ${[['Ship real features',140],['Code reviews daily',158],['Users depend on you',176],['Git, standups, PRs',194],['Learn by doing',212]].map(([t,y])=>`
     <circle cx="228" cy="${y-3}" r="3" fill="#6ab4f0" opacity=".6"/>
-    <text x="237" y="${y}" font-family="DM Sans,sans-serif" font-size="9.5" fill="#2e1400">${t}</text>
+    <text x="237" y="${y}" font-family="DM Sans,sans-serif" font-size="9.5" fill="var(--svg-text-body)">${t}</text>
   `).join('')}
-
-  <!-- VS badge in middle -->
   <circle cx="200" cy="140" r="18" fill="var(--accent)" opacity=".9"/>
-  <text x="200" y="145" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" font-weight="700" fill="var(--surface)">VS</text>
-
-  <text x="200" y="285" text-anchor="middle" font-family="Playfair Display,serif" font-size="13" font-style="italic" font-weight="700" fill="#3a1a00">the gap is real — bridge it with projects</text>
+  <text x="200" y="145" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" font-weight="700" fill="#06060e">VS</text>
+  <text x="200" y="285" text-anchor="middle" font-family="Playfair Display,serif" font-size="13" font-style="italic" font-weight="700" fill="var(--svg-text-caption)">the gap is real — bridge it with projects</text>
 </svg>`;}
 
-/* Slide 7: Free learning — resource cards */
+/* Slide 7: Free learning */
 function illus_learn(){return`<svg viewBox="0 0 400 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-  <!-- Browser frame -->
-  <rect x="30" y="18" width="340" height="242" rx="14" fill="var(--surface2)" stroke="rgba(160,96,16,.4)" stroke-width="1.5"/>
+  <rect x="30" y="18" width="340" height="242" rx="14" fill="var(--svg-card-bg)" stroke="var(--svg-school-border)" stroke-width="1.5"/>
   <rect x="30" y="18" width="340" height="34" rx="14" fill="rgba(160,96,16,.12)"/>
   <rect x="30" y="40" width="340" height="12" fill="rgba(160,96,16,.08)"/>
   <circle cx="54" cy="35" r="6" fill="#f06a9e" opacity=".75"/>
   <circle cx="72" cy="35" r="6" fill="#f0c96a" opacity=".75"/>
   <circle cx="90" cy="35" r="6" fill="#6af0a8" opacity=".75"/>
-  <rect x="108" y="28" width="210" height="14" rx="7" fill="var(--surface3)" stroke="var(--border2)" stroke-width="1"/>
-  <text x="213" y="39" text-anchor="middle" font-family="Space Mono,monospace" font-size="7.5" fill="#5a3a10" font-weight="600">freeCodeCamp / Coursera / The Odin Project</text>
-  <!-- Skill rows with % INSIDE the filled bar -->
+  <rect x="108" y="28" width="210" height="14" rx="7" fill="var(--svg-row-bg)" stroke="var(--border2)" stroke-width="1"/>
+  <text x="213" y="39" text-anchor="middle" font-family="Space Mono,monospace" font-size="7.5" fill="var(--svg-text-muted)" font-weight="600">freeCodeCamp / Coursera / The Odin Project</text>
   ${[['Python',65,'#f0c96a',62],['JavaScript',80,'#6ab4f0',96],['SQL',55,'#f06a9e',130],['React',45,'#6af0a8',164],['Git',90,'#5a9fd4',198]].map(([l,w,c,y])=>`
     <text x="48" y="${y+14}" font-family="Space Mono,monospace" font-size="10.5" font-weight="700" fill="${c}">${l}</text>
     <rect x="148" y="${y}" width="196" height="22" rx="7" fill="var(--border2)"/>
     <rect x="148" y="${y}" width="${Math.round(196*w/100)}" height="22" rx="7" fill="${c}" opacity=".65"/>
-    <text x="${148+Math.round(196*w/100)-8}" y="${y+15}" text-anchor="end" font-family="Space Mono,monospace" font-size="9" fill="var(--surface)" font-weight="700">${w}%</text>
+    <text x="${148+Math.round(196*w/100)-8}" y="${y+15}" text-anchor="end" font-family="Space Mono,monospace" font-size="9" fill="#06060e" font-weight="700">${w}%</text>
   `).join('')}
-  <text x="200" y="280" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-style="italic" font-weight="700" fill="#3a1a00">free education, no excuses</text>
+  <text x="200" y="280" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-style="italic" font-weight="700" fill="var(--svg-text-caption)">free education, no excuses</text>
 </svg>`;}
 
-/* Slide 10 & 14: Resume — clean, no shadow, theme-aware */
+/* Slide 10 & 14: Resume */
 function illus_resume(){return`<svg viewBox="0 0 360 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-  <rect x="80" y="10" width="200" height="256" rx="12" fill="var(--surface2)" stroke="rgba(160,96,16,.55)" stroke-width="1.8"/>
+  <rect x="80" y="10" width="200" height="256" rx="12" fill="var(--svg-card-bg)" stroke="rgba(160,96,16,.55)" stroke-width="1.8"/>
   <rect x="80" y="10" width="200" height="58" rx="12" fill="rgba(240,201,106,.18)"/>
   <rect x="80" y="52" width="200" height="16" fill="rgba(240,201,106,.1)"/>
   <circle cx="112" cy="34" r="18" fill="rgba(240,201,106,.28)" stroke="#f0c96a" stroke-width="2"/>
@@ -712,65 +720,54 @@ function illus_resume(){return`<svg viewBox="0 0 360 310" xmlns="http://www.w3.o
   <rect x="140" y="34" width="80" height="7" rx="3" fill="#6ab4f0" opacity=".55"/>
   <rect x="140" y="46" width="96" height="6" rx="3" fill="rgba(240,201,106,.3)"/>
   <line x1="92" y1="74" x2="268" y2="74" stroke="rgba(240,201,106,.25)" stroke-width="1"/>
-  <text x="92" y="92" font-family="Space Mono,monospace" font-size="9.5" fill="#a06010" font-weight="700">Projects</text>
+  <text x="92" y="92" font-family="Space Mono,monospace" font-size="9.5" fill="var(--accent)" font-weight="700">Projects</text>
   <line x1="92" y1="96" x2="268" y2="96" stroke="#f0c96a" stroke-width="1" opacity=".35"/>
   <rect x="92" y="102" width="155" height="7" rx="3" fill="#f0c96a" opacity=".45"/>
   <rect x="92" y="113" width="128" height="5" rx="2" fill="rgba(240,201,106,.22)"/>
   <rect x="92" y="122" width="140" height="5" rx="2" fill="rgba(240,201,106,.16)"/>
-  <text x="92" y="142" font-family="Space Mono,monospace" font-size="9.5" fill="#0a4fa0" font-weight="700">Skills</text>
+  <text x="92" y="142" font-family="Space Mono,monospace" font-size="9.5" fill="var(--accent2)" font-weight="700">Skills</text>
   <line x1="92" y1="146" x2="268" y2="146" stroke="#6ab4f0" stroke-width="1" opacity=".35"/>
   <rect x="92" y="152" width="162" height="7" rx="3" fill="#6ab4f0" opacity=".45"/>
   <rect x="92" y="163" width="110" height="5" rx="2" fill="rgba(106,180,240,.22)"/>
-  <text x="92" y="183" font-family="Space Mono,monospace" font-size="9.5" fill="#a0105a" font-weight="700">Education</text>
+  <text x="92" y="183" font-family="Space Mono,monospace" font-size="9.5" fill="var(--accent3)" font-weight="700">Education</text>
   <line x1="92" y1="187" x2="268" y2="187" stroke="#f06a9e" stroke-width="1" opacity=".35"/>
   <rect x="92" y="193" width="148" height="7" rx="3" fill="#f06a9e" opacity=".45"/>
   <rect x="92" y="204" width="120" height="5" rx="2" fill="rgba(240,106,158,.22)"/>
   <rect x="92" y="213" width="134" height="5" rx="2" fill="rgba(240,106,158,.16)"/>
   <rect x="92" y="232" width="176" height="28" rx="8" fill="rgba(240,201,106,.2)" stroke="rgba(160,96,16,.55)" stroke-width="1.3"/>
-  <text x="180" y="251" text-anchor="middle" font-family="Space Mono,monospace" font-size="9.5" fill="#a06010" font-weight="700">github.com/yourname</text>
-  <text x="180" y="280" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-style="italic" font-weight="700" fill="#3a1a00">1 page, clear, project-first</text>
-  <text x="180" y="298" text-anchor="middle" font-family="Space Mono,monospace" font-size="7.5" fill="#5a3a10" font-weight="600">lead with projects · include github · quantify impact</text>
+  <text x="180" y="251" text-anchor="middle" font-family="Space Mono,monospace" font-size="9.5" fill="var(--accent)" font-weight="700">github.com/yourname</text>
+  <text x="180" y="280" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-style="italic" font-weight="700" fill="var(--svg-text-caption)">1 page, clear, project-first</text>
+  <text x="180" y="298" text-anchor="middle" font-family="Space Mono,monospace" font-size="7.5" fill="var(--svg-text-muted)" font-weight="600">lead with projects · include github · quantify impact</text>
 </svg>`;}
 
-/* Slide 22: Getting started — checklist / action items */
+/* Slide 22: Getting started */
 function illus_start(){return`<svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-  <!-- Phone mockup showing GitHub -->
-  <rect x="130" y="18" width="140" height="240" rx="22" fill="var(--surface2)" stroke="rgba(160,96,16,.4)" stroke-width="2"/>
-  <rect x="142" y="30" width="116" height="218" rx="14" fill="rgba(10,15,30,.75)" stroke="rgba(106,180,240,.25)" stroke-width="1"/>
-  <!-- Status bar -->
+  <rect x="130" y="18" width="140" height="240" rx="22" fill="var(--svg-card-bg)" stroke="rgba(160,96,16,.4)" stroke-width="2"/>
+  <rect x="142" y="30" width="116" height="218" rx="14" fill="var(--svg-term-bg)" stroke="rgba(106,180,240,.25)" stroke-width="1"/>
   <rect x="142" y="30" width="116" height="18" rx="5" fill="rgba(106,180,240,.15)"/>
   <text x="200" y="42" text-anchor="middle" font-family="Space Mono,monospace" font-size="7" fill="#ffffff" font-weight="600">github.com</text>
-  <!-- Avatar -->
   <circle cx="200" cy="70" r="18" fill="rgba(240,201,106,.25)" stroke="#f0c96a" stroke-width="1.5"/>
   <text x="200" y="74" text-anchor="middle" font-family="Playfair Display,serif" font-size="9" fill="#f0c96a">you</text>
-  <!-- Repo cards -->
   ${[[148,96,'my-portfolio','#f0c96a',3],[148,126,'weather-app','#6ab4f0',12],[148,156,'todo-list','#6af0a8',1],[148,186,'study-tracker','#f06a9e',0]].map(([x,y,name,c,stars])=>`
     <rect x="${x}" y="${y}" width="104" height="24" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width=".8"/>
     <text x="${x+7}" y="${y+15}" font-family="Space Mono,monospace" font-size="7.5" fill="${c}">${name}</text>
-    <text x="${x+90}" y="${y+15}" text-anchor="end" font-family="Space Mono,monospace" font-size="7" fill="${c}" opacity=".7">★${stars}</text>
+    <text x="${x+90}" y="${y+15}" text-anchor="end" font-family="Space Mono,monospace" font-size="7" fill="${c}" opacity=".7">&#9733;${stars}</text>
   `).join('')}
-  <!-- Contribution dots -->
   <text x="152" y="222" font-family="Space Mono,monospace" font-size="6" fill="rgba(106,180,240,.5)">contributions</text>
   ${Array.from({length:28},(_,i)=>`<rect x="${152+(i%14)*7}" y="${213+(Math.floor(i/14)*6)}" width="5" height="5" rx="1" fill="#6af0a8" opacity="${Math.random()>.5?.6:.15}"/>`).join('')}
-
-  <!-- Action steps floating left -->
   ${[['① GitHub',28,60,'#f0c96a'],['② Resource',28,110,'#6ab4f0'],['③ LinkedIn',28,160,'#f06a9e'],['④ Build',28,210,'#6af0a8']].map(([t,x,y,c])=>`
     <rect x="${x}" y="${y-16}" width="90" height="26" rx="8" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1"/>
     <text x="${x+8}" y="${y}" font-family="Space Mono,monospace" font-size="9" fill="${c}" font-weight="700">${t}</text>
     <line x1="${x+90}" y1="${y-3}" x2="130" y2="${y-3}" stroke="${c}" stroke-width="1" stroke-dasharray="3 3" opacity=".4"/>
   `).join('')}
-
-  <text x="200" y="287" text-anchor="middle" font-family="Playfair Display,serif" font-size="13" font-style="italic" font-weight="700" fill="#3a1a00">start this week, not next semester</text>
+  <text x="200" y="287" text-anchor="middle" font-family="Playfair Display,serif" font-size="13" font-style="italic" font-weight="700" fill="var(--svg-text-caption)">start this week, not next semester</text>
 </svg>`;}
 
-/* Slide 27: Soft skills — communication diagram */
+/* Slide 27: Soft skills */
 function illus_softskills(){return`<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-  <!-- Central hub -->
-  <circle cx="220" cy="185" r="52" fill="rgba(160,96,16,.2)" stroke="#a06010" stroke-width="3"/>
-  <text x="220" y="179" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-weight="900" fill="#1a0800">SOFT</text>
-  <text x="220" y="198" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-weight="900" fill="#1a0800">SKILLS</text>
-
-  <!-- 6 solid-filled bubbles, dark text, evenly spaced around hub -->
+  <circle cx="220" cy="185" r="52" fill="rgba(160,96,16,.2)" stroke="var(--accent)" stroke-width="3"/>
+  <text x="220" y="179" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-weight="900" fill="var(--svg-text-strong)">SOFT</text>
+  <text x="220" y="198" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-weight="900" fill="var(--svg-text-strong)">SKILLS</text>
   ${[
     ['Clear Writing',  220,  52, '#d4900a', '#1a0800', 220, 133],
     ['Ask Questions',  372, 110, '#1455a0', '#ffffff', 265, 158],
@@ -781,22 +778,16 @@ function illus_softskills(){return`<svg viewBox="0 0 440 440" xmlns="http://www.
   ].map(([label,bx,by,bc,tc,lx,ly])=>`
     <line x1="${lx}" y1="${ly}" x2="${bx}" y2="${by+28}" stroke="${bc}" stroke-width="2.5" opacity=".5" stroke-dasharray="6 4"/>
     <ellipse cx="${bx}" cy="${by}" rx="68" ry="30" fill="${bc}"/>
-    <text x="${bx}" y="${by+5}" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13.5" font-weight="700" fill="${tc}">${label}</text>
+    <text x="${bx}" y="${by+5}" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13.5" font-weight="700" fill="#ffffff">${label}</text>
   `).join('')}
-
-  <!-- Divider -->
-  <line x1="20" y1="352" x2="420" y2="352" stroke="rgba(60,30,0,.25)" stroke-width="1.5"/>
-
-  <!-- PR comment box -->
+  <line x1="20" y1="352" x2="420" y2="352" stroke="var(--border2)" stroke-width="1.5"/>
   <rect x="20" y="360" width="400" height="52" rx="11" fill="rgba(212,144,10,.14)" stroke="rgba(160,96,16,.4)" stroke-width="1.5"/>
-  <text x="220" y="380" text-anchor="middle" font-family="Space Mono,monospace" font-size="9.5" font-weight="700" fill="#1a0800">code review: "this works — here's a cleaner approach"</text>
-  <text x="220" y="398" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" font-weight="600" fill="#8a4a00">→ how you respond shapes your entire reputation</text>
-
-  <!-- Caption -->
-  <text x="220" y="428" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-style="italic" font-weight="700" fill="#1a0800">technical skills get the interview. these get the job.</text>
+  <text x="220" y="380" text-anchor="middle" font-family="Space Mono,monospace" font-size="9.5" font-weight="700" fill="var(--svg-text-strong)">code review: "this works — here's a cleaner approach"</text>
+  <text x="220" y="398" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" font-weight="600" fill="var(--accent)">&#8594; how you respond shapes your entire reputation</text>
+  <text x="220" y="428" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-style="italic" font-weight="700" fill="var(--svg-text-caption)">technical skills get the interview. these get the job.</text>
 </svg>`;}
 
-/* Slide interview — kept but fixed */
+/* Interview illustration */
 function illus_interview(){return`<svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
   <rect x="16" y="18" width="168" height="90" rx="13" fill="rgba(106,180,240,.09)" stroke="#6ab4f0" stroke-width="1.5"/>
   <circle cx="52" cy="52" r="20" fill="rgba(106,180,240,.2)" stroke="#6ab4f0" stroke-width="1.5"/>
@@ -825,45 +816,41 @@ function illus_interview(){return`<svg viewBox="0 0 420 320" xmlns="http://www.w
   <rect x="16" y="228" width="388" height="42" rx="10" fill="rgba(106,240,168,.1)" stroke="#6af0a8" stroke-width="1"/>
   <circle cx="38" cy="249" r="8" fill="#6af0a8" opacity=".5"/>
   <text x="56" y="254" font-family="DM Sans,sans-serif" font-size="13" fill="#6af0a8" font-weight="500">Walk me through your code</text>
-  <text x="210" y="294" text-anchor="middle" font-family="Space Mono,monospace" font-size="8.5" fill="#2e1a00" font-weight="600">practice these out loud — not just in your head</text>
-  <text x="210" y="314" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" font-style="italic" font-weight="700" fill="#3a1a00">prep beats natural talent every time</text>
+  <text x="210" y="294" text-anchor="middle" font-family="Space Mono,monospace" font-size="8.5" fill="var(--svg-text-muted)" font-weight="600">practice these out loud — not just in your head</text>
+  <text x="210" y="314" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" font-style="italic" font-weight="700" fill="var(--svg-text-caption)">prep beats natural talent every time</text>
 </svg>`;}
 
+/* Paths illustration */
 function illus_paths(){return`<svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
   <circle cx="190" cy="140" r="110" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 6" opacity=".2"/>
   <g transform="translate(190,140)">
-    ${[['#f0c96a','Frontend / Web',-95,-55],['#6ab4f0','Backend / API',95,-55],['#f06a9e','Data & AI',-110,30],['#6af0a8','DevOps / Cloud',110,30],['#5a9fd4','Cybersecurity',0,105]].map(([c,l,x,y])=>`
+    ${[['#f0c96a','Frontend / Web',-95,-55],['#6ab4f0','Backend / API',95,-55],['#f06a9e','Data &amp; AI',-110,30],['#6af0a8','DevOps / Cloud',110,30],['#5a9fd4','Cybersecurity',0,105]].map(([c,l,x,y])=>`
       <line x1="0" y1="0" x2="${x*.65}" y2="${y*.65}" stroke="${c}" stroke-width="1.5" opacity=".3"/>
       <rect x="${x-46}" y="${y-14}" width="92" height="28" rx="8" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5"/>
       <text x="${x}" y="${y+5}" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="${c}" font-weight="700">${l}</text>
     `).join('')}
-    <circle cx="0" cy="0" r="28" fill="rgba(160,96,16,.2)" stroke="#a06010" stroke-width="2"/>
-    <text x="0" y="-4" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" fill="#3a1a00" font-weight="700">YOUR</text>
-    <text x="0" y="10" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" fill="#3a1a00" font-weight="700">SKILLS</text>
+    <circle cx="0" cy="0" r="28" fill="rgba(160,96,16,.2)" stroke="var(--accent)" stroke-width="2"/>
+    <text x="0" y="-4" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" fill="var(--svg-text-strong)" font-weight="700">YOUR</text>
+    <text x="0" y="10" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" fill="var(--svg-text-strong)" font-weight="700">SKILLS</text>
   </g>
-  <text x="190" y="300" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" font-style="italic" fill="#3a1a00" font-weight="700">explore before you specialize</text>
+  <text x="190" y="300" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" font-style="italic" fill="var(--svg-text-caption)" font-weight="700">explore before you specialize</text>
 </svg>`;}
 
-/* SLIDES — rewritten content */
+/* SLIDES */
 const slides=[
-/* 1 */ {type:'title',tag:'Welcome',title:'Industry Insights &amp; Career Guidance',sub:'for Aspiring IT Professionals',desc:'A practical guide to understanding the tech industry, building real skills, and landing your first role — without the fluff.'},
-
-/* 2 */ {type:'twocol',tag:'The Reality',title:'School Is the Starting Line, Not the Finish Line',bullets:[
+{type:'title',tag:'Welcome',title:'Industry Insights &amp; Career Guidance',sub:'for Aspiring IT Professionals',desc:'A practical guide to understanding the tech industry, building real skills, and landing your first role — without the fluff.'},
+{type:'twocol',tag:'The Reality',title:'School Is the Starting Line, Not the Finish Line',bullets:[
   {t:'Degree programs give you fundamentals — but the industry moves faster than any curriculum can keep up with.',c:'#f0c96a'},
   {t:'Companies hire for what you can do and how you think, not just what grades you received.',c:'#6ab4f0'},
   {t:'The good news: everything the industry wants you to know is free or affordable online right now.',c:'#f06a9e'},
 ],illus:'school'},
-
-/* 3 */ {type:'stat',tag:'Industry Reality',num:'85%',label:'of developers learned key skills outside of formal education',desc:'The most important skills in tech — Git, frameworks, system design, debugging — are learned by building and reading docs, not passing exams. The industry rewards capability, not credentials.',source:'Stack Overflow Developer Survey 2024',rings:[{v:85,c:'#f0c96a',l:'Self-taught skills'},{v:72,c:'#6ab4f0',l:'Learned on the job'}],minis:[{v:'Free',l:'Most high-quality learning resources cost nothing'},{v:'3+',l:'New major frameworks released per year on average'}]},
-
-/* 4 */ {type:'compare',tag:'School vs Industry',title:'What School Teaches vs. What Work Demands',cols:[
+{type:'stat',tag:'Industry Reality',num:'85%',label:'of developers learned key skills outside of formal education',desc:'The most important skills in tech — Git, frameworks, system design, debugging — are learned by building and reading docs, not passing exams. The industry rewards capability, not credentials.',source:'Stack Overflow Developer Survey 2024',rings:[{v:85,c:'#f0c96a',l:'Self-taught skills'},{v:72,c:'#6ab4f0',l:'Learned on the job'}],minis:[{v:'Free',l:'Most high-quality learning resources cost nothing'},{v:'3+',l:'New major frameworks released per year on average'}]},
+{type:'compare',tag:'School vs Industry',title:'What School Teaches vs. What Work Demands',cols:[
   {label:'University Curriculum',side:'a',items:['Theory, algorithms, and academic projects','Low-stakes — mistakes do not cost anyone','Lots of time to figure things out','Grades as the primary feedback signal']},
   {label:'Industry Expectations',side:'b',items:['Practical problem-solving with real constraints','Code ships to real users — quality matters','Deadlines, code reviews, and standups','Git, communication, and delivery speed']}
 ]},
-
-/* 5 */ {type:'motto',num:'01 / 03',quote:'The industry does not care what you know. <strong>It cares what you can build.</strong>',author:'— The single most useful mindset shift you can make as a student'},
-
-/* 6 */ {type:'grid',tag:'Career Paths',title:'The Major Career Paths in IT',cards:[
+{type:'motto',num:'01 / 03',quote:'The industry does not care what you know. <strong>It cares what you can build.</strong>',author:'— The single most useful mindset shift you can make as a student'},
+{type:'grid',tag:'Career Paths',title:'The Major Career Paths in IT',cards:[
   {icon:'terminal',c:'#f0c96a',t:'Software Engineering',b:'Building apps, websites, and systems. Roles span frontend (React, Vue), backend (Node, Python, Java), and full-stack. The most in-demand path.'},
   {icon:'cloud',c:'#6ab4f0',t:'Cloud & DevOps',b:'Managing infrastructure on AWS, Azure, or GCP. Automating deployments, containers (Docker), and CI/CD pipelines. Extremely high demand.'},
   {icon:'robot',c:'#f06a9e',t:'AI & Machine Learning',b:'Building systems that learn. Covers ML engineering, data pipelines, NLP, and computer vision. Python and math-heavy — but incredibly well-paid.'},
@@ -871,15 +858,13 @@ const slides=[
   {icon:'database',c:'#c06af0',t:'Data Engineering & Analytics',b:'Turning raw data into decisions. SQL, data pipelines, dashboards, and business intelligence tools. Every company needs this.'},
   {icon:'globe',c:'#f0a06a',t:'Not Sure Yet?',b:'That is completely fine. Explore a bit of each — build a small web app, run a SQL query, try a beginner ML tutorial. You will figure it out by doing.'},
 ]},
-
-/* 7 */ {type:'twocol',tag:'Free Learning',title:'Where to Actually Learn (For Free)',bullets:[
+{type:'twocol',tag:'Free Learning',title:'Where to Actually Learn (For Free)',bullets:[
   {t:'freeCodeCamp and The Odin Project — full structured curricula for web development, completely free.',c:'#f0c96a'},
   {t:'CS50 by Harvard (edX) — the best free intro to computer science that exists anywhere, period.',c:'#6ab4f0'},
   {t:'Kaggle Learn — free courses on Python, SQL, and machine learning with real datasets.',c:'#f06a9e'},
   {t:'Official documentation — React, Python, MDN. Learning to read docs is a genuine superpower.',c:'#6af0a8'},
 ],illus:'learn'},
-
-/* 8 */ {type:'grid',tag:'Core Skills',title:'Technical Skills Every IT Student Should Build',cards:[
+{type:'grid',tag:'Core Skills',title:'Technical Skills Every IT Student Should Build',cards:[
   {icon:'git',c:'#f0c96a',t:'Git & Version Control',b:'Every tech job uses Git. Learn branching, pull requests, and resolving merge conflicts. It is not optional.'},
   {icon:'terminal',c:'#6ab4f0',t:'Command Line / Terminal',b:'Navigate the file system, run scripts, SSH into servers. The terminal is where real development happens.'},
   {icon:'code',c:'#f06a9e',t:'One Language, Done Well',b:'Pick Python or JavaScript and go deep. Fundamentals, data structures, debugging, and error handling — master one before spreading thin.'},
@@ -887,21 +872,16 @@ const slides=[
   {icon:'database',c:'#c06af0',t:'Basic SQL',b:'Every backend role and data role needs SQL. Learn SELECT, JOIN, GROUP BY, and indexes. Databases are everywhere.'},
   {icon:'layers',c:'#f0a06a',t:'How the Web Works',b:'HTTP, DNS, APIs, JSON, REST. Understanding how data moves between client and server unlocks almost every area of tech.'},
 ]},
-
-/* 9 */ {type:'stat',tag:'Job Market',num:'70%',label:'of jobs are filled before they are publicly posted',desc:'Most roles get filled through referrals and internal networks — not job boards. But this does not mean "join organizations." It means build a public presence: GitHub, LinkedIn, and projects people can actually see.',source:'LinkedIn Workplace Learning Report',rings:[{v:70,c:'#f0c96a',l:'Hidden job market'},{v:6,c:'#6ab4f0',l:'Referral multiplier'}],minis:[{v:'6x',l:'More likely to be hired when referred by someone inside'},{v:'GitHub',l:'Your public profile is your professional handshake'}]},
-
-/* 10 */ {type:'image',tag:'Portfolio',title:'Projects Are More Powerful Than a Perfect GPA',desc:'A working app or a documented GitHub repository is concrete evidence of skill. It shows you can start something, figure out problems, and finish. That is what companies are actually screening for in the first interview.',illus:'resume'},
-
-/* 11 */ {type:'timeline',tag:'Portfolio',title:'Building a Portfolio That Gets You Hired',items:[
+{type:'stat',tag:'Job Market',num:'70%',label:'of jobs are filled before they are publicly posted',desc:'Most roles get filled through referrals and internal networks — not job boards. But this does not mean "join organizations." It means build a public presence: GitHub, LinkedIn, and projects people can actually see.',source:'LinkedIn Workplace Learning Report',rings:[{v:70,c:'#f0c96a',l:'Hidden job market'},{v:6,c:'#6ab4f0',l:'Referral multiplier'}],minis:[{v:'6x',l:'More likely to be hired when referred by someone inside'},{v:'GitHub',l:'Your public profile is your professional handshake'}]},
+{type:'image',tag:'Portfolio',title:'Projects Are More Powerful Than a Perfect GPA',desc:'A working app or a documented GitHub repository is concrete evidence of skill. It shows you can start something, figure out problems, and finish. That is what companies are actually screening for in the first interview.',illus:'resume'},
+{type:'timeline',tag:'Portfolio',title:'Building a Portfolio That Gets You Hired',items:[
   {label:'Week 1–2',c:'#f0c96a',t:'Start Simple — Build Something',b:'A personal website, a to-do app, a weather dashboard using a free API. It does not need to be impressive. It needs to exist.'},
   {label:'Month 1',c:'#6ab4f0',t:'Solve a Real Problem',b:'Build a tool you actually want to use — a habit tracker, a study timer, a grade calculator. Personal itch projects always look more genuine.'},
   {label:'Month 2',c:'#f06a9e',t:'Put It on GitHub with a README',b:'Explain what the project does, how to run it, and what you learned. A good README is your pitch to every engineer who clicks your profile.'},
   {label:'Month 3+',c:'#6af0a8',t:'Deploy It Live',b:'Vercel, Netlify, and Railway are free for personal projects. A clickable link in an interview is worth ten bullet points on a resume.'},
 ]},
-
-/* 12 */ {type:'motto',num:'02 / 03',quote:'You do not need ten projects. <strong>You need two or three that you can talk about deeply.</strong>',author:'— On what actually matters in a portfolio'},
-
-/* 13 */ {type:'grid',tag:'Job Prep',title:'How to Actually Prepare for Interviews',cards:[
+{type:'motto',num:'02 / 03',quote:'You do not need ten projects. <strong>You need two or three that you can talk about deeply.</strong>',author:'— On what actually matters in a portfolio'},
+{type:'grid',tag:'Job Prep',title:'How to Actually Prepare for Interviews',cards:[
   {icon:'brain',c:'#f0c96a',t:'Study Data Structures',b:'Arrays, linked lists, stacks, queues, trees, hash maps. You do not need to memorize every algorithm — understand how they work and when to use them.'},
   {icon:'target',c:'#6ab4f0',t:'Practice on LeetCode',b:'Start with Easy problems on arrays and strings. Aim for 30–50 before applying. Understanding the patterns matters more than grinding hundreds.'},
   {icon:'eye',c:'#f06a9e',t:'Know Your Projects Cold',b:'Be ready to explain every line of your portfolio. What problem did you solve? What would you do differently? This is where most students lose interviews.'},
@@ -909,31 +889,25 @@ const slides=[
   {icon:'cpu',c:'#c06af0',t:'System Design Basics',b:'For internships, understand how a web app works end-to-end: client → server → database → response. That is enough to stand out.'},
   {icon:'signal',c:'#f0a06a',t:'Mock Interviews',b:'Practice out loud with a friend or record yourself. Thinking on paper and speaking your solution are completely different skills.'},
 ]},
-
-/* 14 */ {type:'twocol',tag:'Resume',title:'Writing a Resume That Actually Gets Read',bullets:[
+{type:'twocol',tag:'Resume',title:'Writing a Resume That Actually Gets Read',bullets:[
   {t:'One page maximum. Recruiters spend 6–10 seconds on a first pass — lead with your strongest projects first.',c:'#f0c96a'},
   {t:'Quantify impact wherever possible: "Built a REST API serving 200 requests/day" beats "worked on backend development."',c:'#6ab4f0'},
   {t:'Skills section: list languages, frameworks, and tools you can actually talk about in an interview.',c:'#f06a9e'},
   {t:'Always include your GitHub link and any live project URLs. Make it one click to see your work.',c:'#6af0a8'},
 ],illus:'resume'},
-
-/* 15 */ {type:'stat',tag:'AI Era',num:'60%',label:'of the most in-demand roles in 10 years do not exist yet',desc:'AI is reshaping every part of software development. Developers who understand how to use AI tools — not just fear them — will be most valuable. The skill is learning how to learn, not memorizing today\'s answers.',source:'World Economic Forum Future of Jobs Report',rings:[{v:60,c:'#f06a9e',l:'New roles emerging'},{v:78,c:'#6ab4f0',l:'AI-adjacent demand'}],minis:[{v:'AI',l:'Knowing how to prompt, integrate, and evaluate AI is a real skill'},{v:'Now',l:'The best time to start building AI-adjacent experience is today'}]},
-
-/* 16 */ {type:'grid',tag:'AI & Tools',title:'Using AI Tools to Learn Faster',cards:[
+{type:'stat',tag:'AI Era',num:'60%',label:'of the most in-demand roles in 10 years do not exist yet',desc:'AI is reshaping every part of software development. Developers who understand how to use AI tools — not just fear them — will be most valuable. The skill is learning how to learn, not memorizing today\'s answers.',source:'World Economic Forum Future of Jobs Report',rings:[{v:60,c:'#f06a9e',l:'New roles emerging'},{v:78,c:'#6ab4f0',l:'AI-adjacent demand'}],minis:[{v:'AI',l:'Knowing how to prompt, integrate, and evaluate AI is a real skill'},{v:'Now',l:'The best time to start building AI-adjacent experience is today'}]},
+{type:'grid',tag:'AI & Tools',title:'Using AI Tools to Learn Faster',cards:[
   {icon:'robot',c:'#f0c96a',t:'AI as a Tutor',b:'Use ChatGPT or Claude to explain concepts you do not understand, generate practice problems, and get code reviewed. It is like having a patient tutor 24/7.'},
   {icon:'code',c:'#6ab4f0',t:'GitHub Copilot',b:'Learn to use AI code completion — but understand what it generates. Blindly accepting AI code without understanding it is how bugs happen.'},
   {icon:'lightbulb',c:'#f06a9e',t:'AI Will Not Replace You',b:'AI replaces repetitive tasks, not problem-solving and judgment. The developers who thrive are those who use AI as leverage, not a crutch.'},
   {icon:'brain',c:'#6af0a8',t:'Still Learn the Fundamentals',b:'Understanding algorithms, data structures, and system design makes you better at working with AI — not less relevant. Foundations matter more, not less.'},
 ]},
-
-/* 17 */ {type:'compare',tag:'Mindset',title:'Two Types of Students — One Outcome',cols:[
+{type:'compare',tag:'Mindset',title:'Two Types of Students — One Outcome',cols:[
   {label:'Passive Learner',side:'a',items:['Waits for classes to teach everything','Studies theory but never ships anything','Job hunts only after graduation','Relies on GPA to open doors']},
   {label:'Active Builder',side:'b',items:['Builds projects between semesters','Has a GitHub with real commits','Applies for internships in Year 2','GPA is a fallback, not the plan']}
 ]},
-
-/* 18 */ {type:'pullquote',text:'Imposter syndrome is universal. Every developer Googles basic syntax. The difference is that experienced developers are comfortable not knowing — and confident they can figure it out.',attr:'— On why feeling "not ready" is normal and not a reason to wait',minis:[{v:'70%',l:'of developers experience imposter syndrome regularly'},{v:'Ship',l:'The most effective cure is building and releasing things'}]},
-
-/* 19 */ {type:'grid',tag:'Common Mistakes',title:'Mistakes That Cost Students Time and Opportunities',cards:[
+{type:'pullquote',text:'Imposter syndrome is universal. Every developer Googles basic syntax. The difference is that experienced developers are comfortable not knowing — and confident they can figure it out.',attr:'— On why feeling "not ready" is normal and not a reason to wait',minis:[{v:'70%',l:'of developers experience imposter syndrome regularly'},{v:'Ship',l:'The most effective cure is building and releasing things'}]},
+{type:'grid',tag:'Common Mistakes',title:'Mistakes That Cost Students Time and Opportunities',cards:[
   {icon:'clock',c:'#f0c96a',t:'Tutorial Hell',b:'Watching 40 hours of tutorials without building anything. Tutorials are a starting point — not a substitute for making things yourself.'},
   {icon:'layers',c:'#6ab4f0',t:'Learning Too Many Things at Once',b:'JavaScript, Python, Java, Rust, Go — all at the same time. Pick one stack, get competent, then branch out. Depth beats breadth early on.'},
   {icon:'question',c:'#f06a9e',t:'Not Applying Early Enough',b:'Students wait until they feel "ready" to apply for internships. Apply before you feel ready — the interview process itself teaches you what to learn next.'},
@@ -941,50 +915,40 @@ const slides=[
   {icon:'refresh',c:'#c06af0',t:'Giving Up After One Rejection',b:'Rejection is part of the process. Most engineers applied to 20–50+ companies for their first role. Rejection is data, not a verdict on your ability.'},
   {icon:'alert',c:'#f0a06a',t:'Ignoring Soft Skills',b:'Clear communication in code reviews, Slack messages, and standups matters. You will spend more time communicating than coding in most roles.'},
 ]},
-
-/* 20 */ {type:'timeline',tag:'Year by Year',title:'A Realistic Student Timeline',items:[
+{type:'timeline',tag:'Year by Year',title:'A Realistic Student Timeline',items:[
   {label:'Year 1',c:'#f0c96a',t:'Learn the Basics',b:'Pick one language, understand how programs work, build a few small projects. Set up Git, GitHub, and a basic developer environment.'},
   {label:'Year 2',c:'#6ab4f0',t:'Build and Apply',b:'Create 2–3 real projects. Apply for internships even if you think you are not ready. Start learning SQL and how to work with APIs.'},
   {label:'Year 3',c:'#f06a9e',t:'Go Deeper and Specialize',b:'Pick a direction — web, data, cloud, security. Contribute to open source if you can. Land an internship and treat it seriously.'},
   {label:'Final Year',c:'#6af0a8',t:'Polish and Network',b:'Refine your resume and portfolio. Build on internship experience. Start applying 6 months before graduation — earlier than you think.'},
 ]},
-
-/* 21 */ {type:'motto',num:'03 / 03',quote:'Build something small today. <strong>Future you will thank current you for starting.</strong>',author:'— On the only career advice that actually matters right now'},
-
-/* 22 */ {type:'twocol',tag:'Getting Started',title:'Practical First Steps You Can Take This Week',bullets:[
+{type:'motto',num:'03 / 03',quote:'Build something small today. <strong>Future you will thank current you for starting.</strong>',author:'— On the only career advice that actually matters right now'},
+{type:'twocol',tag:'Getting Started',title:'Practical First Steps You Can Take This Week',bullets:[
   {t:'Make a GitHub account and push your very first repository — even if it is just a "Hello World" project.',c:'#f0c96a'},
   {t:'Pick one resource (CS50, freeCodeCamp, The Odin Project) and commit to it for 30 days.',c:'#6ab4f0'},
   {t:'Set up LinkedIn with your education and list the skills you are currently learning.',c:'#f06a9e'},
   {t:'Pick one small project idea and start building this week, not next semester.',c:'#6af0a8'},
 ],illus:'start'},
-
-/* 23 */ {type:'grid',tag:'Mindset',title:'The Developer Mindset That Gets You Hired',cards:[
+{type:'grid',tag:'Mindset',title:'The Developer Mindset That Gets You Hired',cards:[
   {icon:'search',c:'#f0c96a',t:'Debugging Patience',b:'Being stuck is not failure — it is the job. Good developers stay calm, break the problem down, and search methodically. Get comfortable with discomfort.'},
   {icon:'book',c:'#6ab4f0',t:'Read the Docs',b:'Before asking for help, read the official docs. This habit alone puts you ahead of most junior applicants.'},
   {icon:'refresh',c:'#f06a9e',t:'Embrace Iteration',b:'First version will always be rough. Ship it, get feedback, improve it. Done is better than perfect — especially when you are starting out.'},
   {icon:'trending',c:'#6af0a8',t:'Stay Curious About Why',b:'Ask why things work the way they do, not just how to use them. Understanding the "why" makes you adaptable when the tools change.'},
 ]},
-
-/* 24 */ {type:'pullquote',text:'You do not need a perfect plan. You need a good enough plan and the discipline to show up and build consistently — even for just 30 minutes a day.',attr:'— On consistency being the real differentiator',minis:[{v:'30min',l:'Daily focused practice beats occasional 5-hour sessions'},{v:'365x',l:'Small daily progress compounds dramatically over one year'}]},
-
-/* 25 */ {type:'stat',tag:'Internships',num:'3×',label:'more likely to receive a full-time offer after an internship',desc:'Internships are the most efficient path to a full-time role. They let you prove yourself, build real experience, and skip the cold application process. Apply early — Year 2 is not too soon.',source:'National Association of Colleges and Employers (NACE)',rings:[{v:65,c:'#f0c96a',l:'Interns converted to FTE'},{v:82,c:'#6ab4f0',l:'Prefer experienced hires'}],minis:[{v:'Year 2',l:'Ideal time to start applying for internships'},{v:'Early',l:'Applications often open 6–9 months before the start date'}]},
-
-/* 26 */ {type:'grid',tag:'Open Source',title:'Why Open Source Experience Matters',cards:[
+{type:'pullquote',text:'You do not need a perfect plan. You need a good enough plan and the discipline to show up and build consistently — even for just 30 minutes a day.',attr:'— On consistency being the real differentiator',minis:[{v:'30min',l:'Daily focused practice beats occasional 5-hour sessions'},{v:'365x',l:'Small daily progress compounds dramatically over one year'}]},
+{type:'stat',tag:'Internships',num:'3×',label:'more likely to receive a full-time offer after an internship',desc:'Internships are the most efficient path to a full-time role. They let you prove yourself, build real experience, and skip the cold application process. Apply early — Year 2 is not too soon.',source:'National Association of Colleges and Employers (NACE)',rings:[{v:65,c:'#f0c96a',l:'Interns converted to FTE'},{v:82,c:'#6ab4f0',l:'Prefer experienced hires'}],minis:[{v:'Year 2',l:'Ideal time to start applying for internships'},{v:'Early',l:'Applications often open 6–9 months before the start date'}]},
+{type:'grid',tag:'Open Source',title:'Why Open Source Experience Matters',cards:[
   {icon:'globe',c:'#f0c96a',t:'Real Codebases',b:'Reading and contributing to open-source projects exposes you to professional code quality, naming conventions, and architecture you will not see in tutorials.'},
   {icon:'git',c:'#6ab4f0',t:'Git Collaboration',b:'Opening pull requests, responding to review comments, and navigating a project\'s issue tracker — these are daily internship skills.'},
   {icon:'award',c:'#f06a9e',t:'Credible Resume Line',b:'"Contributed to [project] used by X users" is significantly more impressive than any academic project description.'},
   {icon:'compass',c:'#6af0a8',t:'Good First Issues',b:'GitHub labels many issues as "good first issue" — these are intentionally approachable. Start there. No experience needed.'},
 ]},
-
-/* 27 */ {type:'twocol',tag:'Soft Skills',title:'Technical Skills Get You the Interview. These Get You the Job.',bullets:[
+{type:'twocol',tag:'Soft Skills',title:'Technical Skills Get You the Interview. These Get You the Job.',bullets:[
   {t:'Clear writing: slack messages, PR descriptions, and documentation that others can actually understand.',c:'#f0c96a'},
   {t:'Asking good questions — knowing when to research independently and when to ask, and being specific when you do.',c:'#6ab4f0'},
   {t:'Receiving feedback gracefully — code reviews are not personal. Treating them as learning beats getting defensive.',c:'#f06a9e'},
 ],illus:'softskills'},
-
-/* 28 */ {type:'dashboard'},
-
-/* 29 */ {type:'ty'},
+{type:'dashboard'},
+{type:'ty'},
 ];
 
 /* BUILD */
@@ -1056,7 +1020,7 @@ slides.forEach((d,i)=>{
     const legH=cats.map(c=>`<div class="leg-item"><div class="leg-dot" style="background:${c.c}"></div>${c.l}</div>`).join('');
     const progs=[{l:'Technical Skills',p:92,c:'#f0c96a'},{l:'Portfolio Building',p:85,c:'#6ab4f0'},{l:'Job Prep',p:88,c:'#f06a9e'},{l:'Mindset',p:78,c:'#6af0a8'},{l:'AI Awareness',p:70,c:'#c06af0'}];
     const progH=progs.map(p=>`<div class="prog-item"><div class="prog-lbl">${p.l}<span>${p.p}%</span></div><div class="prog-track"><div class="prog-fill" data-w="${p.p}%" style="background:${p.c}"></div></div></div>`).join('');
-    el.innerHTML=`<div class="card"><div class="card-glow"></div><div class="dash-hdr"><div>${T('Summary')}${H('Your IT Career Journey at a Glance','font-size:clamp(1.3rem,2.5vw,1.9rem);margin:.5rem 0;')}<p style="font-size:.7rem;color:var(--text-muted);font-family:Space Mono,monospace">Everything covered — practical, actionable, no fluff</p></div><div class="dash-badge">${svg('star','style="width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;"')} Complete</div></div><div class="dash-grid"><div class="d-card"><div class="d-card-title">Slides Covered</div><div class="d-big" id="dn1">0 <span>slides</span></div><div class="d-note">"every slide a step forward"</div><div class="d-card-title" style="margin-top:.5rem;color:var(--accent2)">Total Key Insights</div><div class="d-big" id="dn2" style="font-size:clamp(1.6rem,2.8vw,2.4rem)">0<span> points</span></div></div><div class="d-card"><div class="d-card-title">Topics by Depth</div><div class="bar-chart">${barsH}</div></div><div class="d-card"><div class="d-card-title">Focus Areas</div><div class="donut-wrap"><svg width="96" height="96" viewBox="0 0 96 96">${slices}<text x="48" y="45" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" font-weight="700" fill="#f2efe8">${catTot}</text><text x="48" y="57" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(242,239,232,.38)">topics</text></svg><div class="donut-legend">${legH}</div></div></div><div class="d-card"><div class="d-card-title">Coverage Score</div><div class="prog-list">${progH}</div></div><div class="dash-quote"><div class="dq-mark">&ldquo;</div><div><div class="dq-text">Build something. Ship it. Learn from it. Repeat. That is the entire career plan.</div><div class="dq-attr">— IT Career Insights Summary</div></div></div></div></div>`;
+    el.innerHTML=`<div class="card"><div class="card-glow"></div><div class="dash-hdr"><div>${T('Summary')}${H('Your IT Career Journey at a Glance','font-size:clamp(1.3rem,2.5vw,1.9rem);margin:.5rem 0;')}<p style="font-size:.7rem;color:var(--text-muted);font-family:Space Mono,monospace">Everything covered — practical, actionable, no fluff</p></div><div class="dash-badge">${svg('star','style="width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;"')} Complete</div></div><div class="dash-grid"><div class="d-card"><div class="d-card-title">Slides Covered</div><div class="d-big" id="dn1">0 <span>slides</span></div><div class="d-note">"every slide a step forward"</div><div class="d-card-title" style="margin-top:.5rem;color:var(--accent2)">Total Key Insights</div><div class="d-big" id="dn2" style="font-size:clamp(1.6rem,2.8vw,2.4rem)">0<span> points</span></div></div><div class="d-card"><div class="d-card-title">Topics by Depth</div><div class="bar-chart">${barsH}</div></div><div class="d-card"><div class="d-card-title">Focus Areas</div><div class="donut-wrap"><svg width="96" height="96" viewBox="0 0 96 96">${slices}<text x="48" y="45" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" font-weight="700" fill="var(--text)">${catTot}</text><text x="48" y="57" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="var(--text-muted)">topics</text></svg><div class="donut-legend">${legH}</div></div></div><div class="d-card"><div class="d-card-title">Coverage Score</div><div class="prog-list">${progH}</div></div><div class="dash-quote"><div class="dq-mark">&ldquo;</div><div><div class="dq-text">Build something. Ship it. Learn from it. Repeat. That is the entire career plan.</div><div class="dq-attr">— IT Career Insights Summary</div></div></div></div></div>`;
     const obs=new MutationObserver(()=>{
       if(!el.classList.contains('active'))return;
       setTimeout(()=>{el.querySelectorAll('.bar-fill').forEach(b=>b.style.width=b.dataset.w);el.querySelectorAll('.prog-fill').forEach(b=>b.style.width=b.dataset.w);},250);
