@@ -109,7 +109,9 @@ This is a fully self-contained presentation tool designed for live sessions, cla
 ## Browser Support
 
 Works in all modern browsers: Chrome, Firefox, Safari, Edge. Requires JavaScript enabled.
-
+Press F on the keyboard as a shortcut to toggle fullscreen anytime
+The icon swaps to a compress icon when you're in fullscreen so you know how to exit
+Press Esc (browser default) or click the icon again to exit fullscreen
 ---
 
 ## Contact
