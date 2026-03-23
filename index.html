@@ -5,1155 +5,1113 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>IT Career Insights</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root[data-theme="dark"]{
   --bg:#06060e;--surface:#0f0f1a;--surface2:#171726;--surface3:#1e1e2e;
-  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
-  --text:#f2efe8;--text-sub:rgba(242,239,232,0.75);--text-muted:rgba(242,239,232,0.38);
-  --accent:#f0c96a;--accent-glow:rgba(240,201,106,0.2);
-  --accent2:#6ab4f0;--accent3:#f06a9e;
-  --nav-bg:rgba(12,12,22,0.88);
-  --card-shadow:0 40px 120px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.06);
-  --tag-bg:rgba(240,201,106,0.1);--tag-border:rgba(240,201,106,0.22);
-  --fc-front:linear-gradient(145deg,#171726,#1e1e2e);
-  --fc-back:linear-gradient(145deg,#1a1a2e,#16213e);
-  --fc-back-border:rgba(106,180,240,0.3);
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
+  --text:#f2efe8;--text-sub:rgba(242,239,232,.75);--text-muted:rgba(242,239,232,.38);
+  --accent:#f0c96a;--accent-glow:rgba(240,201,106,.22);
+  --accent2:#6ab4f0;--accent3:#f06a9e;--accent4:#6af0a8;
+  --nav-bg:rgba(12,12,22,.88);
+  --card-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);
+  --tag-bg:rgba(240,201,106,.1);--tag-border:rgba(240,201,106,.25);
 }
 :root[data-theme="light"]{
-  --bg:#ede8f5;--surface:#fff;--surface2:#f2eeff;--surface3:#e6dff7;
-  --border:rgba(100,60,180,0.1);--border2:rgba(100,60,180,0.2);
-  --text:#18120f;--text-sub:#221a14;--text-muted:rgba(30,20,10,0.4);
-  --accent:#c4891a;--accent-glow:rgba(196,137,26,0.15);
-  --accent2:#5b3fbf;--accent3:#c41a5e;
-  --nav-bg:rgba(237,232,245,0.94);
-  --card-shadow:0 16px 60px rgba(80,40,160,0.14),0 0 0 1px rgba(100,60,180,0.1);
-  --tag-bg:rgba(196,137,26,0.12);--tag-border:rgba(196,137,26,0.3);
-  --fc-front:linear-gradient(145deg,#ffffff,#f0eaff);
-  --fc-back:linear-gradient(145deg,#2d1f6e,#1a1050);
-  --fc-back-border:rgba(150,110,255,0.5);
+  --bg:#f5efe0;--surface:#fdf8ef;--surface2:#ede4ce;--surface3:#e2d6bc;
+  --border:rgba(120,80,0,.13);--border2:rgba(120,80,0,.22);
+  --text:#1a0e00;--text-sub:#3a2200;--text-muted:rgba(40,20,0,.55);
+  --accent:#a06010;--accent-glow:rgba(160,96,16,.2);
+  --accent2:#1455a0;--accent3:#a01450;--accent4:#0a8c50;
+  --nav-bg:rgba(245,239,224,.96);
+  --card-shadow:0 16px 60px rgba(120,80,0,.14),0 0 0 1px rgba(120,80,0,.12);
+  --tag-bg:rgba(160,96,16,.13);--tag-border:rgba(160,96,16,.32);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;transition:background .4s,color .4s;user-select:none;}
-
-/* ── STARS ── */
-#starfield{position:fixed;inset:0;z-index:0;pointer-events:none;transition:opacity .6s;}
-[data-theme="light"] #starfield{opacity:.18;}
-
-/* ── PROGRESS ── */
-#prog{position:fixed;top:0;left:0;height:3px;z-index:200;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));transition:width .6s cubic-bezier(.4,0,.2,1);box-shadow:0 0 16px var(--accent);}
-
-/* ── TOPBAR ── */
-#topbar{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:var(--bg);border-bottom:1px solid var(--border);z-index:150;backdrop-filter:blur(14px);transition:background .4s;}
-#topbar-left{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);}
-#topbar-right{display:flex;align-items:center;gap:1.1rem;}
-#sc{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--text-muted);}
-#sc b{color:var(--accent);}
-#fs-btn{
-  width:32px;height:32px;border-radius:8px;
-  background:var(--surface2);border:1px solid var(--border2);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:background .2s,border-color .2s;
-  flex-shrink:0;
-}
-#fs-btn:hover{background:var(--surface3);border-color:var(--accent);}
-#fs-btn svg{width:15px;height:15px;stroke:var(--text-muted);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}
-#fs-btn:hover svg{stroke:var(--accent);}
-:fullscreen #fs-btn svg .ic-expand{display:none;}
-:fullscreen #fs-btn svg .ic-compress{display:block;}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;transition:background .4s,color .4s;}
+#cv{position:fixed;inset:0;z-index:0;pointer-events:none;}
+[data-theme="light"] #cv{opacity:.15;}
+#prog{position:fixed;top:0;left:0;height:3px;z-index:300;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));transition:width .6s cubic-bezier(.4,0,.2,1);box-shadow:0 0 14px var(--accent);}
+#top{position:fixed;top:0;left:0;right:0;height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:var(--bg);border-bottom:1px solid var(--border);z-index:200;backdrop-filter:blur(14px);transition:background .4s;}
+#top-l{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);}
+#top-r{display:flex;align-items:center;gap:.85rem;}
+#sc{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--text-muted);}#sc b{color:var(--accent);}
+.icon-btn{width:30px;height:30px;border-radius:8px;background:var(--surface2);border:1px solid var(--border2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex-shrink:0;}
+.icon-btn:hover{background:var(--surface3);border-color:var(--accent);}
+.icon-btn svg{width:14px;height:14px;stroke:var(--text-muted);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.icon-btn:hover svg{stroke:var(--accent);}
 .ic-compress{display:none;}
-#tog{width:42px;height:22px;border-radius:999px;background:var(--surface2);border:1px solid var(--border2);cursor:pointer;position:relative;transition:background .3s;}
-#tog::after{content:'';position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:var(--accent);transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:0 0 8px var(--accent);}
+#tog{width:40px;height:20px;border-radius:999px;background:var(--surface2);border:1px solid var(--border2);cursor:pointer;position:relative;flex-shrink:0;}
+#tog::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--accent);transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:0 0 6px var(--accent);}
 [data-theme="light"] #tog::after{transform:translateX(20px);}
-
-/* ── NAV ZONES ── */
-.nz{position:fixed;top:52px;bottom:52px;width:11%;z-index:140;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .25s;}
-.nz:hover{opacity:1;}
-.nz.L{left:0;}.nz.R{right:0;}
-.arr{width:56px;height:56px;border-radius:50%;background:var(--nav-bg);border:1px solid var(--border2);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--accent);transition:transform .2s cubic-bezier(.4,0,.2,1),box-shadow .2s;box-shadow:0 4px 24px rgba(0,0,0,.35);}
-.nz.L:hover .arr{transform:translateX(-6px);box-shadow:0 6px 32px var(--accent-glow);}
-.nz.R:hover .arr{transform:translateX(6px);box-shadow:0 6px 32px var(--accent-glow);}
-@media(hover:none){.nz{opacity:.18;width:16%;}.nz .arr{width:44px;height:44px;font-size:1.1rem;}}
-
-/* ── SLIDE WRAPPER ── */
-#sw{position:fixed;inset:52px 0 52px 0;display:flex;align-items:stretch;justify-content:center;}
-.slide{position:absolute;inset:0;display:flex;align-items:stretch;justify-content:center;padding:.5rem 3%;opacity:0;transform:translateY(38px) scale(.97);pointer-events:none;transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);z-index:1;}
-.slide.active{opacity:1;transform:translateY(0) scale(1);pointer-events:all;z-index:2;}
-.slide.out-up{opacity:0;transform:translateY(-38px) scale(.97);pointer-events:none;z-index:1;}
-
-/* ── MAIN CARD ── */
-.card{width:100%;max-width:1160px;margin:0 auto;background:var(--surface);border:1px solid var(--border2);border-radius:28px;padding:2.6rem 4rem 2.2rem;position:relative;overflow:hidden;box-shadow:var(--card-shadow);transition:background .4s;display:flex;flex-direction:column;}
-.card::-webkit-scrollbar{width:3px;}
-.card::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
-@media(max-width:640px){.card{overflow-y:auto;}}
-.card::before{content:'';position:absolute;top:-90px;left:50%;transform:translateX(-50%);width:80%;height:220px;background:radial-gradient(ellipse,var(--accent-glow) 0%,transparent 70%);pointer-events:none;}
-.card::after{content:'';position:absolute;top:0;right:0;width:150px;height:150px;background:linear-gradient(135deg,transparent 57%,var(--border) 57%,var(--border) 58.5%,transparent 58.5%),linear-gradient(135deg,transparent 47%,var(--border) 47%,var(--border) 48.5%,transparent 48.5%);pointer-events:none;border-radius:0 28px 0 0;}
-.watermark{position:absolute;bottom:1rem;right:2rem;font-family:'Playfair Display',serif;font-size:7rem;font-weight:900;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none;user-select:none;letter-spacing:-.02em;}
-[data-theme="light"] .watermark{color:rgba(0,0,0,.035);}
-
-/* ── TAG ── */
-.tag{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .95rem;border-radius:999px;background:var(--tag-bg);border:1px solid var(--tag-border);font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem;width:fit-content;}
-
-/* ── SLIDE TITLE ── */
-.stitle{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.9rem);font-weight:700;line-height:1.15;letter-spacing:-.015em;color:var(--text);margin-bottom:.9rem;}
-
-/* ── DIVIDER ── */
-.div{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem;}
+.nz{position:fixed;top:50px;bottom:50px;width:10%;z-index:180;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .25s;}
+.nz:hover{opacity:1;}.nz.L{left:0;}.nz.R{right:0;}
+.arr{width:50px;height:50px;border-radius:50%;background:var(--nav-bg);border:1px solid var(--border2);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:1.2rem;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+.nz.L:hover .arr{transform:translateX(-5px);box-shadow:0 6px 28px var(--accent-glow);}
+.nz.R:hover .arr{transform:translateX(5px);box-shadow:0 6px 28px var(--accent-glow);}
+@media(hover:none){.nz{opacity:.2;width:14%;}.arr{width:42px;height:42px;font-size:1rem;}}
+#sw{position:fixed;inset:50px 0 50px 0;overflow:hidden;}
+.slide{position:absolute;inset:0;display:flex;align-items:stretch;justify-content:center;padding:.5rem 2%;opacity:0;transform:translateY(32px) scale(.97);pointer-events:none;transition:opacity .5s cubic-bezier(.4,0,.2,1),transform .5s cubic-bezier(.4,0,.2,1);z-index:1;}
+.slide.active{opacity:1;transform:none;pointer-events:all;z-index:2;}
+.slide.out{opacity:0;transform:translateY(-32px) scale(.97);pointer-events:none;}
+.card{width:100%;max-width:1200px;background:var(--surface);border:1px solid var(--border2);border-radius:24px;position:relative;overflow:hidden;box-shadow:var(--card-shadow);transition:background .4s;display:flex;flex-direction:column;}
+/* Mobile card scroll safety */
+@media(max-width:480px){.card{border-radius:14px;}}
+.card-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:80%;height:200px;background:radial-gradient(ellipse,var(--accent-glow) 0%,transparent 70%);pointer-events:none;}
+.tag{display:inline-flex;align-items:center;padding:.3rem .9rem;border-radius:999px;background:var(--tag-bg);border:1px solid var(--tag-border);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);width:fit-content;flex-shrink:0;}
+.stitle{font-family:'Playfair Display',serif;font-weight:700;line-height:1.15;letter-spacing:-.015em;color:var(--text);}
+.divider{display:flex;align-items:center;gap:.7rem;}
 .dl{height:1px;flex:1;background:linear-gradient(90deg,var(--accent),transparent);opacity:.4;}
 .dd{width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);}
-
-/* ── FLASHCARD GRID ── */
-.fc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));grid-auto-rows:1fr;gap:1rem;flex:1;margin-bottom:1.4rem;}
-
-/* ── FLIP CARD WRAPPER ── */
-.fc-wrap{perspective:900px;cursor:pointer;min-height:0;}
-.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.15,1);}
-.fc-wrap.flipped .fc-inner{transform:rotateY(180deg);}
-
-/* front & back shared */
-.fc-front,.fc-back{
-  position:absolute;inset:0;
-  border-radius:16px;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  display:flex;align-items:center;justify-content:center;
-  padding:1.6rem 1.6rem;
-  text-align:center;
-}
-
-/* FRONT */
-.fc-front{
-  background:var(--fc-front);
-  border:1px solid var(--border2);
-  flex-direction:column;
-  gap:.7rem;
-}
-.fc-front-num{
-  font-family:'Space Mono',monospace;
-  font-size:.62rem;
-  color:var(--accent);
-  opacity:.7;
-  letter-spacing:.1em;
-}
-.fc-front-text{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.1rem,1.9vw,1.45rem);
-  font-weight:700;
-  color:var(--text);
-  line-height:1.25;
-}
-.fc-hint{
-  font-size:.62rem;
-  color:var(--text-muted);
-  font-family:'Space Mono',monospace;
-  letter-spacing:.06em;
-  margin-top:.2rem;
-  opacity:.6;
-}
-/* subtle shimmer on hover */
-.fc-wrap:not(.flipped):hover .fc-front{
-  border-color:var(--accent2);
-  box-shadow:0 0 0 1px var(--accent2), 0 8px 28px rgba(0,0,0,.18);
-}
-.fc-wrap:not(.flipped):hover .fc-front-text{
-  color:var(--accent2);
-}
-
-/* BACK */
-.fc-back{
-  background:var(--fc-back);
-  border:1px solid var(--fc-back-border);
-  transform:rotateY(180deg);
-  flex-direction:column;
-  gap:.6rem;
-  box-shadow:inset 0 0 40px rgba(106,180,240,0.04);
-}
-.fc-back-label{
-  font-family:'Space Mono',monospace;
-  font-size:.58rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--accent2);
-  opacity:.8;
-}
-.fc-back-text{
-  font-size:clamp(.88rem,1.4vw,1.05rem);
-  color:rgba(232,225,255,0.9);
-  font-weight:400;
-  line-height:1.55;
-}
-.fc-back-icon{
-  width:38px;height:38px;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:10px;
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.15);
-  margin-bottom:.3rem;
-  flex-shrink:0;
-}
-.fc-back-icon svg{width:20px;height:20px;stroke:rgba(200,185,255,0.95);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-
-/* ── STAT ── */
-.stat{display:flex;align-items:center;gap:.7rem;padding:.65rem 1.2rem;background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:10px;font-size:.72rem;color:var(--text-muted);font-family:'Space Mono',monospace;line-height:1.5;margin-top:auto;flex-shrink:0;}
-
-/* ── TITLE SLIDE ── */
-.ts .card{text-align:center;padding:4rem;justify-content:center;align-items:center;}
-.ts .card::before{width:90%;height:280px;top:-110px;background:radial-gradient(ellipse,rgba(240,201,106,.13) 0%,transparent 70%);}
-.ts .stitle{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:900;margin-bottom:1rem;background:linear-gradient(135deg,var(--text) 0%,var(--accent) 55%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.ts .sub{font-size:clamp(.95rem,2vw,1.25rem);color:var(--text-sub);font-weight:300;margin-bottom:.6rem;font-style:italic;font-family:'Playfair Display',serif;}
-.ts .desc{font-size:clamp(.85rem,1.4vw,.98rem);color:var(--text-muted);max-width:540px;margin:0 auto 2.5rem;line-height:1.75;}
-.cta{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2.4rem;background:var(--accent);color:#07060e;border-radius:999px;font-family:'Space Mono',monospace;font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;box-shadow:0 0 32px var(--accent-glow);animation:pcta 2.5s ease-in-out infinite;width:fit-content;}
-@keyframes pcta{0%,100%{box-shadow:0 0 24px var(--accent-glow);}50%{box-shadow:0 0 52px rgba(240,201,106,.32);}}
-
-/* ── CLOSING ── */
-.cls .stitle{background:linear-gradient(135deg,var(--accent2),var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-
-/* ── STAGGER ── */
-.slide.active .tag    {animation:fi .4s .05s both;}
-.slide.active .stitle {animation:fi .4s .12s both;}
-.slide.active .div    {animation:fi .4s .18s both;}
-.slide.active .fc-wrap:nth-child(1){animation:su .4s .22s both;}
-.slide.active .fc-wrap:nth-child(2){animation:su .4s .30s both;}
-.slide.active .fc-wrap:nth-child(3){animation:su .4s .38s both;}
-.slide.active .fc-wrap:nth-child(4){animation:su .4s .46s both;}
-.slide.active .fc-wrap:nth-child(5){animation:su .4s .54s both;}
-.slide.active .stat   {animation:fi .4s .58s both;}
-@keyframes fi{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
-@keyframes su{from{opacity:0;transform:translateY(22px) scale(.95);}to{opacity:1;transform:none;}}
-
-/* ── BOTTOM ── */
-#bot{position:fixed;bottom:0;left:0;right:0;height:52px;display:flex;align-items:center;justify-content:center;gap:1rem;background:var(--bg);border-top:1px solid var(--border);z-index:150;backdrop-filter:blur(14px);transition:background .4s;}
-.nb{width:40px;height:36px;border-radius:10px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s,transform .15s;}
+#bot{position:fixed;bottom:0;left:0;right:0;height:50px;display:flex;align-items:center;justify-content:center;gap:.9rem;background:var(--bg);border-top:1px solid var(--border);z-index:200;backdrop-filter:blur(14px);transition:background .4s;}
+.nb{width:38px;height:34px;border-radius:9px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s,transform .12s;}
 .nb:hover{background:var(--surface2);border-color:var(--accent);}
 .nb:active{transform:scale(.88);}
 .nb:disabled{opacity:.2;pointer-events:none;}
-#dots{display:flex;align-items:center;gap:5px;}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--border2);cursor:pointer;transition:background .3s,width .3s,border-radius .3s,box-shadow .3s;}
-.dot.active{background:var(--accent);width:22px;border-radius:3px;box-shadow:0 0 8px var(--accent);}
+#dots{display:flex;align-items:center;gap:4px;max-width:220px;overflow:hidden;}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--border2);cursor:pointer;flex-shrink:0;transition:background .3s,width .3s,border-radius .3s,box-shadow .3s;}
+.dot.active{background:var(--accent);width:18px;border-radius:3px;box-shadow:0 0 7px var(--accent);}
 .dot:hover:not(.active){background:var(--text-muted);}
-
-/* ── SEARCH BAR ── */
-#search-box{
-  position:fixed;bottom:8px;left:1.2rem;
-  display:flex;align-items:center;gap:.5rem;
-  z-index:160;
-}
-#search-input{
-  width:64px;
-  padding:.32rem .6rem;
-  border-radius:8px;
-  background:var(--surface);
-  border:1px solid var(--border2);
-  color:var(--text);
-  font-family:'Space Mono',monospace;
-  font-size:.72rem;
-  text-align:center;
-  outline:none;
-  transition:border-color .2s, box-shadow .2s, width .25s;
-  -moz-appearance:textfield;
-}
-#search-input::-webkit-inner-spin-button,
-#search-input::-webkit-outer-spin-button{-webkit-appearance:none;}
-#search-input:focus{
-  border-color:var(--accent);
-  box-shadow:0 0 0 2px var(--accent-glow);
-  width:80px;
-}
-#search-label{
-  font-family:'Space Mono',monospace;
-  font-size:.6rem;
-  color:var(--text-muted);
-  letter-spacing:.06em;
-  pointer-events:none;
-}
-
-/* ── DASHBOARD SLIDE ── */
-.dash-slide .card{
-  padding:2.2rem 3.5rem 2rem;
-  overflow-y:auto;
-}
-.dash-slide .card::-webkit-scrollbar{width:4px;}
-.dash-slide .card::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;}
-.dash-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:1.4rem;flex-shrink:0;
-}
-.dash-headline{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.5rem,3vw,2.2rem);
-  font-weight:700;color:var(--text);
-}
-.dash-sub{font-size:.82rem;color:var(--text-muted);font-family:'Space Mono',monospace;margin-top:.2rem;letter-spacing:.04em;}
-.congrats-badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.5rem 1.1rem;border-radius:999px;
-  background:linear-gradient(135deg,var(--accent),#e8a020);
-  color:#07060e;font-family:'Space Mono',monospace;
-  font-size:.68rem;font-weight:700;letter-spacing:.06em;
-  text-transform:uppercase;
-  box-shadow:0 0 24px var(--accent-glow);
-  flex-shrink:0;
-}
-.dash-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:1rem;flex:1;
-  margin-bottom:1rem;
-}
-.dash-card{
-  background:var(--surface2);
-  border:1px solid var(--border2);
-  border-radius:16px;
-  padding:1.2rem 1.4rem;
-  display:flex;flex-direction:column;gap:.6rem;
-  min-height:0;
-}
-.dash-card-title{
-  font-family:'Space Mono',monospace;
-  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--accent);
-}
-/* STAT NUMBERS */
-.dash-big{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2.2rem,4vw,3.2rem);
-  font-weight:900;
-  line-height:1;
-  color:var(--text);
-}
-.dash-big span{font-size:.9rem;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-weight:300;}
-/* BAR CHART */
-.bar-chart{display:flex;flex-direction:column;gap:.42rem;flex:1;justify-content:center;}
-.bar-row{display:flex;align-items:center;gap:.6rem;}
-.bar-label{font-size:.62rem;color:var(--text-muted);font-family:'Space Mono',monospace;width:90px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em;}
-.bar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
-.bar-fill{height:100%;border-radius:4px;width:0;transition:width 1.1s cubic-bezier(.4,0,.2,1);}
-.bar-val{font-size:.6rem;color:var(--text-muted);font-family:'Space Mono',monospace;width:16px;text-align:right;flex-shrink:0;}
-/* DONUT */
-.donut-wrap{display:flex;align-items:center;justify-content:center;gap:1.2rem;flex:1;}
-.donut-legend{display:flex;flex-direction:column;gap:.5rem;}
-.legend-item{display:flex;align-items:center;gap:.5rem;font-size:.68rem;color:var(--text-sub);font-family:'DM Sans',sans-serif;}
-.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-/* TIMELINE */
-.timeline{display:flex;flex-direction:column;gap:.5rem;flex:1;justify-content:center;}
-.tl-item{display:flex;align-items:center;gap:.7rem;}
-.tl-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;box-shadow:0 0 6px var(--accent);}
-.tl-line-wrap{display:flex;align-items:center;gap:.5rem;flex:1;}
-.tl-label{font-size:.68rem;color:var(--text-sub);font-family:'DM Sans',sans-serif;white-space:nowrap;}
-.tl-bar-track{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
-.tl-bar-fill{height:100%;border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
-
-
-/* ── THANK YOU SLIDE ── */
-.ty-slide .card{text-align:center;justify-content:center;align-items:center;overflow:hidden;}
-.ty-slide .card::before{width:100%;height:360px;top:-130px;background:radial-gradient(ellipse,rgba(240,201,106,.15) 0%,transparent 65%);}
-.ty-big{font-family:'Playfair Display',serif;font-size:clamp(3.8rem,9vw,7rem);font-weight:900;line-height:1;letter-spacing:-.03em;background:linear-gradient(135deg,var(--text) 0%,var(--accent) 42%,var(--accent2) 75%,var(--accent3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem;}
-.ty-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.2vw,1.5rem);color:var(--text-sub);font-weight:400;margin-bottom:2.2rem;}
-.ty-div{width:56px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);margin:0 auto 2.2rem;border-radius:2px;}
-.ty-contact-label{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.75rem;}
-.ty-email{display:inline-flex;align-items:center;gap:.75rem;padding:.9rem 2.1rem;border-radius:14px;background:var(--surface2);border:1px solid var(--border2);font-family:'Space Mono',monospace;font-size:clamp(.78rem,1.3vw,.98rem);color:var(--accent2);letter-spacing:.03em;text-decoration:none;transition:background .2s,border-color .2s,box-shadow .2s,transform .18s;cursor:pointer;}
-.ty-email:hover{background:var(--surface3);border-color:var(--accent2);box-shadow:0 0 28px rgba(106,180,240,.2);transform:translateY(-2px);}
-.ty-email svg{width:17px;height:17px;stroke:var(--accent2);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
-.ty-devcon{margin-top:1.6rem;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase;}
-.ty-devcon span{color:var(--accent);}
-.ty-stars-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
-.ty-spark{position:absolute;border-radius:50%;opacity:0;animation:ty-rise linear infinite;}
-@keyframes ty-rise{0%{opacity:0;transform:translateY(0) scale(1);}15%{opacity:.8;}85%{opacity:.4;}100%{opacity:0;transform:translateY(-110px) translateX(var(--dx)) scale(.3);}}
-
-/* HINT ── */
-#hint{position:fixed;bottom:60px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:.58rem;color:var(--text-muted);letter-spacing:.08em;pointer-events:none;white-space:nowrap;opacity:1;transition:opacity 1s;z-index:160;}
+#sbox{position:fixed;bottom:8px;left:1rem;display:flex;align-items:center;gap:.4rem;z-index:210;}
+#slbl{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--text-muted);letter-spacing:.06em;pointer-events:none;}
+#sinp{width:52px;padding:.28rem .5rem;border-radius:7px;background:var(--surface);border:1px solid var(--border2);color:var(--text);font-family:'Space Mono',monospace;font-size:.65rem;text-align:center;outline:none;-moz-appearance:textfield;transition:border-color .2s,width .22s;}
+#sinp::-webkit-inner-spin-button,#sinp::-webkit-outer-spin-button{-webkit-appearance:none;}
+#sinp:focus{border-color:var(--accent);width:66px;box-shadow:0 0 0 2px var(--accent-glow);}
+#hint{position:fixed;bottom:58px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:.54rem;color:var(--text-muted);letter-spacing:.07em;pointer-events:none;white-space:nowrap;opacity:1;transition:opacity 1s;z-index:210;}
 #hint.gone{opacity:0;}
 
-@media(max-width:640px){
-  /* topbar */
-  #topbar{padding:0 1rem;height:46px;}
-  #topbar-left{font-size:.55rem;}
-  #sc{font-size:.65rem;}
+/* ════ TITLE ════ */
+.s-title{align-items:stretch;}
+.s-title .card{padding:3.5rem 4.5rem;justify-content:center;align-items:center;text-align:center;}
+.s-title .card::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:100%;height:320px;background:radial-gradient(ellipse,rgba(240,201,106,.16) 0%,transparent 65%);pointer-events:none;}
+.s-title .big{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.8rem);font-weight:900;margin:.8rem 0;background:linear-gradient(135deg,var(--text) 0%,var(--accent) 52%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.s-title .sub{font-size:clamp(.9rem,1.8vw,1.15rem);color:var(--text-sub);font-style:italic;font-family:'Playfair Display',serif;margin-bottom:.5rem;}
+.s-title .desc{font-size:clamp(.82rem,1.4vw,.96rem);color:var(--text-muted);max-width:540px;margin:0 auto 2.5rem;line-height:1.75;}
+.cta-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2.4rem;background:var(--accent);color:#06060e;border-radius:999px;font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;box-shadow:0 0 28px var(--accent-glow);animation:pcta 2.5s ease-in-out infinite;width:fit-content;}
+@keyframes pcta{0%,100%{box-shadow:0 0 22px var(--accent-glow);}50%{box-shadow:0 0 48px rgba(240,201,106,.42);}}
 
-  /* slides wrapper */
-  #sw{inset:46px 0 48px 0;}
-  .slide{padding:.4rem 2.5%;}
+/* ════ MOTTO ════ */
+.s-motto{align-items:stretch;}
+.s-motto .card{justify-content:center;align-items:center;text-align:center;padding:3rem 5rem;overflow:hidden;}
+.s-motto .card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(240,201,106,.1) 0%,transparent 70%);pointer-events:none;}
+.motto-decor{position:absolute;width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,rgba(240,201,106,.05),rgba(106,180,240,.05));pointer-events:none;}
+.motto-decor.tl{top:-70px;left:-70px;}.motto-decor.br{bottom:-70px;right:-70px;}
+.motto-num{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);opacity:.7;margin-bottom:1.4rem;}
+.motto-mark{font-family:'Playfair Display',serif;font-size:5rem;line-height:.7;color:var(--accent);opacity:.22;margin-bottom:.8rem;user-select:none;}
+.motto-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.4rem,3.5vw,2.4rem);line-height:1.45;color:var(--text);max-width:740px;margin-bottom:1.6rem;}
+.motto-quote strong{font-style:normal;font-weight:700;color:var(--accent);-webkit-text-fill-color:var(--accent);}
+.motto-author{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:var(--text-muted);text-transform:uppercase;}
 
-  /* card */
-  .card{border-radius:18px;padding:1.4rem 1.2rem 1.2rem;}
-  .card::after{display:none;}
-  .watermark{font-size:4rem;bottom:.8rem;right:1rem;}
+/* ════ TWO-COL ════ */
+.s-twocol{align-items:stretch;}
+.s-twocol .card{flex-direction:row;padding:0;overflow:hidden;}
+.tc-left{flex:1;padding:2.6rem 3rem;display:flex;flex-direction:column;justify-content:center;min-width:0;}
+.tc-left .tag{margin-bottom:.9rem;}
+.tc-left .stitle{font-size:clamp(1.7rem,3.2vw,2.6rem);margin-bottom:.8rem;}
+.tc-left .divider{margin-bottom:1.3rem;}
+.tc-right{width:44%;background:var(--surface2);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden;border-left:1px solid var(--border2);}
+.tc-right::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(240,201,106,.08) 0%,rgba(106,180,240,.05) 100%);}
+.tc-right .svgi{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:1.5rem;}
+.bl-list{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem;}
+.bl-item{display:flex;align-items:flex-start;gap:.9rem;padding:.9rem 1.1rem;border-radius:12px;background:var(--surface2);border:1px solid var(--border);}
+.bl-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:.3rem;}
+.bl-text{font-size:clamp(1rem,1.6vw,1.12rem);color:var(--text-sub);line-height:1.5;}
+[data-theme="light"] .bl-text{color:#2a1500;font-weight:500;}
 
-  /* tag + title */
-  .tag{font-size:.55rem;padding:.25rem .7rem;margin-bottom:.8rem;}
-  .stitle{font-size:clamp(1.3rem,5.5vw,1.8rem);margin-bottom:.6rem;}
-  .div{margin-bottom:.9rem;}
+/* ════ BIG STAT ════ */
+.s-stat{align-items:stretch;}
+.s-stat .card{flex-direction:row;padding:0;overflow:hidden;}
+.stat-main{flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding:3rem 3.5rem;}
+.stat-main .tag{margin-bottom:1.4rem;}
+.stat-num{font-family:'Playfair Display',serif;font-size:clamp(5rem,11vw,9rem);font-weight:900;line-height:1;color:var(--accent);letter-spacing:-.02em;}
+.stat-label{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.6vw,2rem);font-weight:700;color:var(--text);margin-top:.5rem;margin-bottom:1.6rem;line-height:1.2;}
+.stat-desc{font-size:clamp(1rem,1.6vw,1.12rem);color:var(--text-sub);line-height:1.7;max-width:440px;}
+[data-theme="light"] .stat-desc{color:#2a1500;}
+.stat-source{margin-top:auto;padding-top:1.4rem;font-family:'Space Mono',monospace;font-size:.6rem;color:var(--text-muted);}
+.stat-side{width:38%;background:var(--surface2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;padding:2rem 1.8rem;border-left:1px solid var(--border);}
+.ring-wrap{position:relative;width:160px;height:160px;flex-shrink:0;}
+.ring-wrap svg{width:100%;height:100%;}
+.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.ring-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--text);line-height:1;}
+.ring-sub{font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--text-muted);margin-top:.2rem;max-width:90px;line-height:1.2;}
+.mini-stats{display:flex;flex-direction:column;gap:.8rem;width:100%;}
+.mini-s{display:flex;align-items:flex-start;gap:.9rem;padding:1rem 1.1rem;border-radius:12px;background:var(--surface);border:1px solid var(--border);}
+.mini-s-val{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--accent);min-width:52px;line-height:1.05;flex-shrink:0;}
+.mini-s-lbl{font-size:.88rem;color:var(--text-sub);line-height:1.4;padding-top:.2rem;}
+[data-theme="light"] .mini-s-lbl{color:#2a1500;}
 
-  /* flashcard grid — single column on mobile */
-  .fc-grid{
-    grid-template-columns:1fr;
-    grid-auto-rows:auto;
-    gap:.6rem;
-    margin-bottom:.8rem;
-  }
-  .fc-wrap{min-height:80px;}
-  .fc-front,.fc-back{padding:1rem 1rem;}
-  .fc-front-text{font-size:clamp(1rem,4vw,1.2rem);}
-  .fc-back-text{font-size:.82rem;}
-  .fc-back-icon{width:30px;height:30px;}
-  .fc-back-icon svg{width:16px;height:16px;}
-  .fc-hint{font-size:.55rem;}
+/* ════ TIMELINE ════ */
+.s-timeline{align-items:stretch;}
+.s-timeline .card{padding:2.2rem 2.8rem 2.2rem 3rem;flex:1;}
+.s-timeline .stitle{font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:.7rem;}
+.tl-wrap{display:flex;flex-direction:column;flex:1;margin-top:.6rem;position:relative;padding-left:2.2rem;}
+.tl-wrap::before{content:'';position:absolute;left:.75rem;top:.6rem;bottom:.6rem;width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent2),var(--accent3));border-radius:2px;}
+.tl-item{display:flex;gap:1.2rem;align-items:flex-start;flex:1;position:relative;}
+.tl-item+.tl-item{margin-top:1rem;}
+.tl-dot{width:16px;height:16px;border-radius:50%;flex-shrink:0;position:absolute;left:-2.45rem;top:.15rem;border:2px solid var(--bg);}
+.tl-content{flex:1;}
+.tl-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem;}
+.tl-title{font-family:'Playfair Display',serif;font-size:clamp(1.05rem,1.9vw,1.35rem);font-weight:700;color:var(--text);margin-bottom:.25rem;}
+.tl-body{font-size:clamp(.85rem,1.4vw,.98rem);color:var(--text-muted);line-height:1.55;}
 
-  /* stat bar */
-  .stat{font-size:.62rem;padding:.5rem .8rem;}
+/* ════ GRID ════ */
+.s-grid{align-items:stretch;}
+.s-grid .card{padding:2.2rem 2.8rem;flex:1;}
+.s-grid .stitle{font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:.7rem;}
+.ic-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:1rem;flex:1;margin-top:.6rem;}
+.ic-card{background:var(--surface2);border:1px solid var(--border2);border-radius:18px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;position:relative;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s;}
+.ic-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 12px 36px rgba(0,0,0,.2);}
+.ic-card::before{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:var(--accent-glow);pointer-events:none;opacity:.5;}
+.ic-card-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ic-card-icon svg{width:22px;height:22px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.ic-card-title{font-family:'Playfair Display',serif;font-size:clamp(1.05rem,1.8vw,1.25rem);font-weight:700;color:var(--text);line-height:1.2;}
+.ic-card-body{font-size:clamp(.88rem,1.35vw,.98rem);color:var(--text-muted);line-height:1.52;}
+[data-theme="light"] .ic-card-body{color:#2a1500;}
 
-  /* title slide */
-  .ts .card{padding:2rem 1.2rem;}
-  .ts .stitle{font-size:clamp(1.8rem,7vw,2.8rem);}
-  .ts .sub{font-size:.95rem;}
-  .ts .desc{font-size:.8rem;margin-bottom:1.8rem;}
-  .cta{padding:.7rem 1.6rem;font-size:.65rem;}
+/* ════ PULL QUOTE ════ */
+.s-pullquote{align-items:stretch;}
+.s-pullquote .card{flex-direction:row;padding:0;overflow:hidden;}
+.pq-bar{width:8px;flex-shrink:0;background:linear-gradient(to bottom,var(--accent),var(--accent3));}
+.pq-body{flex:1;padding:3rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.pq-mark{font-family:'Playfair Display',serif;font-size:6rem;line-height:.7;color:var(--accent);opacity:.2;margin-bottom:1.2rem;user-select:none;}
+.pq-text{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.4rem,3vw,2.2rem);line-height:1.45;color:var(--text);margin-bottom:1.4rem;}
+.pq-attr{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:var(--text-muted);text-transform:uppercase;}
+.pq-side{width:30%;background:var(--surface2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2.5rem;border-left:1px solid var(--border);}
 
-  /* thank you */
-  .ty-big{font-size:clamp(2.8rem,13vw,4.5rem);}
-  .ty-sub{font-size:.9rem;margin-bottom:1.4rem;}
-  .ty-div{margin-bottom:1.4rem;}
-  .ty-email{font-size:.72rem;padding:.7rem 1.2rem;}
+/* ════ COMPARE ════ */
+.s-compare{align-items:stretch;}
+.s-compare .card{padding:2rem 2.8rem;gap:.8rem;flex:1;}
+.cmp-hdr{display:flex;flex-direction:column;gap:.4rem;flex-shrink:0;}
+.cmp-hdr .stitle{font-size:clamp(2rem,3.8vw,3rem);font-weight:900;}
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;flex:1;align-items:stretch;position:relative;}
+.cmp-grid::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,var(--accent),var(--accent3),transparent);transform:translateX(-50%);opacity:.4;}
+.cmp-vs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:linear-gradient(160deg,#ffe08a 0%,#d4900a 100%);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;color:#06060e;box-shadow:0 0 28px rgba(240,201,106,.45),0 0 0 3px rgba(240,201,106,.2);z-index:2;}
+[data-theme="light"] .cmp-vs{background:linear-gradient(160deg,#f0c96a 0%,#a06010 100%);}
+.cmp-col{display:flex;flex-direction:column;gap:.6rem;}
+.cmp-col-title{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.7rem 1.2rem;border-radius:12px;text-align:center;font-weight:700;margin-bottom:.2rem;}
+.col-a .cmp-col-title{background:rgba(106,180,240,.12);color:var(--accent2);border:1px solid rgba(106,180,240,.28);}
+.col-b .cmp-col-title{background:rgba(240,201,106,.12);color:var(--accent);border:1px solid rgba(240,201,106,.28);}
+.cmp-item{padding:.8rem 1.1rem;border-radius:12px;border:1px solid var(--border);background:var(--surface2);font-size:clamp(.95rem,1.5vw,1.06rem);color:var(--text-sub);line-height:1.4;flex:1;display:flex;align-items:center;}
+[data-theme="light"] .cmp-item{color:#2a1500;font-weight:500;}
 
-  /* dashboard */
-  .dash-slide .card{padding:1.2rem 1rem;}
-  .dash-header{flex-direction:column;align-items:flex-start;gap:.6rem;margin-bottom:1rem;}
-  .dash-headline{font-size:1.1rem;}
-  .dash-sub{font-size:.62rem;}
-  .congrats-badge{font-size:.58rem;padding:.4rem .8rem;}
-  .dash-grid{grid-template-columns:1fr;gap:.7rem;}
-  .dash-grid .dash-card[style*="grid-column"]{grid-column:auto;}
-  .dash-big{font-size:2rem;}
-  .tl-label{font-size:.6rem;}
-  .bar-label{width:70px;font-size:.55rem;}
-  .donut-wrap{flex-direction:column;gap:.8rem;}
+/* ════ IMAGE ════ */
+.s-image{align-items:stretch;}
+.s-image .card{padding:0;overflow:hidden;flex-direction:row;}
+.img-cap{width:38%;display:flex;flex-direction:column;justify-content:center;padding:2.8rem 3rem;flex-shrink:0;}
+.img-cap .tag{margin-bottom:1rem;}
+.img-cap .stitle{font-size:clamp(1.5rem,2.8vw,2.3rem);margin-bottom:1rem;}
+.img-cap .desc{font-size:clamp(.95rem,1.5vw,1.08rem);color:var(--text-sub);line-height:1.7;}
+[data-theme="light"] .img-cap .desc{color:#2a1500;}
+[data-theme="light"] .tc-right{background:var(--surface3);}[data-theme="light"] .img-area{background:var(--surface3);}
+[data-theme="light"] .img-area{background:#2a2040;}
+[data-theme="light"] .tl-body{color:#3a2200;}
+[data-theme="light"] .pq-text{color:#1a0e00;}
+[data-theme="light"] .pq-attr{color:rgba(40,20,0,.6);}
+[data-theme="light"] .d-note{color:rgba(40,20,0,.6);}
+[data-theme="light"] .dq-text{color:#2a1500;}
+[data-theme="light"] .leg-item{color:#2a1500;}
+[data-theme="light"] .prog-lbl{color:#2a1500;}
+[data-theme="light"] .bar-lbl{color:rgba(40,20,0,.7);}
+[data-theme="light"] .ic-card-title{color:#1a0e00;}
+[data-theme="light"] .motto-quote{color:#1a0e00;}
+[data-theme="light"] .motto-author{color:rgba(40,20,0,.6);}
+[data-theme="light"] .ty-sub{color:#2a1500;}
+[data-theme="light"] .dash-badge{color:#fff;}
+[data-theme="light"] .stat-source{color:rgba(40,20,0,.55);}
+[data-theme="light"] .tl-label{opacity:1;}
+[data-theme="light"] .d-big span{color:rgba(40,20,0,.55);}
+.img-area{flex:1;position:relative;overflow:hidden;display:flex;align-items:stretch;background:var(--surface2);}
+.img-area::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(240,201,106,.08) 0%,rgba(106,180,240,.05) 100%);}
+.img-overlay{position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(90deg,var(--surface),transparent);z-index:1;}
+.svgi-full{flex:1;width:100%;display:flex;align-items:center;justify-content:center;padding:1.5rem;}
 
-  /* bottom nav */
-  #bot{height:48px;gap:.5rem;}
-  .nb{width:34px;height:30px;font-size:.8rem;border-radius:8px;}
-  #dots{max-width:120px;overflow:hidden;gap:3px;}
-  .dot{width:5px;height:5px;}
-  .dot.active{width:14px;}
+/* ════ DASHBOARD ════ */
+.s-dash{align-items:stretch;}
+.s-dash .card{padding:2rem 2.6rem;overflow-y:auto;}
+.dash-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.2rem;flex-shrink:0;flex-wrap:wrap;}
+.dash-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1rem;border-radius:999px;background:linear-gradient(135deg,var(--accent),#d4900a);color:#06060e;font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0;}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.85rem;flex:1;}
+.d-card{background:var(--surface2);border:1px solid var(--border2);border-radius:14px;padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;min-height:0;}
+.d-card-title{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+.d-big{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:900;line-height:1;color:var(--text);}
+.d-big span{font-size:.82rem;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-weight:300;}
+.d-note{font-style:italic;font-family:'Playfair Display',serif;font-size:.82rem;color:var(--text-muted);}
+.bar-chart{display:flex;flex-direction:column;gap:.36rem;flex:1;justify-content:center;}
+.bar-row{display:flex;align-items:center;gap:.5rem;}
+.bar-lbl{font-size:.55rem;color:var(--text-muted);font-family:'Space Mono',monospace;width:82px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.bar-track{flex:1;height:7px;background:var(--border);border-radius:3px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:3px;width:0;transition:width 1.1s cubic-bezier(.4,0,.2,1);}
+.bar-val{font-size:.55rem;color:var(--text-muted);font-family:'Space Mono',monospace;width:22px;text-align:right;flex-shrink:0;}
+.donut-wrap{display:flex;align-items:center;justify-content:center;gap:.9rem;flex:1;}
+.donut-legend{display:flex;flex-direction:column;gap:.38rem;}
+.leg-item{display:flex;align-items:center;gap:.4rem;font-size:.62rem;color:var(--text-sub);}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.prog-list{display:flex;flex-direction:column;gap:.46rem;flex:1;justify-content:center;}
+.prog-item{display:flex;flex-direction:column;gap:.22rem;}
+.prog-lbl{display:flex;justify-content:space-between;font-size:.6rem;color:var(--text-sub);}
+.prog-lbl span{color:var(--accent);font-family:'Space Mono',monospace;font-size:.56rem;}
+.prog-track{height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:3px;width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1);}
+.dash-quote{grid-column:1/-1;display:flex;align-items:center;gap:1.2rem;background:linear-gradient(135deg,rgba(240,201,106,.1),rgba(106,180,240,.07));border:1px solid rgba(240,201,106,.22);border-radius:14px;padding:.9rem 1.4rem;}
+.dq-mark{font-family:'Playfair Display',serif;font-size:3rem;line-height:.8;color:var(--accent);opacity:.35;flex-shrink:0;}
+.dq-text{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.82rem,1.3vw,.96rem);color:var(--text-sub);line-height:1.5;}
+.dq-attr{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--text-muted);margin-top:.3rem;}
 
-  /* search box — hide label on mobile, shrink input */
-  #search-label{display:none;}
-  #search-box{left:.7rem;bottom:9px;}
-  #search-input{width:48px;font-size:.65rem;}
-  #search-input:focus{width:60px;}
+/* ════ THANK YOU ════ */
+.s-ty{align-items:stretch;}
+.s-ty .card{justify-content:center;align-items:center;text-align:center;overflow:hidden;padding:3rem 2rem;}
+.s-ty .card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(240,201,106,.14) 0%,transparent 68%);pointer-events:none;}
+.ty-big{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,8vw,6.5rem);font-weight:900;line-height:1;letter-spacing:-.03em;background:linear-gradient(135deg,var(--text) 0%,var(--accent) 42%,var(--accent2) 72%,var(--accent3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.4rem;}
+.ty-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.9rem,2vw,1.3rem);color:var(--text-sub);margin-bottom:2rem;}
+.ty-div{width:50px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);margin:0 auto 2rem;border-radius:2px;}
+.ty-clbl{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.65rem;}
+.ty-email{display:inline-flex;align-items:center;gap:.65rem;padding:.8rem 1.8rem;border-radius:12px;background:var(--surface2);border:1px solid var(--border2);font-family:'Space Mono',monospace;font-size:clamp(.68rem,1.2vw,.88rem);color:var(--accent2);text-decoration:none;transition:background .2s,border-color .2s,transform .18s,box-shadow .2s;}
+.ty-email:hover{background:var(--surface3);border-color:var(--accent);transform:translateY(-2px);box-shadow:0 0 24px var(--accent-glow);}
+.ty-email svg{width:15px;height:15px;stroke:var(--accent);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.ty-role{margin-top:1.4rem;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--text-muted);text-transform:uppercase;}
+.ty-role span{color:var(--accent);}
+.ty-sparks{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.ty-spark{position:absolute;border-radius:50%;opacity:0;animation:ty-rise linear infinite;}
+@keyframes ty-rise{0%{opacity:0;transform:translateY(0) scale(1);}15%{opacity:.75;}85%{opacity:.3;}100%{opacity:0;transform:translateY(-100px) translateX(var(--dx)) scale(.2);}}
 
-  /* nav zones — always slightly visible on touch */
-  .nz{opacity:.25;width:14%;}
+/* ════ STAGGER ════ */
+.slide.active .tag{animation:fi .4s .05s both;}
+.slide.active .stitle{animation:fi .4s .12s both;}
+.slide.active .divider{animation:fi .4s .18s both;}
+.slide.active .bl-item:nth-child(1){animation:fi .38s .22s both;}
+.slide.active .bl-item:nth-child(2){animation:fi .38s .30s both;}
+.slide.active .bl-item:nth-child(3){animation:fi .38s .38s both;}
+.slide.active .bl-item:nth-child(4){animation:fi .38s .46s both;}
+.slide.active .ic-card:nth-child(1){animation:su .38s .20s both;}
+.slide.active .ic-card:nth-child(2){animation:su .38s .28s both;}
+.slide.active .ic-card:nth-child(3){animation:su .38s .36s both;}
+.slide.active .ic-card:nth-child(4){animation:su .38s .44s both;}
+.slide.active .ic-card:nth-child(5){animation:su .38s .52s both;}
+.slide.active .ic-card:nth-child(6){animation:su .38s .60s both;}
+.slide.active .tl-item:nth-child(1){animation:fi .38s .18s both;}
+.slide.active .tl-item:nth-child(2){animation:fi .38s .28s both;}
+.slide.active .tl-item:nth-child(3){animation:fi .38s .38s both;}
+.slide.active .tl-item:nth-child(4){animation:fi .38s .48s both;}
+.slide.active .tl-item:nth-child(5){animation:fi .38s .58s both;}
+.slide.active .cmp-item{animation:fi .35s both;}
+.slide.active .stat-num{animation:su .5s .1s both;}
+.slide.active .pq-text{animation:fi .5s .1s both;}
+.slide.active .pq-attr{animation:fi .4s .3s both;}
+@keyframes fi{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+@keyframes su{from{opacity:0;transform:translateY(22px) scale(.95);}to{opacity:1;transform:none;}}
 
-  /* hint */
-  #hint{font-size:.52rem;bottom:56px;}
+/* ════ RESPONSIVE ════ */
+/* ════ MOBILE (<=480px) ════ */
+@media(max-width:480px){
+  #top{height:42px;padding:0 .75rem;}
+  #top-l{font-size:.5rem;letter-spacing:.1em;}
+  #sc{font-size:.6rem;}
+  #tog{width:34px;height:18px;}
+  #tog::after{width:12px;height:12px;}
+  [data-theme="light"] #tog::after{transform:translateX(16px);}
+  #sw{inset:42px 0 44px 0;}
+  .slide{padding:.25rem 1%;}
+  .card{border-radius:14px;}
+  .s-title .card{padding:1.5rem 1rem;gap:.6rem;}
+  .s-title .big{font-size:clamp(1.5rem,6vw,2.2rem);}
+  .s-title .sub{font-size:.85rem;}
+  .s-title .desc{font-size:.78rem;margin-bottom:1.5rem;}
+  .cta-pill{padding:.65rem 1.5rem;font-size:.62rem;}
+  .s-motto .card{padding:1.5rem 1rem;}
+  .motto-mark{font-size:3rem;}
+  .motto-quote{font-size:clamp(1rem,4vw,1.3rem);}
+  .motto-author{font-size:.58rem;}
+  .s-twocol .card{flex-direction:column;}
+  .tc-left{padding:1rem .9rem;}
+  .tc-right{width:100%;min-height:150px;max-height:180px;}
+  .bl-item{padding:.7rem .8rem;gap:.7rem;}
+  .bl-text{font-size:.88rem;}
+  .s-stat .card{flex-direction:column;}
+  .stat-main{padding:1.2rem 1rem;}
+  .stat-num{font-size:clamp(3.5rem,14vw,5.5rem);}
+  .stat-label{font-size:clamp(1rem,3.5vw,1.3rem);margin-bottom:.8rem;}
+  .stat-desc{font-size:.88rem;}
+  .stat-side{width:100%;border-left:none;border-top:1px solid var(--border);flex-direction:row;flex-wrap:wrap;justify-content:space-around;padding:.9rem .6rem;gap:.8rem;}
+  .ring-wrap{width:110px;height:110px;}
+  .ring-val{font-size:1.4rem;}
+  .ring-sub{font-size:.68rem;}
+  .mini-s{padding:.7rem .8rem;}
+  .mini-s-val{font-size:1.2rem;min-width:40px;}
+  .mini-s-lbl{font-size:.78rem;}
+  .s-timeline .card{padding:1rem .9rem 1rem 1.4rem;}
+  .s-timeline .stitle{font-size:clamp(1.2rem,4.5vw,1.6rem);}
+  .tl-wrap{padding-left:1.8rem;}
+  .tl-wrap::before{left:.6rem;}
+  .tl-dot{left:-2.05rem;width:13px;height:13px;}
+  .tl-title{font-size:clamp(.95rem,3.5vw,1.1rem);}
+  .tl-body{font-size:.8rem;}
+  .tl-item+.tl-item{margin-top:.7rem;}
+  .s-grid .card{padding:1rem .9rem;}
+  .s-grid .stitle{font-size:clamp(1.2rem,4.5vw,1.6rem);}
+  .ic-grid{grid-template-columns:1fr 1fr;gap:.55rem;}
+  .ic-card{padding:1rem .9rem;gap:.5rem;border-radius:14px;}
+  .ic-card-icon{width:34px;height:34px;border-radius:9px;}
+  .ic-card-icon svg{width:18px;height:18px;}
+  .ic-card-title{font-size:.88rem;}
+  .ic-card-body{font-size:.77rem;line-height:1.45;}
+  .s-compare .card{padding:1rem .9rem;gap:.6rem;}
+  .cmp-hdr .stitle{font-size:clamp(1.2rem,4.5vw,1.8rem);}
+  .cmp-grid{grid-template-columns:1fr;gap:.45rem;}
+  .cmp-vs,.cmp-grid::before{display:none;}
+  .cmp-col-title{font-size:.62rem;padding:.55rem .9rem;}
+  .cmp-item{font-size:.85rem;padding:.65rem .9rem;}
+  .s-pullquote .card{flex-direction:column;}
+  .pq-bar{width:100%;height:5px;}
+  .pq-body{padding:1.2rem 1rem;}
+  .pq-mark{font-size:3.5rem;margin-bottom:.6rem;}
+  .pq-text{font-size:clamp(1rem,4vw,1.3rem);}
+  .pq-attr{font-size:.58rem;}
+  .pq-side{width:100%;border-left:none;border-top:1px solid var(--border);flex-direction:row;flex-wrap:wrap;justify-content:center;padding:.9rem;gap:.6rem;}
+  .s-image .card{flex-direction:column;}
+  .img-cap{width:100%;padding:1rem .9rem;}
+  .img-cap .stitle{font-size:clamp(1.1rem,4vw,1.5rem);}
+  .img-cap .desc{font-size:.85rem;}
+  .img-area{min-height:150px;max-height:180px;}
+  .svgi-full{padding:.8rem;}
+  .s-dash .card{padding:.9rem .75rem;overflow-y:auto;}
+  .dash-hdr{margin-bottom:.8rem;}
+  .dash-hdr .stitle{font-size:clamp(1rem,3.5vw,1.3rem);}
+  .dash-grid{grid-template-columns:1fr;gap:.55rem;}
+  .dash-quote{grid-column:auto;}
+  .d-card{padding:.8rem .9rem;}
+  .d-big{font-size:clamp(1.4rem,5vw,2rem);}
+  .donut-wrap{flex-direction:row;gap:.6rem;}
+  .bar-lbl{width:65px;font-size:.5rem;}
+  .bar-val{font-size:.5rem;}
+  .s-ty .card{padding:2rem 1rem;}
+  .ty-big{font-size:clamp(2.5rem,10vw,4rem);}
+  .ty-sub{font-size:.88rem;margin-bottom:1.2rem;}
+  .ty-email{font-size:.72rem;padding:.65rem 1.2rem;}
+  #bot{height:44px;gap:.4rem;padding:0 .3rem;}
+  .nb{width:30px;height:26px;font-size:.75rem;border-radius:7px;}
+  #dots{max-width:90px;gap:3px;}
+  .dot{width:4px;height:4px;}
+  .dot.active{width:10px;}
+  #slbl{display:none;}
+  #sbox{left:.4rem;bottom:6px;}
+  #sinp{width:38px;font-size:.58rem;padding:.2rem .4rem;}
+  #sinp:focus{width:52px;}
+  #hint{display:none;}
+  .nz{opacity:.15;width:16%;}
+  .arr{width:38px;height:38px;font-size:.95rem;}
 }
-
-/* tablet */
-@media(min-width:641px) and (max-width:1024px){
-  .card{padding:2rem 2.5rem;}
-  .stitle{font-size:clamp(1.6rem,3.5vw,2.4rem);}
-  .fc-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
-  .fc-front-text{font-size:clamp(1rem,2vw,1.3rem);}
-  .fc-back-text{font-size:.85rem;}
-  .ts .card{padding:3rem 2.5rem;}
+@media(max-width:380px){
+  .ic-grid{grid-template-columns:1fr;}
+  .ic-card-body{display:none;}
+  .stat-side{flex-direction:column;align-items:center;}
+}
+@media(min-width:481px) and (max-width:768px){
+  .s-twocol .card{flex-direction:column;}
+  .tc-right{width:100%;min-height:190px;max-height:220px;}
+  .tc-left{padding:1.3rem 1.5rem;}
+  .s-stat .card{flex-direction:column;}
+  .stat-main{padding:1.5rem 1.8rem;}
+  .stat-side{width:100%;border-left:none;border-top:1px solid var(--border);flex-direction:row;flex-wrap:wrap;justify-content:space-around;padding:1rem;}
+  .ic-grid{grid-template-columns:1fr 1fr 1fr;gap:.7rem;}
+  .s-pullquote .card{flex-direction:column;}
+  .pq-bar{width:100%;height:6px;}
+  .pq-body{padding:1.8rem 1.6rem;}
+  .pq-side{width:100%;border-left:none;border-top:1px solid var(--border);flex-direction:row;flex-wrap:wrap;justify-content:center;padding:1rem;}
+  .s-image .card{flex-direction:column;}
+  .img-cap{width:100%;padding:1.4rem 1.5rem;}
+  .s-compare .card{padding:1.4rem 1.2rem;}
+  .cmp-grid{grid-template-columns:1fr;gap:.5rem;}
+  .cmp-vs,.cmp-grid::before{display:none;}
+  .dash-grid{grid-template-columns:1fr 1fr;gap:.7rem;}
+  .dash-quote{grid-column:1/-1;}
+  #dots{max-width:130px;}
+}
+@media(min-width:769px) and (max-width:1024px){
+  .ic-grid{grid-template-columns:repeat(3,1fr);}
   .dash-grid{grid-template-columns:1fr 1fr;}
-  .dash-grid .dash-card[style*="grid-column"]{grid-column:1/-1;}
-  .tl-label{font-size:.62rem;}
-  #dots{max-width:160px;}
+  .dash-quote{grid-column:1/-1;}
+  .tc-right{width:40%;}
+  .stat-side{width:34%;}
+  .s-compare .card{padding:1.6rem 2rem;}
 }
+
+[data-theme="light"] .tl-body{color:#3a2200;}
+[data-theme="light"] .pq-text{color:#1a0e00;}
+[data-theme="light"] .pq-attr{color:rgba(40,20,0,.65);}
+[data-theme="light"] .d-note{color:rgba(40,20,0,.65);}
+[data-theme="light"] .dq-text{color:#2a1500;}
+[data-theme="light"] .leg-item{color:#2a1500;}
+[data-theme="light"] .prog-lbl{color:#2a1500;}
+[data-theme="light"] .bar-lbl{color:rgba(40,20,0,.7);}
+[data-theme="light"] .ic-card-title{color:#1a0e00;}
+[data-theme="light"] .motto-quote{color:#1a0e00;}
+[data-theme="light"] .motto-author{color:rgba(40,20,0,.65);}
+[data-theme="light"] .ty-sub{color:#2a1500;}
+[data-theme="light"] .stat-source{color:rgba(40,20,0,.6);}
+[data-theme="light"] .d-big span{color:rgba(40,20,0,.6);}
+[data-theme="light"] .d-card-title{color:#a06010;}
+[data-theme="light"] .ring-sub{color:rgba(40,20,0,.6);}
+[data-theme="light"] .ring-val{color:#1a0e00;}
+[data-theme="light"] .mini-s{background:var(--surface3);border-color:rgba(120,80,0,.18);}
+[data-theme="light"] .ic-card{background:var(--surface2);border-color:rgba(120,80,0,.18);}
+[data-theme="light"] .ic-card:hover{border-color:var(--accent);box-shadow:0 8px 28px rgba(120,80,0,.15);}
+[data-theme="light"] .bl-item{background:var(--surface2);border-color:rgba(120,80,0,.15);}
+[data-theme="light"] .cmp-item{background:var(--surface2);border-color:rgba(120,80,0,.15);}
+[data-theme="light"] .d-card{background:var(--surface2);border-color:rgba(120,80,0,.15);}
+[data-theme="light"] .nb{background:var(--surface2);border-color:rgba(120,80,0,.2);color:#1a0e00;}
+[data-theme="light"] .nb:hover{border-color:var(--accent);}
+[data-theme="light"] .arr{background:var(--nav-bg);border-color:rgba(120,80,0,.2);}
+
+/* ════ LIGHT MODE OVERRIDES ════ */
+[data-theme="light"] .tag{color:var(--accent);background:var(--tag-bg);border-color:var(--tag-border);}
+[data-theme="light"] .stitle{color:var(--text);}
+[data-theme="light"] .bl-text{color:var(--text-sub);}
+[data-theme="light"] .ic-card{background:var(--surface2);border-color:var(--border2);}
+[data-theme="light"] .ic-card-title{color:var(--text);}
+[data-theme="light"] .ic-card-body{color:var(--text-sub);}
+[data-theme="light"] .tl-title{color:var(--text);}
+[data-theme="light"] .tl-body{color:var(--text-muted);}
+[data-theme="light"] .stat-num{color:var(--accent);}
+[data-theme="light"] .stat-label{color:var(--text);}
+[data-theme="light"] .stat-desc{color:var(--text-sub);}
+[data-theme="light"] .stat-source{color:var(--text-muted);}
+[data-theme="light"] .mini-s{background:var(--surface);border-color:var(--border2);}
+[data-theme="light"] .mini-s-val{color:var(--accent);}
+[data-theme="light"] .mini-s-lbl{color:var(--text-sub);}
+[data-theme="light"] .ring-val{color:var(--text);}
+[data-theme="light"] .ring-sub{color:var(--text-muted);}
+[data-theme="light"] .cmp-item{background:var(--surface2);border-color:var(--border2);color:var(--text-sub);}
+[data-theme="light"] .cmp-col-title{font-weight:800;}
+[data-theme="light"] .col-a .cmp-col-title{color:var(--accent2);background:rgba(10,79,160,.1);border-color:rgba(10,79,160,.28);}
+[data-theme="light"] .col-b .cmp-col-title{color:var(--accent);background:rgba(160,96,16,.1);border-color:rgba(160,96,16,.28);}
+[data-theme="light"] .pq-text{color:var(--text);}
+[data-theme="light"] .pq-attr{color:var(--text-muted);}
+[data-theme="light"] .pq-bar{background:linear-gradient(to bottom,var(--accent),var(--accent3));}
+[data-theme="light"] .motto-quote{color:var(--text);}
+[data-theme="light"] .motto-author{color:var(--text-muted);}
+[data-theme="light"] .motto-mark{color:var(--accent);}
+[data-theme="light"] .img-cap .desc{color:var(--text-sub);}
+[data-theme="light"] .d-card{background:var(--surface2);border-color:var(--border2);}
+[data-theme="light"] .d-card-title{color:var(--accent);}
+[data-theme="light"] .d-big{color:var(--text);}
+[data-theme="light"] .d-note{color:var(--text-muted);}
+[data-theme="light"] .bar-lbl{color:var(--text-muted);}
+[data-theme="light"] .bar-val{color:var(--text-muted);}
+[data-theme="light"] .bar-track{background:var(--border2);}
+[data-theme="light"] .prog-lbl{color:var(--text-sub);}
+[data-theme="light"] .prog-track{background:var(--border2);}
+[data-theme="light"] .leg-item{color:var(--text-sub);}
+[data-theme="light"] .dq-text{color:var(--text-sub);}
+[data-theme="light"] .dq-attr{color:var(--text-muted);}
+[data-theme="light"] .dash-quote{background:linear-gradient(135deg,rgba(160,96,16,.08),rgba(10,79,160,.06));border-color:rgba(160,96,16,.22);}
+[data-theme="light"] .ty-big{background:linear-gradient(135deg,var(--text) 0%,var(--accent) 42%,var(--accent2) 72%,var(--accent3) 100%);-webkit-background-clip:text;background-clip:text;}
+[data-theme="light"] .ty-sub{color:var(--text-sub);}
+[data-theme="light"] .ty-role{color:var(--text-muted);}
+[data-theme="light"] .ty-email{color:var(--accent2);background:var(--surface2);border-color:var(--border2);}
+[data-theme="light"] .s-title .big{background:linear-gradient(135deg,var(--text) 0%,var(--accent) 52%,var(--accent2) 100%);-webkit-background-clip:text;background-clip:text;}
+[data-theme="light"] .s-title .sub{color:var(--text-sub);}
+[data-theme="light"] .s-title .desc{color:var(--text-muted);}
+[data-theme="light"] .cta-pill{background:var(--accent);color:#fffef8;}
+[data-theme="light"] .dl{background:linear-gradient(90deg,var(--accent),transparent);}
+[data-theme="light"] .dd{background:var(--accent);}
+[data-theme="light"] #top-l{color:var(--text-muted);}
+[data-theme="light"] #sc{color:var(--text-muted);}
+[data-theme="light"] #sc b{color:var(--accent);}
+[data-theme="light"] .icon-btn svg{stroke:var(--text-muted);}
+[data-theme="light"] .icon-btn:hover svg{stroke:var(--accent);}
+[data-theme="light"] .arr{color:var(--accent);}
+[data-theme="light"] .nb{color:var(--text);background:var(--surface);border-color:var(--border2);}
+[data-theme="light"] .nb:hover{background:var(--surface2);border-color:var(--accent);}
+[data-theme="light"] .dot{background:var(--border2);}
+[data-theme="light"] .dot.active{background:var(--accent);}
+[data-theme="light"] #slbl{color:var(--text-muted);}
+[data-theme="light"] #sinp{background:var(--surface);border-color:var(--border2);color:var(--text);}
+[data-theme="light"] #hint{color:var(--text-muted);}
+[data-theme="light"] .card-glow{opacity:.5;}
+[data-theme="light"] .tc-right::before{background:linear-gradient(135deg,rgba(160,96,16,.06) 0%,rgba(10,79,160,.04) 100%);}
+[data-theme="light"] .stat-side{border-color:var(--border2);}
+[data-theme="light"] .pq-side{border-color:var(--border2);}
 </style>
 </head>
 <body>
-<canvas id="starfield"></canvas>
+<canvas id="cv"></canvas>
 <div id="prog"></div>
-
-<header id="topbar">
-  <div id="topbar-left">IT Career Insights</div>
-  <div id="topbar-right">
-    <div id="sc"><b id="cn">1</b> / <span id="tn">31</span></div>
-    <button id="fs-btn" aria-label="Toggle fullscreen" title="Fullscreen (F)">
+<header id="top">
+  <div id="top-l">IT Career Insights</div>
+  <div id="top-r">
+    <div id="sc"><b id="cn">1</b> / <span id="tn">30</span></div>
+    <button class="icon-btn" id="fsb" title="Fullscreen (F)">
       <svg viewBox="0 0 24 24">
-        <!-- expand -->
-        <path class="ic-expand" d="M8 3H5a2 2 0 0 0-2 2v3"/>
-        <path class="ic-expand" d="M21 8V5a2 2 0 0 0-2-2h-3"/>
-        <path class="ic-expand" d="M3 16v3a2 2 0 0 0 2 2h3"/>
-        <path class="ic-expand" d="M16 21h3a2 2 0 0 0 2-2v-3"/>
-        <!-- compress -->
-        <path class="ic-compress" d="M8 3v5H3"/>
-        <path class="ic-compress" d="M21 8h-5V3"/>
-        <path class="ic-compress" d="M3 16h5v5"/>
-        <path class="ic-compress" d="M16 21v-5h5"/>
+        <path class="ic-expand" d="M8 3H5a2 2 0 0 0-2 2v3"/><path class="ic-expand" d="M21 8V5a2 2 0 0 0-2-2h-3"/>
+        <path class="ic-expand" d="M3 16v3a2 2 0 0 0 2 2h3"/><path class="ic-expand" d="M16 21h3a2 2 0 0 0 2-2v-3"/>
+        <path class="ic-compress" d="M8 3v5H3"/><path class="ic-compress" d="M21 8h-5V3"/>
+        <path class="ic-compress" d="M3 16h5v5"/><path class="ic-compress" d="M16 21v-5h5"/>
       </svg>
     </button>
     <button id="tog" aria-label="Toggle theme"></button>
   </div>
 </header>
-
-<div class="nz L" id="nzL"><div class="arr">←</div></div>
-<div class="nz R" id="nzR"><div class="arr">→</div></div>
-
+<div class="nz L" id="nzL"><div class="arr">&#8592;</div></div>
+<div class="nz R" id="nzR"><div class="arr">&#8594;</div></div>
 <main id="sw"></main>
-
-<div id="hint">← hover sides or arrow keys · click cards to flip for details</div>
-
-<div id="search-box">
-  <span id="search-label">SLIDE</span>
-  <input id="search-input" type="number" min="1" placeholder="01" aria-label="Go to slide number">
-</div>
-
+<div id="hint">hover edges or use arrow keys to navigate</div>
+<div id="sbox"><span id="slbl">SLIDE</span><input id="sinp" type="number" min="1" placeholder="01"></div>
 <nav id="bot">
-  <button class="nb" id="bf">⏮</button>
-  <button class="nb" id="bp">←</button>
+  <button class="nb" id="bF">&#9646;&#9646;</button>
+  <button class="nb" id="bP">&#8592;</button>
   <div id="dots"></div>
-  <button class="nb" id="bn">→</button>
-  <button class="nb" id="bl">⏭</button>
+  <button class="nb" id="bN">&#8594;</button>
+  <button class="nb" id="bL">&#9646;&#9646;</button>
 </nav>
-
 <script>
-/* ── STARFIELD ── */
+/* STARFIELD */
 (()=>{
-  const cv=document.getElementById('starfield'),cx=cv.getContext('2d');
-  let W,H,stars=[],shooters=[];
-  const resize=()=>{W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;};
-  window.addEventListener('resize',resize);resize();
-  for(let i=0;i<240;i++) stars.push({x:Math.random(),y:Math.random(),r:Math.random()*1.5+.15,op:Math.random()*.72+.12,ts:Math.random()*.03+.004,tp:Math.random()*Math.PI*2,col:Math.random()>.85?'#a8d4ff':Math.random()>.7?'#ffd8a8':'#ffffff'});
-  const spawnS=()=>shooters.push({x:Math.random()*.65*W,y:Math.random()*.45*H,len:Math.random()*130+55,spd:Math.random()*5+4,ang:Math.PI/6+Math.random()*.32,life:1,dec:Math.random()*.016+.011,w:Math.random()*.9+.35,col:Math.random()>.5?'#f0c96a':'#6ab4f0'});
+  const cv=document.getElementById('cv'),cx=cv.getContext('2d');
+  let W,H,stars=[],shots=[];
+  const rsz=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;};
+  addEventListener('resize',rsz);rsz();
+  const cols=['#ffd8a8','#a8d4ff','#ffa8d4','#ffffff','#fffacd'];
+  for(let i=0;i<220;i++)stars.push({x:Math.random(),y:Math.random(),r:Math.random()*1.4+.15,op:Math.random()*.65+.1,ts:Math.random()*.03+.004,tp:Math.random()*Math.PI*2,col:cols[Math.floor(Math.random()*cols.length)]});
+  const spwn=()=>shots.push({x:Math.random()*.65*W,y:Math.random()*.4*H,len:Math.random()*110+50,spd:Math.random()*5+4,ang:Math.PI/6+Math.random()*.3,life:1,dec:Math.random()*.016+.01,w:Math.random()*.8+.3,col:Math.random()>.5?'#f0c96a':'#6ab4f0'});
   let t=0;
-  const draw=()=>{
-    cx.clearRect(0,0,W,H);t+=.016;
-    stars.forEach(s=>{const tw=Math.sin(t*s.ts*60+s.tp)*.35+.65;cx.beginPath();cx.arc(s.x*W,s.y*H,s.r*tw,0,Math.PI*2);cx.fillStyle=s.col;cx.globalAlpha=s.op*tw;cx.fill();if(s.r>1.1){cx.beginPath();cx.arc(s.x*W,s.y*H,s.r*3.2,0,Math.PI*2);const g=cx.createRadialGradient(s.x*W,s.y*H,0,s.x*W,s.y*H,s.r*3.2);g.addColorStop(0,s.col);g.addColorStop(1,'transparent');cx.fillStyle=g;cx.globalAlpha=s.op*.14*tw;cx.fill();}});
+  const draw=()=>{cx.clearRect(0,0,W,H);t+=.016;
+    stars.forEach(s=>{const tw=Math.sin(t*s.ts*60+s.tp)*.35+.65;cx.beginPath();cx.arc(s.x*W,s.y*H,s.r*tw,0,Math.PI*2);cx.fillStyle=s.col;cx.globalAlpha=s.op*tw;cx.fill();if(s.r>1.1){const g=cx.createRadialGradient(s.x*W,s.y*H,0,s.x*W,s.y*H,s.r*3);g.addColorStop(0,s.col);g.addColorStop(1,'transparent');cx.beginPath();cx.arc(s.x*W,s.y*H,s.r*3,0,Math.PI*2);cx.fillStyle=g;cx.globalAlpha=s.op*.12*tw;cx.fill();}});
     cx.globalAlpha=1;
-    shooters.forEach(sh=>{const tx=Math.cos(sh.ang)*sh.len,ty=Math.sin(sh.ang)*sh.len;const gr=cx.createLinearGradient(sh.x,sh.y,sh.x+tx,sh.y+ty);gr.addColorStop(0,'transparent');gr.addColorStop(1,sh.col);cx.beginPath();cx.moveTo(sh.x,sh.y);cx.lineTo(sh.x+tx,sh.y+ty);cx.strokeStyle=gr;cx.globalAlpha=sh.life*.9;cx.lineWidth=sh.w;cx.stroke();cx.globalAlpha=1;sh.x+=Math.cos(sh.ang)*sh.spd;sh.y+=Math.sin(sh.ang)*sh.spd;sh.life-=sh.dec;});
-    shooters=shooters.filter(s=>s.life>0);requestAnimationFrame(draw);
-  };draw();
-  const loop=()=>{spawnS();if(Math.random()>.5)setTimeout(spawnS,420);setTimeout(loop,2600+Math.random()*3400);};loop();
+    shots.forEach(s=>{const tx=Math.cos(s.ang)*s.len,ty2=Math.sin(s.ang)*s.len;const g=cx.createLinearGradient(s.x,s.y,s.x+tx,s.y+ty2);g.addColorStop(0,'transparent');g.addColorStop(1,s.col);cx.beginPath();cx.moveTo(s.x,s.y);cx.lineTo(s.x+tx,s.y+ty2);cx.strokeStyle=g;cx.globalAlpha=s.life*.88;cx.lineWidth=s.w;cx.stroke();cx.globalAlpha=1;s.x+=Math.cos(s.ang)*s.spd;s.y+=Math.sin(s.ang)*s.spd;s.life-=s.dec;});
+    shots=shots.filter(s=>s.life>0);requestAnimationFrame(draw);};draw();
+  const lp=()=>{spwn();if(Math.random()>.5)setTimeout(spwn,400);setTimeout(lp,2800+Math.random()*3200);};lp();
 })();
 
-/* ── ICON LIBRARY (Lucide-style SVG paths) ── */
-const ICONS={
-  users:`<polyline points="17 21 17 19 3 19 3 21"/><path d="M9 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
-  wrench:`<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>`,
-  star:`<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`,
-  briefcase:`<rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>`,
-  book:`<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>`,
-  rocket:`<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>`,
-  zap:`<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>`,
-  refresh:`<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>`,
-  infinity:`<path d="M12 12c-2-2.5-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.5 6-4z"/><path d="M12 12c2 2.5 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.5-6 4z"/>`,
-  school:`<path d="M14 22v-4a2 2 0 1 0-4 0v4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M18 5v17"/><path d="m4 6 8-4 8 4"/><path d="M6 5v17"/><circle cx="12" cy="9" r="2"/>`,
-  puzzle:`<path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 1-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 1 0-3.214 3.214c.446.166.855.497.925.968a.979.979 0 0 1-.276.837l-1.61 1.61a2.404 2.404 0 0 1-3.408 0l-1.569-1.567a.881.881 0 0 0-.878-.288c-.317.05-.6.217-.8.443-.225.254-.497.427-.794.474-.38.06-.784-.076-1.049-.363l-.032-.033a1.506 1.506 0 0 1 .168-2.11c.26-.225.45-.522.491-.847a.95.95 0 0 0-.322-.868L2.8 12.87A2.404 2.404 0 0 1 2.8 9.46l1.569-1.568a.881.881 0 0 0 .288-.878C4.607 6.697 4.44 6.414 4.214 6.214A1.506 1.506 0 0 1 4.046 4.1l.033-.033a1.506 1.506 0 0 1 2.11.168c.225.26.522.45.847.491.327.041.657-.072.879-.322l1.569-1.568a2.404 2.404 0 0 1 3.408 0l1.568 1.568c.23.23.556.338.878.288.317-.05.6-.217.8-.443.225-.254.497-.427.794-.474.38-.06.784.076 1.049.363l.033.032a1.506 1.506 0 0 1-.168 2.11c-.26.225-.45.522-.491.847z"/>`,
-  award:`<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>`,
-  settings:`<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>`,
-  eye:`<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>`,
-  globe:`<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>`,
-  sword:`<polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/>`,
+const IC={
   terminal:`<polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/>`,
-  brain:`<path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.44-3.14Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.44-3.14Z"/>`,
-  handshake:`<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-1"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>`,
-  folder:`<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>`,
   cloud:`<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>`,
-  chart:`<line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/>`,
-  robot:`<rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" x2="8" y1="16" y2="16"/><line x1="16" x2="16" y1="16" y2="16"/>`,
+  robot:`<rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/>`,
   shield:`<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,
-  link:`<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>`,
+  stats:`<line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/>`,
+  network:`<rect width="6" height="6" x="9" y="9" rx="1"/><path d="M3 15V9"/><path d="M21 15V9"/><path d="M3 9a6 6 0 0 1 6-6h6a6 6 0 0 1 6 6"/><path d="M3 15a6 6 0 0 0 6 6h6a6 6 0 0 0 6-6"/>`,
+  book:`<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>`,
+  rocket:`<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>`,
+  zap:`<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>`,
+  brain:`<path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.44-3.14Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.44-3.14Z"/>`,
+  star:`<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`,
   lightbulb:`<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>`,
   trending:`<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>`,
-  compass:`<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>`,
-  map:`<polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/>`,
-  heart:`<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>`,
-  mail:`<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>`,
-  waves:`<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>`,
-  think:`<path d="M12 2a8 8 0 0 1 8 8c0 3-1.5 5.5-4 7l-1 3H9l-1-3c-2.5-1.5-4-4-4-7a8 8 0 0 1 8-8z"/><line x1="9" x2="15" y1="22" y2="22"/>`,
-  clock:`<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>`,
-  path:`<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>`,
-  seedling:`<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 1 1.1 4.8 4 4 0 0 1-4-1 5 5 0 0 1-.8-4.3A3.9 3.9 0 0 1 14 6z"/>`,
-  sun:`<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>`,
-  calendar:`<rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/>`,
-  telescope:`<circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M4.5 8.5 2 17h19.7"/><path d="m9 8.5 5 8.5"/><path d="M2.8 8.5h18.4"/><path d="m5 8.5 5-6"/><path d="m19 8.5-3-6"/>`,
-  newspaper:`<path d="M4 3h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><polyline points="9 3 9 11 12 8 15 11 15 3"/>`,
-  network:`<rect width="6" height="6" x="9" y="9" rx="1"/><path d="M3 15V9"/><path d="M21 15V9"/><path d="M3 9a6 6 0 0 1 6-6h6a6 6 0 0 1 6 6"/><path d="M3 15a6 6 0 0 0 6 6h6a6 6 0 0 0 6-6"/>`,
-  speaker:`<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>`,
-  mic:`<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/>`,
+  folder:`<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>`,
+  code:`<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>`,
+  git:`<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>`,
   search:`<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>`,
-  megaphone:`<path d="m3 11 19-9-9 19-2-8-8-2z"/>`,
-  clipboard:`<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>`,
+  clock:`<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>`,
+  map:`<polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/>`,
+  mail:`<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>`,
+  compass:`<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>`,
+  link:`<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>`,
+  handshake:`<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-1"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>`,
+  award:`<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>`,
+  settings:`<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>`,
+  telescope:`<circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M4.5 8.5 2 17h19.7"/><path d="m9 8.5 5 8.5"/><path d="M2.8 8.5h18.4"/>`,
+  waves:`<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>`,
+  globe:`<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>`,
+  sun:`<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/>`,
   target:`<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>`,
-  crown:`<path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M5 20h14"/>`,
-  scales:`<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>`,
-  signal:`<path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/>`,
-  building:`<rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>`,
-  columns:`<rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="12" x2="12" y1="3" y2="21"/>`,
   question:`<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>`,
-  stats:`<line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/>`,
+  eye:`<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>`,
+  layers:`<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>`,
+  pen:`<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>`,
+  signal:`<path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/>`,
+  download:`<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>`,
+  cpu:`<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/>`,
+  database:`<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>`,
+  alert:`<triangle><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></triangle><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/>`,
+  check:`<path d="M20 6 9 17l-5-5"/>`,
+  heart:`<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>`,
+  refresh:`<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>`,
 };
-function icon(name){const p=ICONS[name]||ICONS.lightbulb;return `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">${p}</svg>`;}
 
-/* ── DATA ── */
-// Each bullet: { f: "front text", b: "back detail", icon: "icon-name" }
-const data=[
-  {type:'title',tag:'Welcome',title:'Industry Insights &amp; Career Guidance',sub:'for Aspiring IT Professionals',desc:'A guide through tech communities, career paths, and the real-world skills that matter most.'},
+const svg=(n,ex='')=>`<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" ${ex}>${IC[n]||IC.star}</svg>`;
+const T=(t)=>`<span class="tag">${t}</span>`;
+const H=(t,s='')=>`<h2 class="stitle" style="${s}">${t}</h2>`;
+const DIV=()=>`<div class="divider"><div class="dl"></div><div class="dd"></div></div>`;
+const IC_CARD=(icon,color,title,body)=>`<div class="ic-card"><div class="ic-card-icon" style="background:${color}18;border:1px solid ${color}33;">${svg(icon,`style="stroke:${color};width:22px;height:22px;"`)}</div><div class="ic-card-title">${title}</div><div class="ic-card-body">${body}</div></div>`;
+const RING=(val,color,label)=>{const c=2*Math.PI*52,f=(val/100)*c;return`<div class="ring-wrap"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--border2)" stroke-width="13"/><circle cx="60" cy="60" r="52" fill="none" stroke="${color}" stroke-width="13" stroke-dasharray="${f} ${c-f}" stroke-dashoffset="${c/4}" stroke-linecap="round" style="transform-origin:60px 60px"/></svg><div class="ring-center"><span class="ring-val">${val}%</span><span class="ring-sub">${label}</span></div></div>`;};
+const MINI=(val,lbl)=>`<div class="mini-s"><span class="mini-s-val">${val}</span><span class="mini-s-lbl">${lbl}</span></div>`;
 
-  {tag:'My Story',title:'My Journey as a Leader in Tech',
-   cards:[
-     {f:'Joined Tech Communities',b:'Being part of organizations like DEVCON exposed me to real developers and industry events outside the classroom.',icon:'users'},
-     {f:'Learned Through Real Projects',b:'Working on actual projects — not just assignments — taught me how to collaborate, debug, and ship under pressure.',icon:'wrench'},
-     {f:'Exposure to Industry Pros',b:'Meetups and conferences gave me mentors and role models I never would have found in textbooks.',icon:'star'},
-   ],stat:'Global Developer Population Study – Evans Data Corporation'},
+/* SVG ILLUSTRATIONS — each unique per slide */
 
-  {tag:'Community',title:'Why Tech Communities Matter',
-   cards:[
-     {f:'Meet Industry Professionals',b:'Communities connect students directly to engineers, designers, and founders who share real career advice.',icon:'briefcase'},
-     {f:'Learn from Real Experiences',b:'Hearing how others solved real problems is far more valuable than reading about theoretical ones.',icon:'book'},
-     {f:'Gain Opportunities',b:'Job referrals, hackathon invites, and open-source collaborations often come through community relationships.',icon:'rocket'},
-   ],stat:'Stack Overflow Developer Survey · DEVCON Philippines'},
+/* Slide 2: School vs Industry — classroom vs terminal split */
+function illus_school(){return`<svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+  <!-- LEFT: Classroom / Book side -->
+  <rect x="18" y="30" width="170" height="220" rx="14" fill="var(--surface3)" stroke="rgba(160,96,16,.35)" stroke-width="1.5"/>
+  <text x="103" y="55" text-anchor="middle" font-family="Space Mono,monospace" font-size="8" fill="var(--accent)" opacity=".7">SCHOOL</text>
+  <!-- Open book -->
+  <rect x="38" y="68" width="65" height="50" rx="6" fill="rgba(240,201,106,.2)" stroke="#f0c96a" stroke-width="1.5"/>
+  <rect x="108" y="68" width="65" height="50" rx="6" fill="rgba(240,201,106,.2)" stroke="#f0c96a" stroke-width="1.5"/>
+  <line x1="103" y1="68" x2="103" y2="118" stroke="#f0c96a" stroke-width="2"/>
+  ${[[48,80],[48,90],[48,100],[48,108],[113,80],[113,90],[113,100],[113,108]].map(([x,y])=>`<rect x="${x}" y="${y}" width="45" height="4" rx="2" fill="rgba(240,201,106,.4)"/>`).join('')}
+  <!-- Grade badge -->
+  <circle cx="155" cy="72" r="14" fill="#f0c96a" opacity=".9"/>
+  <text x="155" y="77" text-anchor="middle" font-family="Playfair Display,serif" font-size="13" font-weight="900" fill="var(--surface)">A+</text>
+  <!-- Bullet points of school traits -->
+  ${[['Theory & algorithms',140],['Controlled projects',158],['Semester deadlines',176],['GPA as currency',194],['Textbook examples',212]].map(([t,y])=>`
+    <circle cx="34" cy="${y-3}" r="3" fill="#f0c96a" opacity=".6"/>
+    <text x="43" y="${y}" font-family="DM Sans,sans-serif" font-size="9.5" fill="var(--text-sub)">${t}</text>
+  `).join('')}
 
-  {tag:'Industry Reality',title:'The Reality of the IT Industry',
-   cards:[
-     {f:'New Tech Appears Constantly',b:'From React to AI frameworks, the tools change every few years. Adaptability is the most future-proof skill.',icon:'zap'},
-     {f:'Developers Must Adapt Fast',b:'Companies expect engineers to pick up new stacks quickly. Side projects and self-study demonstrate this ability.',icon:'refresh'},
-     {f:'Learning Never Stops',b:'Senior developers still read docs, watch talks, and experiment. Curiosity is not optional — it is the job.',icon:'infinity'},
-   ],stat:'Future of Jobs Report – World Economic Forum'},
+  <!-- RIGHT: Industry / Terminal side -->
+  <rect x="212" y="30" width="170" height="220" rx="14" fill="var(--surface2)" stroke="rgba(10,79,160,.35)" stroke-width="1.5"/>
+  <text x="297" y="55" text-anchor="middle" font-family="Space Mono,monospace" font-size="8" fill="var(--accent2)" opacity=".7">INDUSTRY</text>
+  <!-- Terminal window -->
+  <rect x="228" y="65" width="138" height="58" rx="8" fill="rgba(10,15,30,.7)" stroke="rgba(106,180,240,.4)" stroke-width="1"/>
+  <circle cx="240" cy="76" r="4" fill="#f06a9e" opacity=".7"/>
+  <circle cx="252" cy="76" r="4" fill="#f0c96a" opacity=".7"/>
+  <circle cx="264" cy="76" r="4" fill="#6af0a8" opacity=".7"/>
+  <text x="236" y="94" font-family="Space Mono,monospace" font-size="8" fill="#6af0a8">$ git push origin main</text>
+  <text x="236" y="106" font-family="Space Mono,monospace" font-size="8" fill="rgba(106,180,240,.7)">✓ deployed to prod</text>
+  <text x="236" y="116" font-family="Space Mono,monospace" font-size="8" fill="#f0c96a">_▌</text>
+  ${[['Ship real features',140],['Code reviews daily',158],['Users depend on you',176],['Git, standups, PRs',194],['Learn by doing',212]].map(([t,y])=>`
+    <circle cx="228" cy="${y-3}" r="3" fill="#6ab4f0" opacity=".6"/>
+    <text x="237" y="${y}" font-family="DM Sans,sans-serif" font-size="9.5" fill="var(--text-sub)">${t}</text>
+  `).join('')}
 
-  {tag:'Education vs Work',title:'The Gap Between School and Industry',
-   cards:[
-     {f:'School Teaches Fundamentals',b:'Algorithms, data structures, and theory are important — but they are the foundation, not the full house.',icon:'school'},
-     {f:'Industry Demands Problem-Solving',b:'Employers care less about grades and more about whether you can break down a real, messy problem and ship a solution.',icon:'puzzle'},
-     {f:'Collaboration is Critical',b:'Almost every industry project involves Git, code reviews, standups, and working across teams — rarely taught in school.',icon:'users'},
-   ],stat:'Global Skills Report – Coursera'},
+  <!-- VS badge in middle -->
+  <circle cx="200" cy="140" r="18" fill="var(--accent)" opacity=".9"/>
+  <text x="200" y="145" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" font-weight="700" fill="var(--surface)">VS</text>
 
-  {tag:'Career Paths',title:'Career Paths in the IT Industry',
-   cards:[
-     {f:'Software Engineering',b:'Building apps and systems. Roles span frontend, backend, and full-stack — the most in-demand path in tech.',icon:'terminal'},
-     {f:'Cloud & Data Science',b:'Cloud manages infrastructure on AWS, Azure, GCP. Data Science extracts insights using Python, SQL, and ML models.',icon:'cloud'},
-     {f:'Artificial Intelligence',b:'Building systems that learn and reason. Covers ML engineering, NLP, computer vision, and AI research.',icon:'robot'},
-     {f:'Cybersecurity / DevOps',b:'Security defends systems from threats. DevOps automates delivery pipelines. Both are critically understaffed globally.',icon:'shield'},
-   ],stat:'LinkedIn Jobs on the Rise Report'},
+  <text x="200" y="285" text-anchor="middle" font-family="Playfair Display,serif" font-size="13" font-style="italic" fill="var(--accent)" opacity=".75">the gap is real — bridge it with projects</text>
+</svg>`;}
 
-  {tag:'Hiring',title:'What Companies Are Actually Looking For',
-   cards:[
-     {f:'Problem-Solving Ability',b:'Tech interviews test thinking, not memorization. Companies want to see how you approach an unknown problem step by step.',icon:'brain'},
-     {f:'Team Collaboration',b:'Working well with others, giving feedback, and communicating progress matters as much as writing clean code.',icon:'handshake'},
-     {f:'Real-World Projects',b:'A GitHub with deployed projects tells a hiring manager more than a 4.0 GPA. Show your work.',icon:'folder'},
-     {f:'Willingness to Learn',b:'No one knows everything. Companies hire for growth mindset — the ability to learn fast and adapt to new stacks.',icon:'book'},
-   ],stat:'Global Talent Trends Report – LinkedIn'},
+/* Slide 7: Free learning — resource cards */
+function illus_learn(){return`<svg viewBox="0 0 400 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+  <!-- Browser frame -->
+  <rect x="30" y="18" width="340" height="242" rx="14" fill="var(--surface2)" stroke="rgba(160,96,16,.4)" stroke-width="1.5"/>
+  <rect x="30" y="18" width="340" height="34" rx="14" fill="rgba(160,96,16,.12)"/>
+  <rect x="30" y="40" width="340" height="12" fill="rgba(160,96,16,.08)"/>
+  <circle cx="54" cy="35" r="6" fill="#f06a9e" opacity=".75"/>
+  <circle cx="72" cy="35" r="6" fill="#f0c96a" opacity=".75"/>
+  <circle cx="90" cy="35" r="6" fill="#6af0a8" opacity=".75"/>
+  <rect x="108" y="28" width="210" height="14" rx="7" fill="var(--surface3)" stroke="var(--border2)" stroke-width="1"/>
+  <text x="213" y="39" text-anchor="middle" font-family="Space Mono,monospace" font-size="7.5" fill="var(--text-muted)">freeCodeCamp / Coursera / The Odin Project</text>
+  <!-- Skill rows with % INSIDE the filled bar -->
+  ${[['Python',65,'#f0c96a',62],['JavaScript',80,'#6ab4f0',96],['SQL',55,'#f06a9e',130],['React',45,'#6af0a8',164],['Git',90,'#5a9fd4',198]].map(([l,w,c,y])=>`
+    <text x="48" y="${y+14}" font-family="Space Mono,monospace" font-size="10.5" font-weight="700" fill="${c}">${l}</text>
+    <rect x="148" y="${y}" width="196" height="22" rx="7" fill="var(--border2)"/>
+    <rect x="148" y="${y}" width="${Math.round(196*w/100)}" height="22" rx="7" fill="${c}" opacity=".65"/>
+    <text x="${148+Math.round(196*w/100)-8}" y="${y+15}" text-anchor="end" font-family="Space Mono,monospace" font-size="9" fill="var(--surface)" font-weight="700">${w}%</text>
+  `).join('')}
+  <text x="200" y="280" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-style="italic" fill="var(--accent)" opacity=".75">free education, no excuses</text>
+</svg>`;}
 
-  {tag:'Portfolio',title:'Why Projects Matter More Than Grades',
-   cards:[
-     {f:'Portfolio Builds Credibility',b:'A working app or website is proof of skill. It says "I can build things" in a way a transcript never can.',icon:'award'},
-     {f:'Demonstrates Practical Skills',b:'Projects show you can work with APIs, manage state, debug errors, and deploy — real engineering challenges.',icon:'settings'},
-     {f:'Employers Can See Your Work',b:'Sharing a GitHub link or live demo in an interview immediately separates you from candidates who only studied theory.',icon:'eye'},
-   ],stat:'GitHub Octoverse Report'},
+/* Slide 10 & 14: Resume — clean, no shadow, theme-aware */
+function illus_resume(){return`<svg viewBox="0 0 360 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+  <rect x="80" y="10" width="200" height="256" rx="12" fill="var(--surface2)" stroke="rgba(160,96,16,.55)" stroke-width="1.8"/>
+  <rect x="80" y="10" width="200" height="58" rx="12" fill="rgba(240,201,106,.18)"/>
+  <rect x="80" y="52" width="200" height="16" fill="rgba(240,201,106,.1)"/>
+  <circle cx="112" cy="34" r="18" fill="rgba(240,201,106,.28)" stroke="#f0c96a" stroke-width="2"/>
+  <circle cx="112" cy="28" r="6" fill="#f0c96a" opacity=".85"/>
+  <path d="M97 48 Q112 40 127 48" fill="#f0c96a" opacity=".65"/>
+  <rect x="140" y="20" width="118" height="9" rx="4" fill="#f0c96a" opacity=".7"/>
+  <rect x="140" y="34" width="80" height="7" rx="3" fill="#6ab4f0" opacity=".55"/>
+  <rect x="140" y="46" width="96" height="6" rx="3" fill="rgba(240,201,106,.3)"/>
+  <line x1="92" y1="74" x2="268" y2="74" stroke="rgba(240,201,106,.25)" stroke-width="1"/>
+  <text x="92" y="92" font-family="Space Mono,monospace" font-size="9.5" fill="#a06010" font-weight="700">Projects</text>
+  <line x1="92" y1="96" x2="268" y2="96" stroke="#f0c96a" stroke-width="1" opacity=".35"/>
+  <rect x="92" y="102" width="155" height="7" rx="3" fill="#f0c96a" opacity=".45"/>
+  <rect x="92" y="113" width="128" height="5" rx="2" fill="rgba(240,201,106,.22)"/>
+  <rect x="92" y="122" width="140" height="5" rx="2" fill="rgba(240,201,106,.16)"/>
+  <text x="92" y="142" font-family="Space Mono,monospace" font-size="9.5" fill="#0a4fa0" font-weight="700">Skills</text>
+  <line x1="92" y1="146" x2="268" y2="146" stroke="#6ab4f0" stroke-width="1" opacity=".35"/>
+  <rect x="92" y="152" width="162" height="7" rx="3" fill="#6ab4f0" opacity=".45"/>
+  <rect x="92" y="163" width="110" height="5" rx="2" fill="rgba(106,180,240,.22)"/>
+  <text x="92" y="183" font-family="Space Mono,monospace" font-size="9.5" fill="#a0105a" font-weight="700">Education</text>
+  <line x1="92" y1="187" x2="268" y2="187" stroke="#f06a9e" stroke-width="1" opacity=".35"/>
+  <rect x="92" y="193" width="148" height="7" rx="3" fill="#f06a9e" opacity=".45"/>
+  <rect x="92" y="204" width="120" height="5" rx="2" fill="rgba(240,106,158,.22)"/>
+  <rect x="92" y="213" width="134" height="5" rx="2" fill="rgba(240,106,158,.16)"/>
+  <rect x="92" y="232" width="176" height="28" rx="8" fill="rgba(240,201,106,.2)" stroke="rgba(160,96,16,.55)" stroke-width="1.3"/>
+  <text x="180" y="251" text-anchor="middle" font-family="Space Mono,monospace" font-size="9.5" fill="#a06010" font-weight="700">github.com/yourname</text>
+  <text x="180" y="280" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-style="italic" fill="#a06010" opacity=".85">1 page, clear, project-first</text>
+  <text x="180" y="298" text-anchor="middle" font-family="Space Mono,monospace" font-size="7.5" fill="rgba(120,70,0,.5)">lead with projects · include github · quantify impact</text>
+</svg>`;}
 
-  {tag:'Portfolio',title:'Building a Portfolio Early',
-   cards:[
-     {f:'Websites & Apps',b:'Even a simple personal site or to-do app shows you understand the full build cycle from design to deployment.',icon:'globe'},
-     {f:'System Projects',b:'Build tools that solve a real problem — a class scheduler, budget tracker, or automation script you actually use.',icon:'wrench'},
-     {f:'GitHub Repositories',b:'Regular commits signal consistency. Document your projects well: a README is your pitch to future collaborators.',icon:'folder'},
-   ],stat:'State of the Developer Ecosystem – JetBrains'},
+/* Slide 22: Getting started — checklist / action items */
+function illus_start(){return`<svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+  <!-- Phone mockup showing GitHub -->
+  <rect x="130" y="18" width="140" height="240" rx="22" fill="var(--surface2)" stroke="rgba(160,96,16,.4)" stroke-width="2"/>
+  <rect x="142" y="30" width="116" height="218" rx="14" fill="rgba(10,15,30,.75)" stroke="rgba(106,180,240,.25)" stroke-width="1"/>
+  <!-- Status bar -->
+  <rect x="142" y="30" width="116" height="18" rx="5" fill="rgba(106,180,240,.15)"/>
+  <text x="200" y="42" text-anchor="middle" font-family="Space Mono,monospace" font-size="7" fill="rgba(106,180,240,.7)">github.com</text>
+  <!-- Avatar -->
+  <circle cx="200" cy="70" r="18" fill="rgba(240,201,106,.25)" stroke="#f0c96a" stroke-width="1.5"/>
+  <text x="200" y="74" text-anchor="middle" font-family="Playfair Display,serif" font-size="9" fill="#f0c96a">you</text>
+  <!-- Repo cards -->
+  ${[[148,96,'my-portfolio','#f0c96a',3],[148,126,'weather-app','#6ab4f0',12],[148,156,'todo-list','#6af0a8',1],[148,186,'study-tracker','#f06a9e',0]].map(([x,y,name,c,stars])=>`
+    <rect x="${x}" y="${y}" width="104" height="24" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width=".8"/>
+    <text x="${x+7}" y="${y+15}" font-family="Space Mono,monospace" font-size="7.5" fill="${c}">${name}</text>
+    <text x="${x+90}" y="${y+15}" text-anchor="end" font-family="Space Mono,monospace" font-size="7" fill="${c}" opacity=".7">★${stars}</text>
+  `).join('')}
+  <!-- Contribution dots -->
+  <text x="152" y="222" font-family="Space Mono,monospace" font-size="6" fill="rgba(106,180,240,.5)">contributions</text>
+  ${Array.from({length:28},(_,i)=>`<rect x="${152+(i%14)*7}" y="${213+(Math.floor(i/14)*6)}" width="5" height="5" rx="1" fill="#6af0a8" opacity="${Math.random()>.5?.6:.15}"/>`).join('')}
 
-  {tag:'Stand Out',title:'How Students Can Stand Out in Tech',
-   cards:[
-     {f:'Join Hackathons',b:'48-hour sprints force you to build, present, and collaborate under pressure — incredible for rapid skill growth.',icon:'sword'},
-     {f:'Contribute to Open Source',b:'Submitting a pull request to a public project shows initiative, Git skills, and comfort with real codebases.',icon:'globe'},
-     {f:'Attend Tech Events',b:'Conferences, meetups, and webinars build vocabulary, awareness, and connections you cannot find in a classroom.',icon:'mic'},
-     {f:'Participate in Communities',b:'Active community members get noticed. Answering questions and sharing knowledge builds reputation fast.',icon:'speaker'},
-   ],stat:'Hackathon Impact Study – Major League Hacking'},
+  <!-- Action steps floating left -->
+  ${[['① GitHub',28,60,'#f0c96a'],['② Resource',28,110,'#6ab4f0'],['③ LinkedIn',28,160,'#f06a9e'],['④ Build',28,210,'#6af0a8']].map(([t,x,y,c])=>`
+    <rect x="${x}" y="${y-16}" width="90" height="26" rx="8" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1"/>
+    <text x="${x+8}" y="${y}" font-family="Space Mono,monospace" font-size="9" fill="${c}" font-weight="700">${t}</text>
+    <line x1="${x+90}" y1="${y-3}" x2="130" y2="${y-3}" stroke="${c}" stroke-width="1" stroke-dasharray="3 3" opacity=".4"/>
+  `).join('')}
 
-  {tag:'Self-Learning',title:'Learning Beyond the Classroom',
-   cards:[
-     {f:'Online Courses',b:'Platforms like freeCodeCamp, Coursera, and YouTube offer world-class education — often free — on demand.',icon:'school'},
-     {f:'Reading Documentation',b:'Learning to read official docs is a superpower. It makes you independent and faster than any tutorial ever will.',icon:'newspaper'},
-     {f:'Community Workshops',b:'Hands-on workshops from local tech groups give structured learning plus real people to ask questions.',icon:'users'},
-   ],stat:'Global Online Learning Report – Coursera'},
+  <text x="200" y="287" text-anchor="middle" font-family="Playfair Display,serif" font-size="13" font-style="italic" fill="var(--accent)" opacity=".75">start this week, not next semester</text>
+</svg>`;}
 
-  {tag:'Networking',title:'The Role of Networking in Tech',
-   cards:[
-     {f:'Connect With Developers',b:'LinkedIn, Twitter/X, and Discord communities are full of devs who share knowledge and refer people to jobs.',icon:'link'},
-     {f:'Learn Industry Insights',b:'Talking to working professionals reveals what skills are actually valued — intel you cannot Google.',icon:'lightbulb'},
-     {f:'Collaborate on Projects',b:'Great projects come from great teams. Your network is your future co-founder, teammate, or collaborator.',icon:'handshake'},
-     {f:'Build Professional Relationships',b:'Most jobs are filled before they are posted. Relationships give you access to the hidden job market.',icon:'seedling'},
-   ],stat:'Workplace Learning Report – LinkedIn Learning'},
+/* Slide 27: Soft skills — communication diagram */
+function illus_softskills(){return`<svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+  <!-- Central hub -->
+  <circle cx="200" cy="148" r="36" fill="rgba(240,201,106,.15)" stroke="#f0c96a" stroke-width="2"/>
+  <text x="200" y="144" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" font-weight="700" fill="var(--accent)">SOFT</text>
+  <text x="200" y="158" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" font-weight="700" fill="var(--accent)">SKILLS</text>
 
-  {tag:'Experience',title:'Volunteering in Tech Events',
-   cards:[
-     {f:'Event Organization',b:'Managing logistics for a conference or hackathon teaches project management faster than any course.',icon:'clipboard'},
-     {f:'Team Collaboration',b:'Coordinating with speakers, sponsors, and volunteers sharpens communication and leadership instincts.',icon:'target'},
-     {f:'Exposure to Professionals',b:'Volunteering puts you backstage with speakers and organizers — incredible for networking.',icon:'star'},
-     {f:'Leadership Development',b:'Taking responsibility for a piece of an event — even small — builds the confidence to lead bigger things.',icon:'crown'},
-   ],stat:'Volunteerism and Career Development – Deloitte'},
+  <!-- Spokes + skill bubbles -->
+  ${[
+    ['Clear Writing',200,52,'#f0c96a',200,112],
+    ['Ask Questions',320,100,'#6ab4f0',238,126],
+    ['Take Feedback',310,220,'#6af0a8',232,170],
+    ['Stay Calm',200,252,'#f06a9e',200,184],
+    ['Listen Well',90,220,'#5a9fd4',162,170],
+    ['Communicate',80,100,'#f0c96a',162,126],
+  ].map(([label,bx,by,c,lx,ly])=>`
+    <line x1="${lx}" y1="${ly}" x2="${bx}" y2="${by}" stroke="${c}" stroke-width="1.5" opacity=".35" stroke-dasharray="4 3"/>
+    <ellipse cx="${bx}" cy="${by}" rx="46" ry="20" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.3"/>
+    <text x="${bx}" y="${by+5}" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="${c}">${label}</text>
+  `).join('')}
 
-  {tag:'Leadership',title:'Leadership in Tech Communities',
-   cards:[
-     {f:'Communication',b:'Leaders translate technical ideas for non-technical stakeholders and keep teams aligned on goals.',icon:'megaphone'},
-     {f:'Project Management',b:'Breaking goals into tasks, setting timelines, and unblocking teammates are skills every senior dev uses daily.',icon:'calendar'},
-     {f:'Team Leadership',b:'Knowing when to delegate, when to mentor, and when to step back is what separates good engineers from great leads.',icon:'crown'},
-   ],stat:'Leadership Development Report – Harvard Business Publishing'},
+  <!-- PR comment example box -->
+  <rect x="26" y="272" width="348" height="30" rx="8" fill="var(--surface3)" stroke="var(--border2)" stroke-width="1"/>
+  <text x="200" y="284" text-anchor="middle" font-family="Space Mono,monospace" font-size="7.5" fill="var(--text-muted)">code review comment: "this works — but here's a cleaner approach"</text>
+  <text x="200" y="296" text-anchor="middle" font-family="Space Mono,monospace" font-size="7" fill="var(--accent)" opacity=".7">→ how you respond to this determines your trajectory</text>
 
-  {tag:'Teamwork',title:'The Power of Collaboration',
-   cards:[
-     {f:'Cross-Functional Teams',b:'Real products are built by designers, engineers, product managers, and QA working together — not silos.',icon:'columns'},
-     {f:'Shared Responsibilities',b:'Healthy teams distribute ownership. Everyone is accountable, and no single person becomes a bottleneck.',icon:'scales'},
-     {f:'Collective Problem-Solving',b:'Diverse perspectives catch more bugs, generate more ideas, and produce more resilient solutions.',icon:'search'},
-     {f:'Communication is Key',b:'Most project failures are not technical — they are communication failures. Overcommunicate, always.',icon:'signal'},
-   ],stat:'State of DevOps Report – Google Cloud & DORA'},
+  <text x="200" y="312" text-anchor="middle" font-family="Playfair Display,serif" font-size="12" font-style="italic" fill="var(--accent)" opacity=".7">technical skills get the interview. these get the job.</text>
+</svg>`;}
 
-  {tag:'Pitfalls',title:'Mistakes Students Commonly Make',
-   cards:[
-     {f:'Waiting Too Long to Start',b:'The perfect moment to start a project never comes. A rough first attempt teaches more than months of planning.',icon:'clock'},
-     {f:'Fear of Joining Communities',b:'Everyone starts as a beginner. Communities reward curiosity, not expertise. Show up and ask questions.',icon:'question'},
-     {f:'Not Exploring Fields',b:'Locking into one path too early closes doors. Try web, mobile, data, and systems before specializing.',icon:'map'},
-     {f:'Lack of Confidence',b:'Imposter syndrome affects 70% of developers. The fix is shipping things — each project builds proof of capability.',icon:'rocket'},
-   ],stat:'Global Student Skills Survey – McKinsey & Company'},
+/* Slide interview — kept but fixed */
+function illus_interview(){return`<svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+  <rect x="16" y="18" width="168" height="90" rx="13" fill="rgba(106,180,240,.09)" stroke="#6ab4f0" stroke-width="1.5"/>
+  <circle cx="52" cy="52" r="20" fill="rgba(106,180,240,.2)" stroke="#6ab4f0" stroke-width="1.5"/>
+  <circle cx="52" cy="46" r="7" fill="#6ab4f0" opacity=".7"/>
+  <path d="M36 70 Q52 60 68 70" fill="#6ab4f0" opacity=".5"/>
+  <text x="82" y="46" font-family="DM Sans,sans-serif" font-size="14" fill="#6ab4f0" font-weight="700">You</text>
+  <rect x="82" y="52" width="80" height="7" rx="3" fill="#6ab4f0" opacity=".2"/>
+  <rect x="82" y="64" width="58" height="6" rx="3" fill="#6ab4f0" opacity=".13"/>
+  <text x="28" y="98" font-family="Space Mono,monospace" font-size="8" fill="#6ab4f0" opacity=".65">Student / Candidate</text>
+  <rect x="236" y="18" width="168" height="90" rx="13" fill="rgba(240,201,106,.09)" stroke="#f0c96a" stroke-width="1.5"/>
+  <circle cx="272" cy="52" r="20" fill="rgba(240,201,106,.2)" stroke="#f0c96a" stroke-width="1.5"/>
+  <circle cx="272" cy="46" r="7" fill="#f0c96a" opacity=".7"/>
+  <path d="M256 70 Q272 60 288 70" fill="#f0c96a" opacity=".5"/>
+  <text x="300" y="44" font-family="DM Sans,sans-serif" font-size="12" fill="#f0c96a" font-weight="700">Interviewer</text>
+  <rect x="300" y="50" width="80" height="7" rx="3" fill="#f0c96a" opacity=".2"/>
+  <rect x="300" y="62" width="58" height="6" rx="3" fill="#f0c96a" opacity=".13"/>
+  <text x="248" y="98" font-family="Space Mono,monospace" font-size="8" fill="#f0c96a" opacity=".65">Senior Engineer / HR</text>
+  <line x1="186" y1="63" x2="234" y2="63" stroke="var(--border2)" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <polygon points="230,58 240,63 230,68" fill="var(--text-muted)"/>
+  <rect x="16" y="128" width="388" height="42" rx="10" fill="rgba(240,106,158,.1)" stroke="#f06a9e" stroke-width="1"/>
+  <circle cx="38" cy="149" r="8" fill="#f06a9e" opacity=".5"/>
+  <text x="56" y="154" font-family="DM Sans,sans-serif" font-size="13" fill="#f06a9e" font-weight="500">Tell me about a project you built</text>
+  <rect x="16" y="178" width="388" height="42" rx="10" fill="rgba(106,180,240,.1)" stroke="#6ab4f0" stroke-width="1"/>
+  <circle cx="38" cy="199" r="8" fill="#6ab4f0" opacity=".5"/>
+  <text x="56" y="204" font-family="DM Sans,sans-serif" font-size="13" fill="#6ab4f0" font-weight="500">How did you debug it?</text>
+  <rect x="16" y="228" width="388" height="42" rx="10" fill="rgba(106,240,168,.1)" stroke="#6af0a8" stroke-width="1"/>
+  <circle cx="38" cy="249" r="8" fill="#6af0a8" opacity=".5"/>
+  <text x="56" y="254" font-family="DM Sans,sans-serif" font-size="13" fill="#6af0a8" font-weight="500">Walk me through your code</text>
+  <text x="210" y="294" text-anchor="middle" font-family="Space Mono,monospace" font-size="8.5" fill="var(--text-muted)">practice these out loud — not just in your head</text>
+  <text x="210" y="314" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" font-style="italic" fill="var(--accent)" opacity=".75">prep beats natural talent every time</text>
+</svg>`;}
 
-  {tag:'Focus',title:'Choosing Your Specialization',
-   cards:[
-     {f:'Try Different Tools',b:'Experiment with React, Python, SQL, and cloud platforms before committing. Breadth early prevents regret later.',icon:'wrench'},
-     {f:'Join Technical Projects',b:'Real projects reveal what you enjoy — and what drains you. Both are valuable data for choosing a path.',icon:'terminal'},
-     {f:'Do Internships',b:'An internship in a field tells you in weeks what years of coursework cannot — whether you actually like the work.',icon:'building'},
-     {f:'Follow Your Interests',b:'Long-term success in tech comes from genuine curiosity. Build things you want to use. Solve problems you care about.',icon:'heart'},
-   ],stat:'Technology Workforce Report – CompTIA'},
+function illus_paths(){return`<svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+  <circle cx="190" cy="140" r="110" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 6" opacity=".2"/>
+  <g transform="translate(190,140)">
+    ${[['#f0c96a','Frontend / Web',-95,-55],['#6ab4f0','Backend / API',95,-55],['#f06a9e','Data & AI',-110,30],['#6af0a8','DevOps / Cloud',110,30],['#5a9fd4','Cybersecurity',0,105]].map(([c,l,x,y])=>`
+      <line x1="0" y1="0" x2="${x*.65}" y2="${y*.65}" stroke="${c}" stroke-width="1.5" opacity=".3"/>
+      <rect x="${x-46}" y="${y-14}" width="92" height="28" rx="8" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5"/>
+      <text x="${x}" y="${y+5}" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="${c}" font-weight="700">${l}</text>
+    `).join('')}
+    <circle cx="0" cy="0" r="28" fill="var(--accent)" opacity=".15" stroke="var(--accent)" stroke-width="2"/>
+    <text x="0" y="-4" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" fill="var(--accent)" font-weight="700">YOUR</text>
+    <text x="0" y="10" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" fill="var(--accent)" font-weight="700">SKILLS</text>
+  </g>
+  <text x="190" y="300" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" font-style="italic" fill="var(--accent)" opacity=".6">explore before you specialize</text>
+</svg>`;}
 
-  {tag:'Soft Skills',title:'Soft Skills Matter in Tech',
-   cards:[
-     {f:'Communication',b:'Writing clear tickets, giving good PR feedback, and presenting ideas to stakeholders are daily engineering tasks.',icon:'mail'},
-     {f:'Adaptability',b:'Tech stacks change. Teams change. Priorities change. The ability to stay calm and pivot is invaluable.',icon:'waves'},
-     {f:'Critical Thinking',b:'Questioning requirements, spotting edge cases, and pushing back on bad assumptions makes products better.',icon:'brain'},
-   ],stat:'Future of Jobs Report – World Economic Forum'},
+/* SLIDES — rewritten content */
+const slides=[
+/* 1 */ {type:'title',tag:'Welcome',title:'Industry Insights &amp; Career Guidance',sub:'for Aspiring IT Professionals',desc:'A practical guide to understanding the tech industry, building real skills, and landing your first role — without the fluff.'},
 
-  {tag:'Job Prep',title:'Preparing for Internships & Jobs',
-   cards:[
-     {f:'Strong Resume',b:'Keep it one page. Lead with projects and skills. Quantify impact where possible: "reduced load time by 40%".',icon:'clipboard'},
-     {f:'Active GitHub Profile',b:'Pinned projects, regular commits, and good READMEs tell your story to recruiters who look before they email.',icon:'folder'},
-     {f:'Portfolio Projects',b:'Deploy at least two projects live. A link that works in an interview is worth ten bullet points on a resume.',icon:'globe'},
-     {f:'Interview Preparation',b:'Practice LeetCode, system design, and behavioral questions. Mock interviews with peers build muscle memory.',icon:'target'},
-   ],stat:'Job Outlook Report – NACE'},
+/* 2 */ {type:'twocol',tag:'The Reality',title:'School Is the Starting Line, Not the Finish Line',bullets:[
+  {t:'Degree programs give you fundamentals — but the industry moves faster than any curriculum can keep up with.',c:'#f0c96a'},
+  {t:'Companies hire for what you can do and how you think, not just what grades you received.',c:'#6ab4f0'},
+  {t:'The good news: everything the industry wants you to know is free or affordable online right now.',c:'#f06a9e'},
+],illus:'school'},
 
-  {tag:'Future',title:'The Future of the Tech Industry',
-   cards:[
-     {f:'Artificial Intelligence',b:'AI is reshaping every industry. Developers who can integrate and work alongside AI tools will be most in demand.',icon:'robot'},
-     {f:'Cloud Computing',b:'By 2026, over 85% of enterprises will be cloud-first. Cloud skills are no longer optional — they are baseline.',icon:'cloud'},
-     {f:'Remote Work',b:'The global talent pool is now accessible. This means more opportunity — and more competition — for everyone.',icon:'globe'},
-   ],stat:'Gartner Forecast: Public Cloud Services Worldwide'},
+/* 3 */ {type:'stat',tag:'Industry Reality',num:'85%',label:'of developers learned key skills outside of formal education',desc:'The most important skills in tech — Git, frameworks, system design, debugging — are learned by building and reading docs, not passing exams. The industry rewards capability, not credentials.',source:'Stack Overflow Developer Survey 2024',rings:[{v:85,c:'#f0c96a',l:'Self-taught skills'},{v:72,c:'#6ab4f0',l:'Learned on the job'}],minis:[{v:'Free',l:'Most high-quality learning resources cost nothing'},{v:'3+',l:'New major frameworks released per year on average'}]},
 
-  {tag:'Motivation',title:'Message to Aspiring IT Professionals',
-   cards:[
-     {f:'Start Learning Early',b:'Every day you build something, read documentation, or join a community is compounding interest on your future.',icon:'sun'},
-     {f:'Stay Consistent',b:'30 minutes of coding every day beats 8 hours on weekends. Consistency builds habits. Habits build careers.',icon:'calendar'},
-     {f:'Stay Curious',b:'The developers who thrive are the ones who still get excited about new problems. Never let curiosity become a job.',icon:'telescope'},
-     {f:'Learn from Others',b:'Read other people\'s code. Watch their talks. Ask how they think. Every developer is a free masterclass.',icon:'book'},
-   ],stat:'Digital Economy Report – UNCTAD'},
+/* 4 */ {type:'compare',tag:'School vs Industry',title:'What School Teaches vs. What Work Demands',cols:[
+  {label:'University Curriculum',side:'a',items:['Theory, algorithms, and academic projects','Low-stakes — mistakes do not cost anyone','Lots of time to figure things out','Grades as the primary feedback signal']},
+  {label:'Industry Expectations',side:'b',items:['Practical problem-solving with real constraints','Code ships to real users — quality matters','Deadlines, code reviews, and standups','Git, communication, and delivery speed']}
+]},
 
-  {tag:'Hackathons',title:'How Hackathons Accelerate Growth',
-   cards:[
-     {f:'Team Collaboration',b:'You will pair-program with strangers, divide tasks under pressure, and present together — all in 48 hours.',icon:'handshake'},
-     {f:'Real Project Development',b:'Hackathons force you to build a working product with real constraints — the closest thing to a job sprint.',icon:'zap'},
-     {f:'Networking Opportunities',b:'Sponsors, judges, and fellow participants are a concentrated pool of industry connections.',icon:'network'},
-     {f:'Skill Improvement',b:'You will use APIs, libraries, and tools you\'ve never touched before. That pressure accelerates learning dramatically.',icon:'trending'},
-   ],stat:'Hackathon Report – Devpost'},
+/* 5 */ {type:'motto',num:'01 / 03',quote:'The industry does not care what you know. <strong>It cares what you can build.</strong>',author:'— The single most useful mindset shift you can make as a student'},
 
-  {tag:'Events',title:'Lessons from Organizing Tech Events',
-   cards:[
-     {f:'Leadership in Action',b:'Running a tech event means making decisions under uncertainty, managing people, and owning outcomes — real leadership.',icon:'crown'},
-     {f:'Planning & Logistics',b:'Venue, speakers, sponsors, food, AV — coordinating all of it teaches project management better than any class.',icon:'clipboard'},
-     {f:'Communication Skills',b:'Emailing sponsors, briefing volunteers, and announcing updates sharpens your professional writing and speaking.',icon:'megaphone'},
-   ]},
+/* 6 */ {type:'grid',tag:'Career Paths',title:'The Major Career Paths in IT',cards:[
+  {icon:'terminal',c:'#f0c96a',t:'Software Engineering',b:'Building apps, websites, and systems. Roles span frontend (React, Vue), backend (Node, Python, Java), and full-stack. The most in-demand path.'},
+  {icon:'cloud',c:'#6ab4f0',t:'Cloud & DevOps',b:'Managing infrastructure on AWS, Azure, or GCP. Automating deployments, containers (Docker), and CI/CD pipelines. Extremely high demand.'},
+  {icon:'robot',c:'#f06a9e',t:'AI & Machine Learning',b:'Building systems that learn. Covers ML engineering, data pipelines, NLP, and computer vision. Python and math-heavy — but incredibly well-paid.'},
+  {icon:'shield',c:'#6af0a8',t:'Cybersecurity',b:'Defending systems from attacks. Think penetration testing, threat analysis, and incident response. Critically understaffed globally — great opportunity.'},
+  {icon:'database',c:'#c06af0',t:'Data Engineering & Analytics',b:'Turning raw data into decisions. SQL, data pipelines, dashboards, and business intelligence tools. Every company needs this.'},
+  {icon:'globe',c:'#f0a06a',t:'Not Sure Yet?',b:'That is completely fine. Explore a bit of each — build a small web app, run a SQL query, try a beginner ML tutorial. You will figure it out by doing.'},
+]},
 
-  {tag:'Mindset',title:'Building Confidence in Tech',
-   cards:[
-     {f:'Build Projects Regularly',b:'Each shipped project is evidence against imposter syndrome. The portfolio grows. The doubt shrinks.',icon:'settings'},
-     {f:'Share Your Ideas',b:'Talking about what you built — even imperfectly — signals confidence and invites collaboration.',icon:'speaker'},
-     {f:'Present Your Work',b:'Demo days, lightning talks, and blog posts build a public record of your thinking and growth.',icon:'mic'},
-   ],stat:'Student Developer Learning Study – Microsoft Learn'},
+/* 7 */ {type:'twocol',tag:'Free Learning',title:'Where to Actually Learn (For Free)',bullets:[
+  {t:'freeCodeCamp and The Odin Project — full structured curricula for web development, completely free.',c:'#f0c96a'},
+  {t:'CS50 by Harvard (edX) — the best free intro to computer science that exists anywhere, period.',c:'#6ab4f0'},
+  {t:'Kaggle Learn — free courses on Python, SQL, and machine learning with real datasets.',c:'#f06a9e'},
+  {t:'Official documentation — React, Python, MDN. Learning to read docs is a genuine superpower.',c:'#6af0a8'},
+],illus:'learn'},
 
-  {tag:'Curiosity',title:'The Importance of Asking Questions',
-   cards:[
-     {f:'Encourages Deeper Learning',b:'Questions reveal the edges of your understanding — exactly where real learning happens.',icon:'question'},
-     {f:'Improves Problem-Solving',b:'Asking "why" before "how" prevents building the right thing in the wrong direction.',icon:'search'},
-     {f:'Builds Understanding',b:'Explaining concepts to others — and asking them to explain back — is the fastest path to genuine mastery.',icon:'brain'},
-     {f:'Drives Innovation',b:'Every breakthrough product started with someone asking "what if this worked differently?" Ask more.',icon:'lightbulb'},
-   ],stat:'Research – MIT Teaching and Learning Lab'},
+/* 8 */ {type:'grid',tag:'Core Skills',title:'Technical Skills Every IT Student Should Build',cards:[
+  {icon:'git',c:'#f0c96a',t:'Git & Version Control',b:'Every tech job uses Git. Learn branching, pull requests, and resolving merge conflicts. It is not optional.'},
+  {icon:'terminal',c:'#6ab4f0',t:'Command Line / Terminal',b:'Navigate the file system, run scripts, SSH into servers. The terminal is where real development happens.'},
+  {icon:'code',c:'#f06a9e',t:'One Language, Done Well',b:'Pick Python or JavaScript and go deep. Fundamentals, data structures, debugging, and error handling — master one before spreading thin.'},
+  {icon:'search',c:'#6af0a8',t:'How to Google Effectively',b:'Reading Stack Overflow, GitHub issues, and documentation — this is literally what senior devs spend half their day doing.'},
+  {icon:'database',c:'#c06af0',t:'Basic SQL',b:'Every backend role and data role needs SQL. Learn SELECT, JOIN, GROUP BY, and indexes. Databases are everywhere.'},
+  {icon:'layers',c:'#f0a06a',t:'How the Web Works',b:'HTTP, DNS, APIs, JSON, REST. Understanding how data moves between client and server unlocks almost every area of tech.'},
+]},
 
-  {tag:'Start Now',title:'How to Start Even If You Feel Behind',
-   cards:[
-     {f:'Focus on Progress',b:'Compare yourself to who you were last month, not to engineers with 10 years of experience. Progress is the metric.',icon:'trending'},
-     {f:'Start Small',b:'Build a calculator. Clone a landing page. Write a script that automates one thing. Small wins compound.',icon:'seedling'},
-     {f:'Learn Consistently',b:'20 focused minutes daily beats sporadic 5-hour sessions. Schedule it. Protect it. Show up.',icon:'clock'},
-     {f:'Avoid Comparison',b:'Everyone\'s timeline is different. The only dangerous comparison is you today vs. you yesterday.',icon:'path'},
-   ],stat:'Stack Overflow Developer Survey'},
+/* 9 */ {type:'stat',tag:'Job Market',num:'70%',label:'of jobs are filled before they are publicly posted',desc:'Most roles get filled through referrals and internal networks — not job boards. But this does not mean "join organizations." It means build a public presence: GitHub, LinkedIn, and projects people can actually see.',source:'LinkedIn Workplace Learning Report',rings:[{v:70,c:'#f0c96a',l:'Hidden job market'},{v:6,c:'#6ab4f0',l:'Referral multiplier'}],minis:[{v:'6x',l:'More likely to be hired when referred by someone inside'},{v:'GitHub',l:'Your public profile is your professional handshake'}]},
 
-  {tag:'Mentorship',title:'The Role of Mentorship in Tech',
-   cards:[
-     {f:'Career Advice',b:'A mentor who has navigated your exact path can save you years of trial and error with one conversation.',icon:'compass'},
-     {f:'Skill Development',b:'Mentors give targeted feedback on your actual work — far more useful than generic tutorials.',icon:'settings'},
-     {f:'Industry Insights',b:'Mentors share unwritten rules: what to say in interviews, which skills to prioritize, which paths to avoid.',icon:'map'},
-     {f:'Professional Growth',b:'Being introduced to a mentor\'s network opens doors that no job board or LinkedIn message can replicate.',icon:'seedling'},
-   ],stat:'Mentorship Impact Study – Harvard Business Review'},
+/* 10 */ {type:'image',tag:'Portfolio',title:'Projects Are More Powerful Than a Perfect GPA',desc:'A working app or a documented GitHub repository is concrete evidence of skill. It shows you can start something, figure out problems, and finish. That is what companies are actually screening for in the first interview.',illus:'resume'},
 
-  {tag:'Challenges',title:'Real Challenges in Learning Tech',
-   cards:[
-     {f:'Information Overload',b:'There are too many frameworks, languages, and tools. The solution: pick one stack and go deep before going wide.',icon:'waves'},
-     {f:'Self-Doubt',b:'Imposter syndrome is universal. The antidote is building things in public and seeing that others face the same struggles.',icon:'question'},
-     {f:'Choosing Technologies',b:'Start with what the job market demands, not what is trending on Twitter. SQL, Python, and Git are always relevant.',icon:'settings'},
-     {f:'Lack of Direction',b:'Find a community, pick a project, and commit to shipping it. Direction comes from doing, not thinking.',icon:'compass'},
-   ],stat:'Stack Overflow Developer Survey'},
+/* 11 */ {type:'timeline',tag:'Portfolio',title:'Building a Portfolio That Gets You Hired',items:[
+  {label:'Week 1–2',c:'#f0c96a',t:'Start Simple — Build Something',b:'A personal website, a to-do app, a weather dashboard using a free API. It does not need to be impressive. It needs to exist.'},
+  {label:'Month 1',c:'#6ab4f0',t:'Solve a Real Problem',b:'Build a tool you actually want to use — a habit tracker, a study timer, a grade calculator. Personal itch projects always look more genuine.'},
+  {label:'Month 2',c:'#f06a9e',t:'Put It on GitHub with a README',b:'Explain what the project does, how to run it, and what you learned. A good README is your pitch to every engineer who clicks your profile.'},
+  {label:'Month 3+',c:'#6af0a8',t:'Deploy It Live',b:'Vercel, Netlify, and Railway are free for personal projects. A clickable link in an interview is worth ten bullet points on a resume.'},
+]},
 
-  {tag:'Solutions',title:'How Communities Solve Challenges',
-   cards:[
-     {f:'Shared Knowledge',b:'Community forums, Discord servers, and study groups make stuck moments shorter and learning faster.',icon:'book'},
-     {f:'Peer Learning',b:'Teaching a concept to a peer cements your own understanding — and helps two people grow at once.',icon:'users'},
-     {f:'Collaboration Opportunities',b:'Open-source projects and group hackathons let you build things too large for one person alone.',icon:'link'},
-     {f:'Mentorship Access',b:'Communities put you in rooms with people a few steps ahead. That proximity accelerates everything.',icon:'star'},
-   ],stat:'Open Source Community Report – Linux Foundation'},
+/* 12 */ {type:'motto',num:'02 / 03',quote:'You do not need ten projects. <strong>You need two or three that you can talk about deeply.</strong>',author:'— On what actually matters in a portfolio'},
 
-  {tag:'Long-term',title:'Building a Long-Term Tech Career',
-   cards:[
-     {f:'Keep Learning New Tech',b:'Dedicate time each month to exploring a new tool, language, or paradigm. Stagnation is the real career risk.',icon:'telescope'},
-     {f:'Build Deep Experience',b:'Depth in one domain plus breadth across several makes you a T-shaped engineer — the most hireable profile.',icon:'building'},
-     {f:'Stay Updated',b:'Follow blogs, newsletters, and conference talks. 30 minutes a week of industry reading keeps you relevant for years.',icon:'newspaper'},
-     {f:'Expand Your Network',b:'Your network is your career safety net. Maintain relationships, not just connections. Give before you ask.',icon:'network'},
-   ],stat:'Tech Workforce Trends Report – CompTIA'},
+/* 13 */ {type:'grid',tag:'Job Prep',title:'How to Actually Prepare for Interviews',cards:[
+  {icon:'brain',c:'#f0c96a',t:'Study Data Structures',b:'Arrays, linked lists, stacks, queues, trees, hash maps. You do not need to memorize every algorithm — understand how they work and when to use them.'},
+  {icon:'target',c:'#6ab4f0',t:'Practice on LeetCode',b:'Start with Easy problems on arrays and strings. Aim for 30–50 before applying. Understanding the patterns matters more than grinding hundreds.'},
+  {icon:'eye',c:'#f06a9e',t:'Know Your Projects Cold',b:'Be ready to explain every line of your portfolio. What problem did you solve? What would you do differently? This is where most students lose interviews.'},
+  {icon:'handshake',c:'#6af0a8',t:'Behavioral Questions',b:'"Tell me about a time you faced a problem." Prepare 3–5 real stories using the STAR format: Situation, Task, Action, Result.'},
+  {icon:'cpu',c:'#c06af0',t:'System Design Basics',b:'For internships, understand how a web app works end-to-end: client → server → database → response. That is enough to stand out.'},
+  {icon:'signal',c:'#f0a06a',t:'Mock Interviews',b:'Practice out loud with a friend or record yourself. Thinking on paper and speaking your solution are completely different skills.'},
+]},
 
-  {type:'closing',tag:'Your Next Step',title:'Final Reflection: Your Next Step in Tech',
-   cards:[
-     {f:'Identify Your Interests',b:'Explore different fields without pressure. Curiosity, not certainty, is the right starting point.',icon:'sun'},
-     {f:'Start Learning Consistently',b:'One hour a day, every day, for a year compounds into something extraordinary. Start tonight.',icon:'clock'},
-     {f:'Join Communities',b:'Find your people — online or local. Shared energy and accountability make the journey far more sustainable.',icon:'handshake'},
-     {f:'Build Real Projects',b:'The best time to start was a year ago. The second best time is right now. Pick an idea and build it.',icon:'rocket'},
-   ],stat:'Future of Jobs Report – World Economic Forum'},
+/* 14 */ {type:'twocol',tag:'Resume',title:'Writing a Resume That Actually Gets Read',bullets:[
+  {t:'One page maximum. Recruiters spend 6–10 seconds on a first pass — lead with your strongest projects first.',c:'#f0c96a'},
+  {t:'Quantify impact wherever possible: "Built a REST API serving 200 requests/day" beats "worked on backend development."',c:'#6ab4f0'},
+  {t:'Skills section: list languages, frameworks, and tools you can actually talk about in an interview.',c:'#f06a9e'},
+  {t:'Always include your GitHub link and any live project URLs. Make it one click to see your work.',c:'#6af0a8'},
+],illus:'resume'},
+
+/* 15 */ {type:'stat',tag:'AI Era',num:'60%',label:'of the most in-demand roles in 10 years do not exist yet',desc:'AI is reshaping every part of software development. Developers who understand how to use AI tools — not just fear them — will be most valuable. The skill is learning how to learn, not memorizing today\'s answers.',source:'World Economic Forum Future of Jobs Report',rings:[{v:60,c:'#f06a9e',l:'New roles emerging'},{v:78,c:'#6ab4f0',l:'AI-adjacent demand'}],minis:[{v:'AI',l:'Knowing how to prompt, integrate, and evaluate AI is a real skill'},{v:'Now',l:'The best time to start building AI-adjacent experience is today'}]},
+
+/* 16 */ {type:'grid',tag:'AI & Tools',title:'Using AI Tools to Learn Faster',cards:[
+  {icon:'robot',c:'#f0c96a',t:'AI as a Tutor',b:'Use ChatGPT or Claude to explain concepts you do not understand, generate practice problems, and get code reviewed. It is like having a patient tutor 24/7.'},
+  {icon:'code',c:'#6ab4f0',t:'GitHub Copilot',b:'Learn to use AI code completion — but understand what it generates. Blindly accepting AI code without understanding it is how bugs happen.'},
+  {icon:'lightbulb',c:'#f06a9e',t:'AI Will Not Replace You',b:'AI replaces repetitive tasks, not problem-solving and judgment. The developers who thrive are those who use AI as leverage, not a crutch.'},
+  {icon:'brain',c:'#6af0a8',t:'Still Learn the Fundamentals',b:'Understanding algorithms, data structures, and system design makes you better at working with AI — not less relevant. Foundations matter more, not less.'},
+]},
+
+/* 17 */ {type:'compare',tag:'Mindset',title:'Two Types of Students — One Outcome',cols:[
+  {label:'Passive Learner',side:'a',items:['Waits for classes to teach everything','Studies theory but never ships anything','Job hunts only after graduation','Relies on GPA to open doors']},
+  {label:'Active Builder',side:'b',items:['Builds projects between semesters','Has a GitHub with real commits','Applies for internships in Year 2','GPA is a fallback, not the plan']}
+]},
+
+/* 18 */ {type:'pullquote',text:'Imposter syndrome is universal. Every developer Googles basic syntax. The difference is that experienced developers are comfortable not knowing — and confident they can figure it out.',attr:'— On why feeling "not ready" is normal and not a reason to wait',minis:[{v:'70%',l:'of developers experience imposter syndrome regularly'},{v:'Ship',l:'The most effective cure is building and releasing things'}]},
+
+/* 19 */ {type:'grid',tag:'Common Mistakes',title:'Mistakes That Cost Students Time and Opportunities',cards:[
+  {icon:'clock',c:'#f0c96a',t:'Tutorial Hell',b:'Watching 40 hours of tutorials without building anything. Tutorials are a starting point — not a substitute for making things yourself.'},
+  {icon:'layers',c:'#6ab4f0',t:'Learning Too Many Things at Once',b:'JavaScript, Python, Java, Rust, Go — all at the same time. Pick one stack, get competent, then branch out. Depth beats breadth early on.'},
+  {icon:'question',c:'#f06a9e',t:'Not Applying Early Enough',b:'Students wait until they feel "ready" to apply for internships. Apply before you feel ready — the interview process itself teaches you what to learn next.'},
+  {icon:'eye',c:'#6af0a8',t:'Invisible Portfolio',b:'Building projects but keeping them private or undeployed. Make things public. An employer cannot be impressed by work they cannot see.'},
+  {icon:'refresh',c:'#c06af0',t:'Giving Up After One Rejection',b:'Rejection is part of the process. Most engineers applied to 20–50+ companies for their first role. Rejection is data, not a verdict on your ability.'},
+  {icon:'alert',c:'#f0a06a',t:'Ignoring Soft Skills',b:'Clear communication in code reviews, Slack messages, and standups matters. You will spend more time communicating than coding in most roles.'},
+]},
+
+/* 20 */ {type:'timeline',tag:'Year by Year',title:'A Realistic Student Timeline',items:[
+  {label:'Year 1',c:'#f0c96a',t:'Learn the Basics',b:'Pick one language, understand how programs work, build a few small projects. Set up Git, GitHub, and a basic developer environment.'},
+  {label:'Year 2',c:'#6ab4f0',t:'Build and Apply',b:'Create 2–3 real projects. Apply for internships even if you think you are not ready. Start learning SQL and how to work with APIs.'},
+  {label:'Year 3',c:'#f06a9e',t:'Go Deeper and Specialize',b:'Pick a direction — web, data, cloud, security. Contribute to open source if you can. Land an internship and treat it seriously.'},
+  {label:'Final Year',c:'#6af0a8',t:'Polish and Network',b:'Refine your resume and portfolio. Build on internship experience. Start applying 6 months before graduation — earlier than you think.'},
+]},
+
+/* 21 */ {type:'motto',num:'03 / 03',quote:'Build something small today. <strong>Future you will thank current you for starting.</strong>',author:'— On the only career advice that actually matters right now'},
+
+/* 22 */ {type:'twocol',tag:'Getting Started',title:'Practical First Steps You Can Take This Week',bullets:[
+  {t:'Make a GitHub account and push your very first repository — even if it is just a "Hello World" project.',c:'#f0c96a'},
+  {t:'Pick one resource (CS50, freeCodeCamp, The Odin Project) and commit to it for 30 days.',c:'#6ab4f0'},
+  {t:'Set up LinkedIn with your education and list the skills you are currently learning.',c:'#f06a9e'},
+  {t:'Pick one small project idea and start building this week, not next semester.',c:'#6af0a8'},
+],illus:'start'},
+
+/* 23 */ {type:'grid',tag:'Mindset',title:'The Developer Mindset That Gets You Hired',cards:[
+  {icon:'search',c:'#f0c96a',t:'Debugging Patience',b:'Being stuck is not failure — it is the job. Good developers stay calm, break the problem down, and search methodically. Get comfortable with discomfort.'},
+  {icon:'book',c:'#6ab4f0',t:'Read the Docs',b:'Before asking for help, read the official docs. This habit alone puts you ahead of most junior applicants.'},
+  {icon:'refresh',c:'#f06a9e',t:'Embrace Iteration',b:'First version will always be rough. Ship it, get feedback, improve it. Done is better than perfect — especially when you are starting out.'},
+  {icon:'trending',c:'#6af0a8',t:'Stay Curious About Why',b:'Ask why things work the way they do, not just how to use them. Understanding the "why" makes you adaptable when the tools change.'},
+]},
+
+/* 24 */ {type:'pullquote',text:'You do not need a perfect plan. You need a good enough plan and the discipline to show up and build consistently — even for just 30 minutes a day.',attr:'— On consistency being the real differentiator',minis:[{v:'30min',l:'Daily focused practice beats occasional 5-hour sessions'},{v:'365x',l:'Small daily progress compounds dramatically over one year'}]},
+
+/* 25 */ {type:'stat',tag:'Internships',num:'3×',label:'more likely to receive a full-time offer after an internship',desc:'Internships are the most efficient path to a full-time role. They let you prove yourself, build real experience, and skip the cold application process. Apply early — Year 2 is not too soon.',source:'National Association of Colleges and Employers (NACE)',rings:[{v:65,c:'#f0c96a',l:'Interns converted to FTE'},{v:82,c:'#6ab4f0',l:'Prefer experienced hires'}],minis:[{v:'Year 2',l:'Ideal time to start applying for internships'},{v:'Early',l:'Applications often open 6–9 months before the start date'}]},
+
+/* 26 */ {type:'grid',tag:'Open Source',title:'Why Open Source Experience Matters',cards:[
+  {icon:'globe',c:'#f0c96a',t:'Real Codebases',b:'Reading and contributing to open-source projects exposes you to professional code quality, naming conventions, and architecture you will not see in tutorials.'},
+  {icon:'git',c:'#6ab4f0',t:'Git Collaboration',b:'Opening pull requests, responding to review comments, and navigating a project\'s issue tracker — these are daily internship skills.'},
+  {icon:'award',c:'#f06a9e',t:'Credible Resume Line',b:'"Contributed to [project] used by X users" is significantly more impressive than any academic project description.'},
+  {icon:'compass',c:'#6af0a8',t:'Good First Issues',b:'GitHub labels many issues as "good first issue" — these are intentionally approachable. Start there. No experience needed.'},
+]},
+
+/* 27 */ {type:'twocol',tag:'Soft Skills',title:'Technical Skills Get You the Interview. These Get You the Job.',bullets:[
+  {t:'Clear writing: slack messages, PR descriptions, and documentation that others can actually understand.',c:'#f0c96a'},
+  {t:'Asking good questions — knowing when to research independently and when to ask, and being specific when you do.',c:'#6ab4f0'},
+  {t:'Receiving feedback gracefully — code reviews are not personal. Treating them as learning beats getting defensive.',c:'#f06a9e'},
+],illus:'softskills'},
+
+/* 28 */ {type:'dashboard'},
+
+/* 29 */ {type:'ty'},
 ];
 
-/* ── BUILD SLIDES ── */
+/* BUILD */
 const sw=document.getElementById('sw'),dotsEl=document.getElementById('dots');
-document.getElementById('tn').textContent=data.length;
+document.getElementById('tn').textContent=slides.length;
 
-data.forEach((d,i)=>{
-  const el=document.createElement('div');
-  el.className='slide'+(d.type==='title'?' ts':d.type==='closing'?' cls':'');
-  el.dataset.i=i;
+slides.forEach((d,i)=>{
+  const el=document.createElement('div');el.dataset.i=i;
 
   if(d.type==='title'){
-    el.innerHTML=`<div class="card"><div class="watermark">${i+1}</div>
-      <span class="tag">${d.tag}</span>
-      <h1 class="stitle">${d.title}</h1>
-      <p class="sub">${d.sub}</p>
-      <p class="desc">${d.desc}</p>
-      <span class="cta">▸ Begin Presentation</span></div>`;
-  } else {
-    const cardsHTML=(d.cards||[]).map((c,ci)=>`
-      <div class="fc-wrap" tabindex="0" aria-label="Flashcard: ${c.f}">
-        <div class="fc-inner">
-          <div class="fc-front">
-            <div class="fc-front-num">${String(ci+1).padStart(2,'0')}</div>
-            <div class="fc-front-text">${c.f}</div>
-            <div class="fc-hint">tap to reveal ↻</div>
-          </div>
-          <div class="fc-back">
-            <div class="fc-back-icon">${icon(c.icon)}</div>
-            <div class="fc-back-label">Detail</div>
-            <div class="fc-back-text">${c.b}</div>
-          </div>
-        </div>
-      </div>`).join('');
-    const statIcon=`<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;stroke:var(--accent2);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0">${ICONS.stats}</svg>`;
-    const sh=d.stat?`<div class="stat">${statIcon}${d.stat}</div>`:'';
-    el.innerHTML=`<div class="card"><div class="watermark">${i+1}</div>
-      <span class="tag">${d.tag}</span>
-      <h2 class="stitle">${d.title}</h2>
-      <div class="div"><div class="dl"></div><div class="dd"></div></div>
-      <div class="fc-grid">${cardsHTML}</div>${sh}</div>`;
-  }
+    el.className='slide s-title';
+    el.innerHTML=`<div class="card"><div class="card-glow"></div>${T(d.tag)}<h1 class="big">${d.title}</h1><p class="sub">${d.sub}</p><p class="desc">${d.desc}</p><span class="cta-pill">Begin Presentation</span></div>`;
 
-  // flip on click / keyboard
-  el.querySelectorAll('.fc-wrap').forEach(fc=>{
-    const flip=()=>fc.classList.toggle('flipped');
-    fc.addEventListener('click',flip);
-    fc.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();flip();}});
-  });
+  } else if(d.type==='motto'){
+    el.className='slide s-motto';
+    el.innerHTML=`<div class="card"><div class="motto-decor tl"></div><div class="motto-decor br"></div><div class="card-glow"></div>${T(d.num)}<div class="motto-mark">&ldquo;</div><p class="motto-quote">${d.quote}</p><p class="motto-author">${d.author}</p></div>`;
+
+  } else if(d.type==='twocol'){
+    const iMap={school:illus_school,learn:illus_learn,resume:illus_resume,interview:illus_interview,start:illus_start,softskills:illus_softskills,paths:illus_paths};
+    const illusHTML=(iMap[d.illus]||illus_learn)();
+    const bHTML=(d.bullets||[]).map(b=>`<div class="bl-item"><div class="bl-dot" style="background:${b.c};box-shadow:0 0 6px ${b.c}"></div><span class="bl-text">${b.t}</span></div>`).join('');
+    el.className='slide s-twocol';
+    el.innerHTML=`<div class="card"><div class="card-glow"></div><div class="tc-left">${T(d.tag)}${H(d.title,'font-size:clamp(1.7rem,3.2vw,2.6rem);')}${DIV()}<div class="bl-list">${bHTML}</div></div><div class="tc-right"><div class="svgi">${illusHTML}</div></div></div>`;
+
+  } else if(d.type==='stat'){
+    const rings=`<div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;">${(d.rings||[]).map(r=>RING(r.v,r.c,r.l)).join('')}</div>`;
+    const minis=(d.minis||[]).map(m=>MINI(m.v,m.l)).join('');
+    el.className='slide s-stat';
+    el.innerHTML=`<div class="card"><div class="card-glow"></div><div class="stat-main">${T(d.tag)}<div class="stat-num">${d.num}</div><div class="stat-label">${d.label}</div><p class="stat-desc">${d.desc}</p><div class="stat-source">${d.source}</div></div><div class="stat-side">${rings}<div class="mini-stats">${minis}</div></div></div>`;
+
+  } else if(d.type==='timeline'){
+    const tl=(d.items||[]).map(it=>`<div class="tl-item"><div class="tl-dot" style="background:${it.c};box-shadow:0 0 10px ${it.c}"></div><div class="tl-content"><div class="tl-label" style="color:${it.c}">${it.label}</div><div class="tl-title">${it.t}</div><div class="tl-body">${it.b}</div></div></div>`).join('');
+    el.className='slide s-timeline';
+    el.innerHTML=`<div class="card"><div class="card-glow"></div>${T(d.tag)}${H(d.title,'font-size:clamp(1.7rem,3vw,2.4rem);')}${DIV()}<div class="tl-wrap">${tl}</div></div>`;
+
+  } else if(d.type==='grid'){
+    const gc=(d.cards||[]).map(c=>IC_CARD(c.icon,c.c,c.t,c.b)).join('');
+    el.className='slide s-grid';
+    el.innerHTML=`<div class="card"><div class="card-glow"></div>${T(d.tag)}${H(d.title,'font-size:clamp(1.7rem,3vw,2.4rem);')}${DIV()}<div class="ic-grid">${gc}</div></div>`;
+
+  } else if(d.type==='pullquote'){
+    const minis=(d.minis||[]).map(m=>MINI(m.v,m.l)).join('');
+    el.className='slide s-pullquote';
+    el.innerHTML=`<div class="card"><div class="card-glow"></div><div class="pq-bar"></div><div class="pq-body"><div class="pq-mark">&ldquo;</div><p class="pq-text">${d.text}</p><p class="pq-attr">${d.attr}</p></div><div class="pq-side"><div class="mini-stats">${minis}</div></div></div>`;
+
+  } else if(d.type==='compare'){
+    const col=(c)=>`<div class="cmp-col col-${c.side}"><div class="cmp-col-title">${c.label}</div>${c.items.map(it=>`<div class="cmp-item">${it}</div>`).join('')}</div>`;
+    el.className='slide s-compare';
+    el.innerHTML=`<div class="card"><div class="card-glow"></div><div class="cmp-hdr">${T(d.tag)}${H(d.title)}</div><div class="cmp-grid">${col(d.cols[0])}${col(d.cols[1])}<div class="cmp-vs">VS</div></div></div>`;
+
+  } else if(d.type==='image'){
+    const iMap={school:illus_school,learn:illus_learn,resume:illus_resume,interview:illus_interview,start:illus_start,softskills:illus_softskills,paths:illus_paths};
+    const illusHTML=(iMap[d.illus]||illus_resume)();
+    el.className='slide s-image';
+    el.innerHTML=`<div class="card"><div class="img-cap">${T(d.tag)}${H(d.title,'font-size:clamp(1.5rem,2.8vw,2.3rem);margin:.7rem 0;')}<p class="desc">${d.desc}</p></div><div class="img-area"><div class="svgi-full">${illusHTML}</div><div class="img-overlay"></div></div></div>`;
+
+  } else if(d.type==='dashboard'){
+    el.className='slide s-dash';
+    const sections=[['Reality Check',3],['Career Paths',6],['Free Learning',4],['Core Skills',6],['Job Market',3],['Portfolio',4],['Interview Prep',6],['Resume',4],['AI & Tools',4],['Mistakes',6],['Timeline',4],['Open Source',4],['Soft Skills',3],['Internships',3]];
+    const totalCards=sections.reduce((a,s)=>a+s[1],0);
+    const top=[...sections].sort((a,b)=>b[1]-a[1]).slice(0,6);
+    const maxC=Math.max(...top.map(s=>s[1]));
+    const bc=['#f0c96a','#6ab4f0','#f06a9e','#6af0a8','#c06af0','#f0a06a'];
+    const barsH=top.map((s,j)=>`<div class="bar-row"><span class="bar-lbl">${s[0]}</span><div class="bar-track"><div class="bar-fill" data-w="${(s[1]/maxC*100).toFixed(0)}%" style="background:${bc[j]}"></div></div><span class="bar-val">${s[1]}</span></div>`).join('');
+    const cats=[{l:'Technical Skills',n:16,c:'#f0c96a'},{l:'Career & Jobs',n:13,c:'#6ab4f0'},{l:'Portfolio & Projects',n:8,c:'#f06a9e'},{l:'Mindset',n:7,c:'#6af0a8'},{l:'AI & Future',n:6,c:'#c06af0'}];
+    const catTot=cats.reduce((a,c)=>a+c.n,0);
+    const R=42,CX=48,CY=48,CI=2*Math.PI*R;let off=0;
+    const slices=cats.map(c=>{const d2=(c.n/catTot)*CI;const s=`<circle cx="${CX}" cy="${CY}" r="${R}" fill="none" stroke="${c.c}" stroke-width="12" stroke-dasharray="${d2} ${CI-d2}" stroke-dashoffset="${-off}" style="transform-origin:${CX}px ${CY}px;transform:rotate(-90deg)"/>`;off+=d2;return s;}).join('');
+    const legH=cats.map(c=>`<div class="leg-item"><div class="leg-dot" style="background:${c.c}"></div>${c.l}</div>`).join('');
+    const progs=[{l:'Technical Skills',p:92,c:'#f0c96a'},{l:'Portfolio Building',p:85,c:'#6ab4f0'},{l:'Job Prep',p:88,c:'#f06a9e'},{l:'Mindset',p:78,c:'#6af0a8'},{l:'AI Awareness',p:70,c:'#c06af0'}];
+    const progH=progs.map(p=>`<div class="prog-item"><div class="prog-lbl">${p.l}<span>${p.p}%</span></div><div class="prog-track"><div class="prog-fill" data-w="${p.p}%" style="background:${p.c}"></div></div></div>`).join('');
+    el.innerHTML=`<div class="card"><div class="card-glow"></div><div class="dash-hdr"><div>${T('Summary')}${H('Your IT Career Journey at a Glance','font-size:clamp(1.3rem,2.5vw,1.9rem);margin:.5rem 0;')}<p style="font-size:.7rem;color:var(--text-muted);font-family:Space Mono,monospace">Everything covered — practical, actionable, no fluff</p></div><div class="dash-badge">${svg('star','style="width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;"')} Complete</div></div><div class="dash-grid"><div class="d-card"><div class="d-card-title">Slides Covered</div><div class="d-big" id="dn1">0 <span>slides</span></div><div class="d-note">"every slide a step forward"</div><div class="d-card-title" style="margin-top:.5rem;color:var(--accent2)">Total Key Insights</div><div class="d-big" id="dn2" style="font-size:clamp(1.6rem,2.8vw,2.4rem)">0<span> points</span></div></div><div class="d-card"><div class="d-card-title">Topics by Depth</div><div class="bar-chart">${barsH}</div></div><div class="d-card"><div class="d-card-title">Focus Areas</div><div class="donut-wrap"><svg width="96" height="96" viewBox="0 0 96 96">${slices}<text x="48" y="45" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" font-weight="700" fill="#f2efe8">${catTot}</text><text x="48" y="57" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(242,239,232,.38)">topics</text></svg><div class="donut-legend">${legH}</div></div></div><div class="d-card"><div class="d-card-title">Coverage Score</div><div class="prog-list">${progH}</div></div><div class="dash-quote"><div class="dq-mark">&ldquo;</div><div><div class="dq-text">Build something. Ship it. Learn from it. Repeat. That is the entire career plan.</div><div class="dq-attr">— IT Career Insights Summary</div></div></div></div></div>`;
+    const obs=new MutationObserver(()=>{
+      if(!el.classList.contains('active'))return;
+      setTimeout(()=>{el.querySelectorAll('.bar-fill').forEach(b=>b.style.width=b.dataset.w);el.querySelectorAll('.prog-fill').forEach(b=>b.style.width=b.dataset.w);},250);
+      let n1=0,n2=0;const iv=setInterval(()=>{n1=Math.min(n1+1,slides.length);n2=Math.min(n2+1,totalCards);document.getElementById('dn1').innerHTML=`${n1} <span>slides</span>`;document.getElementById('dn2').innerHTML=`${n2}<span> points</span>`;if(n1>=slides.length&&n2>=totalCards)clearInterval(iv);},28);
+    });
+    obs.observe(el,{attributes:true,attributeFilter:['class']});
+
+  } else if(d.type==='ty'){
+    el.className='slide s-ty';
+    const sparks=Array.from({length:20},(_,j)=>{const C=['#f0c96a','#6ab4f0','#f06a9e','#6af0a8','#c06af0'][j%5];return`<div class="ty-spark" style="left:${Math.random()*90+5}%;bottom:${Math.random()*30+5}%;width:${Math.random()*5+3}px;height:${Math.random()*5+3}px;background:${C};--dx:${(Math.random()-.5)*80}px;animation-duration:${Math.random()*3+2.5}s;animation-delay:${Math.random()*4}s;"></div>`;}).join('');
+    el.innerHTML=`<div class="card"><div class="card-glow"></div><div class="ty-sparks">${sparks}</div>${T('Thank You')}<div class="ty-big">Now Go Build.</div><div class="ty-sub">That is the only advice that actually matters.</div><div class="ty-div"></div><div class="ty-clbl">Questions? Ideas? Reach out anytime</div><a class="ty-email" href="mailto:pmanucom@devcon.ph">${svg('mail','style="width:15px;height:15px;stroke:var(--accent);stroke-width:1.8;fill:none;"')}pmanucom@devcon.ph</a><div class="ty-role">IT Career Insights · <span>For Aspiring IT Professionals</span></div></div>`;
+  }
 
   sw.appendChild(el);
 });
 
-/* ── DOTS ── */
-data.forEach((_,i)=>{
-  const d=document.createElement('div');
-  d.className='dot'+(i===0?' active':'');
-  d.addEventListener('click',()=>go(i));
-  dotsEl.appendChild(d);
-});
+/* DOTS */
+slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.addEventListener('click',()=>go(i));dotsEl.appendChild(d);});
 
-/* ── NAV ── */
+/* NAV */
 let cur=0,busy=false;
 function go(i){
-  const total=document.querySelectorAll('.slide').length;
-  if(busy||i===cur||i<0||i>=total)return;
-  busy=true;
-  document.querySelectorAll('.slide.active .fc-wrap').forEach(fc=>fc.classList.remove('flipped'));
+  const tot=document.querySelectorAll('.slide').length;
+  if(busy||i===cur||i<0||i>=tot)return;busy=true;
   const old=document.querySelector('.slide.active');
-  if(old){old.classList.remove('active');old.classList.add('out-up');setTimeout(()=>old.classList.remove('out-up'),600);}
-  cur=i;
-  document.querySelectorAll('.slide')[cur].classList.add('active');
+  if(old){old.classList.remove('active');old.classList.add('out');setTimeout(()=>old.classList.remove('out'),560);}
+  cur=i;document.querySelectorAll('.slide')[cur].classList.add('active');
   document.getElementById('cn').textContent=cur+1;
   document.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('active',j===cur));
-  document.getElementById('prog').style.width=((cur/(total-1))*100)+'%';
-  upd();setTimeout(()=>busy=false,620);
+  document.getElementById('prog').style.width=((cur/(tot-1))*100)+'%';
+  upd();setTimeout(()=>busy=false,580);
 }
-function upd(){
-  const total=document.querySelectorAll('.slide').length;
-  document.getElementById('bp').disabled=cur===0;
-  document.getElementById('bf').disabled=cur===0;
-  document.getElementById('bn').disabled=cur===total-1;
-  document.getElementById('bl').disabled=cur===total-1;
-}
-document.getElementById('bp').addEventListener('click',()=>go(cur-1));
-document.getElementById('bn').addEventListener('click',()=>go(cur+1));
-document.getElementById('bf').addEventListener('click',()=>go(0));
-document.getElementById('bl').addEventListener('click',()=>go(document.querySelectorAll('.slide').length-1));
+function upd(){const tot=document.querySelectorAll('.slide').length;document.getElementById('bP').disabled=cur===0;document.getElementById('bF').disabled=cur===0;document.getElementById('bN').disabled=cur===tot-1;document.getElementById('bL').disabled=cur===tot-1;}
+document.getElementById('bP').addEventListener('click',()=>go(cur-1));
+document.getElementById('bN').addEventListener('click',()=>go(cur+1));
+document.getElementById('bF').addEventListener('click',()=>go(0));
+document.getElementById('bL').addEventListener('click',()=>go(document.querySelectorAll('.slide').length-1));
 document.getElementById('nzL').addEventListener('click',()=>go(cur-1));
 document.getElementById('nzR').addEventListener('click',()=>go(cur+1));
 document.addEventListener('keydown',e=>{
-  const total=document.querySelectorAll('.slide').length;
+  if(document.activeElement===document.getElementById('sinp'))return;
   if(['ArrowRight','ArrowDown',' '].includes(e.key)){e.preventDefault();go(cur+1);}
   if(['ArrowLeft','ArrowUp'].includes(e.key)){e.preventDefault();go(cur-1);}
-  if(e.key==='Home')go(0);if(e.key==='End')go(total-1);
+  if(e.key==='Home')go(0);if(e.key==='End')go(document.querySelectorAll('.slide').length-1);
+  if(e.key==='f'||e.key==='F')toggleFS();
 });
-let tx=0,ty=0;
-sw.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
-sw.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){dx<0?go(cur+1):go(cur-1);}},{passive:true});
+let tx=0,ty2=0;
+sw.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty2=e.touches[0].clientY;},{passive:true});
+sw.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty2;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){dx<0?go(cur+1):go(cur-1);}},{passive:true});
 document.getElementById('tog').addEventListener('click',()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';});
-
-/* ── FULLSCREEN ── */
-const fsBtn=document.getElementById('fs-btn');
-function toggleFS(){
-  if(!document.fullscreenElement){
-    document.documentElement.requestFullscreen().catch(()=>{});
-  } else {
-    document.exitFullscreen();
-  }
-}
-fsBtn.addEventListener('click',toggleFS);
-document.addEventListener('keydown',e=>{
-  if(e.key==='f'||e.key==='F'){
-    // only if not typing in search
-    if(document.activeElement!==document.getElementById('search-input')) toggleFS();
-  }
-});
-document.addEventListener('fullscreenchange',()=>{
-  const inFS=!!document.fullscreenElement;
-  fsBtn.setAttribute('aria-label', inFS ? 'Exit fullscreen' : 'Enter fullscreen');
-  fsBtn.querySelectorAll('.ic-expand').forEach(el=>el.style.display=inFS?'none':'');
-  fsBtn.querySelectorAll('.ic-compress').forEach(el=>el.style.display=inFS?'':'none');
-});
-
-// init
+function toggleFS(){if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}else{document.exitFullscreen();}}
+document.getElementById('fsb').addEventListener('click',toggleFS);
+document.addEventListener('fullscreenchange',()=>{const f=!!document.fullscreenElement;document.querySelectorAll('.ic-expand').forEach(e=>e.style.display=f?'none':'');document.querySelectorAll('.ic-compress').forEach(e=>e.style.display=f?'':'none');});
+const sinp=document.getElementById('sinp');
+sinp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const n=parseInt(sinp.value,10);const tot=document.querySelectorAll('.slide').length;if(!isNaN(n)&&n>=1&&n<=tot)go(n-1);sinp.value='';sinp.blur();}if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))e.stopPropagation();});
 document.querySelectorAll('.slide')[0].classList.add('active');
 document.getElementById('prog').style.width='0%';
 upd();
-setTimeout(()=>document.getElementById('hint').classList.add('gone'),5500);
-
-/* ── SEARCH INPUT ── */
-const si=document.getElementById('search-input');
-si.addEventListener('keydown',e=>{
-  if(e.key==='Enter'){
-    e.preventDefault();
-    const n=parseInt(si.value,10);
-    const total=document.querySelectorAll('.slide').length;
-    if(!isNaN(n)&&n>=1&&n<=total){go(n-1);}
-    si.value='';si.blur();
-  }
-});
-si.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))e.stopPropagation();});
-
-/* ── DASHBOARD SLIDE ── */
-(()=>{
-  const TOTAL=data.length; // 31
-
-  // Section data for bar chart: [label, card count]
-  const sections=[
-    ['My Journey',3],['Communities',3],['IT Reality',3],['School vs Work',3],
-    ['Career Paths',5],['Hiring',4],['Portfolio',3],['Build Portfolio',3],
-    ['Stand Out',4],['Self-Learning',3],['Networking',4],['Volunteering',4],
-    ['Leadership',3],['Teamwork',4],['Pitfalls',4],['Specialization',4],
-    ['Soft Skills',3],['Job Prep',4],['Future',3],['Motivation',4],
-    ['Hackathons',4],['Events',3],['Confidence',3],['Curiosity',4],
-    ['Start Now',4],['Mentorship',4],['Challenges',4],['Communities',4],
-    ['Long-term',4],['Final',4],
-  ];
-  const totalCards=sections.reduce((a,s)=>a+s[1],0);
-
-  // Category breakdown for donut
-  const categories=[
-    {label:'Career & Hiring',count:11,color:'#f0c96a'},
-    {label:'Learning & Skills',count:9,color:'#6ab4f0'},
-    {label:'Community & Network',count:7,color:'#f06a9e'},
-    {label:'Mindset & Growth',count:7,color:'#6af0a8'},
-    {label:'Future & Tech',count:5,color:'#c06af0'},
-  ];
-
-  const el=document.createElement('div');
-  el.className='slide dash-slide';
-  el.dataset.i=TOTAL;
-
-  // Build bars HTML (top 8 sections by card count + sort)
-  const topSecs=[...sections].sort((a,b)=>b[1]-a[1]).slice(0,8);
-  const maxCards=Math.max(...topSecs.map(s=>s[1]));
-  const barColors=['#f0c96a','#6ab4f0','#f06a9e','#6af0a8','#c06af0','#f0a06a','#6af0c0','#f06a6a'];
-  const barsHTML=topSecs.map((s,i)=>`
-    <div class="bar-row">
-      <span class="bar-label">${s[0]}</span>
-      <div class="bar-track"><div class="bar-fill" data-w="${(s[1]/maxCards*100).toFixed(0)}%" style="background:${barColors[i%barColors.length]}"></div></div>
-      <span class="bar-val">${s[1]}</span>
-    </div>`).join('');
-
-  // Donut SVG
-  const R=46,cx2=52,cy2=52,circ=2*Math.PI*R;
-  let offset=0;
-  const catTotal=categories.reduce((a,c)=>a+c.count,0);
-  const slices=categories.map(c=>{
-    const dash=(c.count/catTotal)*circ;
-    const gap=circ-dash;
-    const sl=`<circle cx="${cx2}" cy="${cy2}" r="${R}" fill="none" stroke="${c.color}" stroke-width="14" stroke-dasharray="${dash} ${gap}" stroke-dashoffset="${-offset}" stroke-linecap="butt" style="transform-origin:${cx2}px ${cy2}px;transform:rotate(-90deg)"/>`;
-    offset+=dash;
-    return sl;
-  }).join('');
-  const legendHTML=categories.map(c=>`<div class="legend-item"><div class="legend-dot" style="background:${c.color}"></div>${c.label}</div>`).join('');
-
-  // Timeline: learning path stages
-  const stages=[
-    {label:'Explore & Join Communities',pct:100,color:'#f0c96a'},
-    {label:'Build First Projects',pct:85,color:'#6ab4f0'},
-    {label:'Attend Events & Hackathons',pct:70,color:'#f06a9e'},
-    {label:'Develop Soft Skills',pct:60,color:'#6af0a8'},
-    {label:'Build Portfolio & Apply',pct:45,color:'#c06af0'},
-    {label:'Land Internship / First Job',pct:30,color:'#f0a06a'},
-  ];
-  const tlHTML=stages.map(s=>`
-    <div class="tl-item">
-      <div class="tl-dot" style="background:${s.color};box-shadow:0 0 6px ${s.color}"></div>
-      <div class="tl-line-wrap">
-        <span class="tl-label">${s.label}</span>
-        <div class="tl-bar-track"><div class="tl-bar-fill" data-w="${s.pct}%" style="background:${s.color}"></div></div>
-      </div>
-    </div>`).join('');
-
-  el.innerHTML=`<div class="card">
-    <div class="dash-header">
-      <div>
-        <div class="tag">Dashboard</div>
-        <div class="dash-headline">You've Completed the Presentation</div>
-        <div class="dash-sub">Here's a visual summary of everything covered</div>
-      </div>
-      <div class="congrats-badge">
-        <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        Well Done!
-      </div>
-    </div>
-    <div class="dash-grid">
-      <div class="dash-card">
-        <div class="dash-card-title">Slides Completed</div>
-        <div class="dash-big" id="cnt-slides">0 <span>of 33</span></div>
-        <div class="dash-card-title" style="margin-top:.4rem;color:var(--accent2)">Total Flashcards</div>
-        <div class="dash-big" id="cnt-cards" style="font-size:clamp(1.6rem,3vw,2.4rem)">0 <span>cards</span></div>
-      </div>
-      <div class="dash-card">
-        <div class="dash-card-title">Cards per Section (Top 8)</div>
-        <div class="bar-chart">${barsHTML}</div>
-      </div>
-      <div class="dash-card">
-        <div class="dash-card-title">Topic Categories</div>
-        <div class="donut-wrap">
-          <svg width="104" height="104" viewBox="0 0 104 104">${slices}<text x="52" y="48" text-anchor="middle" font-family="Playfair Display,serif" font-size="16" font-weight="700" fill="var(--text)">${catTotal}</text><text x="52" y="62" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="var(--text-muted)">topics</text></svg>
-          <div class="donut-legend">${legendHTML}</div>
-        </div>
-      </div>
-      <div class="dash-card" style="grid-column:1/-1">
-        <div class="dash-card-title">Student Learning Path</div>
-        <div class="timeline">${tlHTML}</div>
-      </div>
-    </div>
-  </div>`;
-
-  sw.appendChild(el);
-
-  // dot for dashboard
-  const dot=document.createElement('div');
-  dot.className='dot';
-  dot.style.background='var(--accent2)';
-  dot.title='Dashboard';
-  dot.addEventListener('click',()=>go(TOTAL));
-  dotsEl.appendChild(dot);
-
-  // animate counters + bars when dashboard becomes active
-  function animateDash(){
-    const DISPLAY_TOTAL=33;
-    let s=0,c=0;
-    const dur=900,step=16;
-    const iv=setInterval(()=>{
-      s=Math.min(s+Math.ceil(DISPLAY_TOTAL/dur*step*4),DISPLAY_TOTAL);
-      c=Math.min(c+Math.ceil(totalCards/dur*step*4),totalCards);
-      document.getElementById('cnt-slides').innerHTML=`${s} <span>of ${DISPLAY_TOTAL}</span>`;
-      document.getElementById('cnt-cards').innerHTML=`${c} <span>cards</span>`;
-      if(s>=DISPLAY_TOTAL&&c>=totalCards)clearInterval(iv);
-    },step);
-    setTimeout(()=>{
-      el.querySelectorAll('.bar-fill').forEach(b=>{b.style.width=b.dataset.w;});
-      el.querySelectorAll('.tl-bar-fill').forEach(b=>{b.style.width=b.dataset.w;});
-    },200);
-  }
-
-  window._dashAnimated=false;
-  const observer=new MutationObserver(()=>{
-    if(el.classList.contains('active')&&!window._dashAnimated){
-      window._dashAnimated=true;animateDash();
-    }
-    if(!el.classList.contains('active'))window._dashAnimated=false;
-  });
-  observer.observe(el,{attributes:true,attributeFilter:['class']});
-})();
-
-/* ── THANK YOU SLIDE (LAST) ── */
-(()=>{
-  const tyIndex=data.length+1; // after dashboard
-  const ty=document.createElement('div');
-  ty.className='slide ty-slide';
-  ty.dataset.i=tyIndex;
-
-  const sparks=Array.from({length:18},(_,i)=>{
-    const colors=['#f0c96a','#6ab4f0','#f06a9e','#6af0a8','#c06af0'];
-    const c=colors[i%colors.length];
-    const size=Math.random()*5+3;
-    const left=Math.random()*90+5;
-    const dur=Math.random()*3+2.5;
-    const delay=Math.random()*4;
-    const dx=(Math.random()-0.5)*80;
-    return `<div class="ty-spark" style="left:${left}%;bottom:${Math.random()*30+5}%;width:${size}px;height:${size}px;background:${c};--dx:${dx}px;animation-duration:${dur}s;animation-delay:${delay}s;"></div>`;
-  }).join('');
-
-  ty.innerHTML=`<div class="card">
-    <div class="ty-stars-wrap">${sparks}</div>
-    <span class="tag">Thank You</span>
-    <div class="ty-big">Thank You.</div>
-    <div class="ty-sub">for your time, your curiosity, and your drive to grow.</div>
-    <div class="ty-div"></div>
-    <div class="ty-contact-label">Questions? Reach out</div>
-    <a class="ty-email" href="mailto:pmanucom@devcon.ph">
-      <svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      pmanucom@devcon.ph
-    </a>
-    <div class="ty-devcon">Part of <span>DEVCON Manila</span> · Keep Building</div>
-  </div>`;
-
-  sw.appendChild(ty);
-
-  const dot=document.createElement('div');
-  dot.className='dot';
-  dot.style.background='var(--accent3)';
-  dot.title='Thank You';
-  dot.addEventListener('click',()=>go(tyIndex));
-  dotsEl.appendChild(dot);
-
-  // update total display: 31 data + dashboard + TY = 33
-  document.getElementById('tn').textContent=data.length+2;
-})();
+setTimeout(()=>document.getElementById('hint').classList.add('gone'),5000);
 </script>
 </body>
 </html>
